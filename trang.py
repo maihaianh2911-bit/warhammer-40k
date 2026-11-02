@@ -11,6 +11,9 @@ Claude dùng các lệnh này cùng công cụ ArtifactData (đọc/ghi db của
       du-an/<ten>/hinh/NN-…/ (tên file gốc), xóa file trong ô mà trang đã bỏ. Asset phải tải sẵn
       vào <thu_muc_asset> (Artifact read path=<id>), tên bắt đầu bằng id.
 
+  python3 trang.py trang-thai <ten> <gia_tri> [--video URL] [--loi-nhan "…"]
+      Ghi du-an/<ten>/trang-thai.json (trang web GitHub Pages đọc file này).
+
   python3 trang.py day-y <ten> <thu_muc_ra>
       y.json + thoi-gian.json → mỗi ý một file JSON (để ArtifactData batch set du_an/<ten>/y/NN).
 """
@@ -107,12 +110,29 @@ def day_y(ten, out_dir):
     print(f'{len(beats)} file trong {out}')
 
 
+def trang_thai(ten, val, video=None, loi_nhan=None):
+    import time
+    p = ghep.proj_dir(ten) / 'trang-thai.json'
+    st = json.loads(p.read_text(encoding='utf-8')) if p.exists() else {'ten': ten}
+    st['trang_thai'] = val
+    st['cap_nhat'] = int(time.time())
+    if video is not None:
+        st['video'] = {'url': video, 'ten': video.rsplit('/', 1)[-1]}
+    if loi_nhan is not None:
+        st['loi_nhan'] = loi_nhan
+    p.write_text(json.dumps(st, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+    print(p)
+
+
 if __name__ == '__main__':
     a = sys.argv[1:]
     if a[:1] == ['giai'] and len(a) == 3:
         print(giai(a[1], a[2]))
     elif a[:1] == ['nhan-y'] and len(a) == 4:
         nhan_y(a[1], a[2], a[3])
+    elif a[:1] == ['trang-thai'] and len(a) >= 3:
+        opt = dict(zip(a[3::2], a[4::2]))
+        trang_thai(a[1], a[2], opt.get('--video'), opt.get('--loi-nhan'))
     elif a[:1] == ['day-y'] and len(a) == 3:
         day_y(a[1], a[2])
     else:

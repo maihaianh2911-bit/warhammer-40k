@@ -1,0 +1,73 @@
+name: Tự dựng video (bấm "Dựng video" trên trang web)
+
+# Trang web ghi du-an/<ten>/trang-thai.json = "cho_dung" → workflow này dựng MP4, đăng vào bản phát hành
+# "video-<ten>" và ghi trang_thai "xong" + link video (trang web tự hiện video).
+on:
+  push:
+    branches: [main]
+    paths: ['du-an/*/trang-thai.json']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: tu-dung
+  cancel-in-progress: false
+
+jobs:
+  dung:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - name: Tìm video chờ dựng
+        id: tim
+        run: |
+          python3 - >> "$GITHUB_OUTPUT" <<'PY'
+          import glob, json
+          ds = [p.split('/')[1] for p in sorted(glob.glob('du-an/*/trang-thai.json'))
+                if json.load(open(p, encoding='utf-8')).get('trang_thai') == 'cho_dung']
+          print('ds=' + ' '.join(ds))
+          PY
+      - if: steps.tim.outputs.ds != ''
+        uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - if: steps.tim.outputs.ds != ''
+        uses: actions/cache@v4
+        with: { path: ~/.cache/huggingface, key: faster-whisper-small-v1 }
+      - name: Cài đặt
+        if: steps.tim.outputs.ds != ''
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg fonts-inter fonts-dejavu-core >/dev/null
+          pip install -q -r requirements.txt
+      - name: Dựng
+        if: steps.tim.outputs.ds != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DS: ${{ steps.tim.outputs.ds }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          day() {  # commit + push trạng thái, thử lại nếu trang web vừa đẩy commit khác
+            git add -A du-an && git commit -q -m "$1" || return 0
+            for i in 1 2 3 4 5; do git pull -q --rebase origin main && git push -q origin HEAD:main && return 0; sleep $((i*3)); done
+            return 1
+          }
+          for t in $DS; do
+            python3 trang.py trang-thai "$t" dang_dung --loi-nhan "" && day "$t: đang dựng"
+            if python3 ghep.py dung "$t" --cho-phep-thieu 2>&1 | tee "/tmp/$t.log"; [ "${PIPESTATUS[0]}" = 0 ]; then
+              ten="$t-$(date -u +%m%d-%H%M).mp4"
+              cp "du-an/$t/xuat/$t.mp4" "/tmp/$ten"
+              gh release view "video-$t" >/dev/null 2>&1 || gh release create "video-$t" --title "Video $t" --notes "Video dựng tự động từ du-an/$t." >/dev/null
+              for a in $(gh release view "video-$t" --json assets -q '.assets[].name'); do gh release delete-asset "video-$t" "$a" -y; done
+              gh release upload "video-$t" "/tmp/$ten"
+              url="https://github.com/$GITHUB_REPOSITORY/releases/download/video-$t/$ten"
+              python3 trang.py trang-thai "$t" xong --video "$url" --loi-nhan ""
+              day "$t: có video"
+            else
+              msg="Dựng lỗi: $(grep -m1 'LỖI' "/tmp/$t.log" || tail -n 1 "/tmp/$t.log")"
+              python3 trang.py trang-thai "$t" loi --loi-nhan "$msg"
+              day "$t: dựng lỗi"
+            fi
+          done

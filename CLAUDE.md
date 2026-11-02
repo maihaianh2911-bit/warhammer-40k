@@ -2,7 +2,27 @@
 
 Chỉ cần Python 3 + Pillow + ffmpeg (+ faster-whisper để căn giọng chính xác). Xem `README.md` cho người dùng.
 
-## Cách làm chính: trang Xưởng Ghép Hình
+## Cách làm chính: trang web trên GitHub Pages
+
+Trang **https://maihaianh2911-bit.github.io/warhammer-40k/** (nguồn `web/index.html`, đăng bằng workflow `trang-web.yml`).
+Người dùng đăng nhập bằng mã GitHub (fine-grained, Contents: Read and write); trang đọc/ghi thẳng file trong repo:
+
+- `du-an/<ten>/trang-thai.json`: `ten`, `trang_thai`, `loi_nhan` (hiện thành băng trên trang), `video {url, ten}`, `cap_nhat`.
+  Ghi bằng `python3 trang.py trang-thai <ten> <gia_tri> [--loi-nhan "…"] [--video URL]`.
+- `du-an/<ten>/kich-ban.txt`, `du-an/<ten>/voice.<đuôi>`: người dùng dán trên trang.
+- `du-an/<ten>/hinh/NN-…/`: ảnh/video người dùng thả vào từng ý (tên file `01-<tên gốc>`, `02-…`).
+- `trang_thai`: `nhap` → `cho_chia_y` (người dùng bấm gửi) → `dang_chia_y` → `chia_y_xong` → `cho_dung` (bấm “Dựng video”)
+  → `dang_dung` → `xong` / `loi`.
+
+**Chia ý (việc của Claude)** — người dùng nhắn “đã gửi”: `git pull` → dự án nào `cho_chia_y` → `trang-thai … dang_chia_y`
+(commit + push để trang hiện) → chia ý, viết `y.json` → `python3 ghep.py can <ten>` (tạo `thoi-gian.json`, `y.md`, ô `hinh/NN-…/`)
+→ `trang-thai … chia_y_xong` → commit + push. Trang tự hiện các ý (tự kiểm tra mỗi 20 giây).
+
+**Dựng video (tự động)**: bấm “Dựng video” → workflow `tu-dung.yml` dựng (`ghep.py dung --cho-phep-thieu`), đăng MP4 vào
+bản phát hành `video-<ten>`, ghi `xong` + link. Người dùng muốn chỉnh (zoom, phụ đề, video lấy từ giây…) → Claude sửa
+`y.json`, commit, rồi `trang-thai … cho_dung` + push để workflow dựng lại. Workflow lỗi → `trang_thai: loi` + `loi_nhan`.
+
+## Trang phụ: Xưởng Ghép Hình trên claude.ai (cần đăng nhập Claude)
 
 Người dùng làm mọi thứ trên trang **https://claude.ai/artifact/7HEbk3SNPfywFCm2dW2m8u** (nguồn: `trang/xuong-ghep-hinh.html`;
 sửa trang → publish lại đúng URL đó). Họ chỉ nhắn trong chat kiểu “đã gửi”. Dữ liệu ở db của trang (công cụ `ArtifactData`):

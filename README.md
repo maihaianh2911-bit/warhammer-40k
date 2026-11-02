@@ -5,12 +5,13 @@ tới ý của nó; ảnh có chuyển động nhẹ (zoom/lia), hòa hình khi 
 
 ## Cách làm (đơn giản nhất)
 
-Mở trang **[Xưởng Ghép Hình](https://claude.ai/artifact/7HEbk3SNPfywFCm2dW2m8u)**:
+Mở trang **https://maihaianh2911-bit.github.io/warhammer-40k/** (lần đầu: dán mã GitHub theo hướng dẫn trên trang).
 
 1. **+ Video mới** → dán kịch bản → chọn file giọng đọc → **Gửi cho Claude chia ý** → nhắn Claude “đã gửi”.
-2. Các ý hiện ra, mỗi ý có gợi ý nên tìm hình gì → thả / dán (Ctrl+V) ảnh hoặc video vào khung của ý →
-   **Gửi cho Claude dựng video** → nhắn Claude “đã gửi”.
-3. Video MP4 hiện ở cuối trang, bấm **Tải MP4 về máy**.
+2. Các ý hiện ra, mỗi ý có gợi ý nên tìm hình gì → thả / dán (Ctrl+V) ảnh hoặc video vào khung của ý.
+3. Bấm **Dựng video** → GitHub tự dựng (3–6 phút) → video hiện ở cuối trang, bấm **Tải MP4 về máy**.
+
+Bật trang một lần: **Settings → Pages → Source: GitHub Actions**.
 
 ## Cách làm qua GitHub (cách cũ)
 

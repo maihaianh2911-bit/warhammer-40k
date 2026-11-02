@@ -152,6 +152,12 @@ def font(size):
 
 
 def open_image(path):
+    if str(path).lower().endswith(('.heic', '.heif')):
+        try:
+            import pillow_heif
+            pillow_heif.register_heif_opener()
+        except ImportError:
+            die(f'{path}: cần pip install pillow-heif để đọc ảnh HEIC của iPhone')
     im = Image.open(path)
     im = ImageOps.exif_transpose(im)
     if im.mode in ('RGBA', 'LA', 'P'):
@@ -640,7 +646,7 @@ def cmd_dung(a):
     if a.nhap:
         W, H, fps = W // 2, H // 2, 24
     xfade = float(plan.get('chuyen_canh', 0.3))
-    clips, missing = build_clips(d, beats, timing, W, H, fps, xfade, plan, allow_missing=a.nhap)
+    clips, missing = build_clips(d, beats, timing, W, H, fps, xfade, plan, allow_missing=a.nhap or a.cho_phep_thieu)
     subs_on = plan.get('phu_de', True)
     subs = []
     if subs_on:
@@ -760,6 +766,7 @@ def main():
     p = sub.add_parser('dung')
     p.add_argument('ten')
     p.add_argument('--nhap', action='store_true', help='bản nháp 540p, ý thiếu hình hiện ô trống')
+    p.add_argument('--cho-phep-thieu', action='store_true', help='ý thiếu hình hiện ô gợi ý thay vì báo lỗi')
     p.add_argument('--toi-da-mb', type=float, default=0, help='giới hạn dung lượng MP4 (vd 19 để tải lên trang)')
     p.add_argument('--model', default='small')
     p.add_argument('--khong-whisper', action='store_true')
