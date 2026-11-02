@@ -5,14 +5,15 @@ Mỗi dự án là một thư mục du-an/<ten>/:
     kich-ban.txt        kịch bản (bạn dán)
     voice.mp3|wav|m4a   giọng đọc (bạn dán)
     y.json              các ý + gợi ý hình (Claude viết sau khi phân tích kịch bản)
-    hinh/03.jpg         hình cho ý số 3 (03b.jpg, 03c.png… = thêm hình cho cùng ý)
-    y.md                bảng ý + gợi ý hình dễ đọc (máy tạo từ y.json)
+    hinh/03-<ten-y>/    ô dán cho ý số 3: ảnh hoặc video, bao nhiêu file cũng được (chạy theo thứ tự tên);
+                        README.md trong ô ghi lời, nghĩa, gợi ý hình của ý đó (máy tạo từ y.json)
+    y.md                bảng tất cả ý + gợi ý hình (máy tạo từ y.json)
     thoi-gian.json      thời điểm từng từ / từng ý trong giọng đọc (máy tạo)
     xuat/<ten>.mp4      video (máy dựng)
 
 Lệnh:
     python3 ghep.py moi <ten>         tạo thư mục dự án
-    python3 ghep.py bang <ten>        y.json → y.md (bảng ý + gợi ý hình)
+    python3 ghep.py bang <ten>        y.json → y.md + ô dán hinh/NN-<ten-y>/ cho từng ý
     python3 ghep.py can <ten>         căn giọng đọc → thời điểm từng ý (Whisper; không có thì ước lượng)
     python3 ghep.py kiem <ten>        ý nào đã có / còn thiếu hình
     python3 ghep.py tobia <ten>       ảnh tổng hợp: hình từng ý + lời, để soát
@@ -25,7 +26,9 @@ from PIL import Image, ImageDraw, ImageFilter, ImageFont, ImageOps
 
 ROOT = Path(__file__).resolve().parent
 PROJECTS = ROOT / 'du-an'
-IMG_EXT = ('.jpg', '.jpeg', '.png', '.webp', '.bmp', '.gif', '.heic', '.avif')
+IMG_EXT = ('.jpg', '.jpeg', '.png', '.webp', '.bmp', '.gif', '.heic', '.avif', '.jfif')
+VID_EXT = ('.mp4', '.mov', '.webm', '.mkv', '.m4v', '.avi')
+MEDIA_EXT = IMG_EXT + VID_EXT
 AUDIO_EXT = ('.mp3', '.wav', '.m4a', '.aac', '.ogg', '.flac', '.opus', '.mp4', '.webm')
 FORMATS = {'9:16': (1080, 1920), '16:9': (1920, 1080), '1:1': (1080, 1080), '4:5': (1080, 1350)}
 FONT_CANDIDATES = [
@@ -100,19 +103,45 @@ def words_of(text):
     return [w for w in re.split(r'\s+', text.strip()) if norm(w)]
 
 
+def num_of(name):
+    m = re.match(r'^(?:y|ý|y_|y-)?0*(\d+)(?:$|[^0-9])', name.lower())
+    return int(m.group(1)) if m else None
+
+
+def slot_of(d, so):
+    """Ô dán của ý số `so`: thư mục hinh/NN-… (None nếu chưa có)."""
+    folder = d / 'hinh'
+    if folder.is_dir():
+        for f in sorted(folder.iterdir()):
+            if f.is_dir() and num_of(f.name) == so:
+                return f
+    return None
+
+
 def images_for(d, so):
-    """Hình của ý số `so`: 3.jpg, 03.jpg, 03b.png, 03-2.jpg, y03.jpg… sắp theo tên."""
+    """Ảnh/video của ý số `so`: mọi file trong ô hinh/NN-…/ (sắp theo tên), cộng file rời hinh/03.jpg, 03b.mp4…"""
     folder = d / 'hinh'
     if not folder.is_dir():
         return []
     out = []
+    slot = slot_of(d, so)
+    if slot:
+        out += [f for f in sorted(slot.iterdir(), key=lambda f: f.name.lower())
+                if f.is_file() and f.suffix.lower() in MEDIA_EXT]
     for f in sorted(folder.iterdir()):
-        if f.suffix.lower() not in IMG_EXT:
-            continue
-        m = re.match(r'^(?:y|ý|y_|y-)?0*(\d+)(?:$|[^0-9])', f.stem.lower())
-        if m and int(m.group(1)) == so:
+        if f.is_file() and f.suffix.lower() in MEDIA_EXT and num_of(f.stem) == so:
             out.append(f)
     return out
+
+
+def is_video(p):
+    return isinstance(p, Path) and p.suffix.lower() in VID_EXT
+
+
+def slug(text):
+    t = unicodedata.normalize('NFD', text.lower().replace('đ', 'd'))
+    t = ''.join(c for c in t if unicodedata.category(c) != 'Mn')
+    return re.sub(r'[^a-z0-9]+', '-', t).strip('-')[:40].strip('-')
 
 
 def font(size):
@@ -153,25 +182,40 @@ def cmd_bang(a):
     if plan.get('tom_tat'):
         L += [plan['tom_tat'], '']
     L += [f'Khung hình: **{plan.get("khung", "9:16")}** · {len(beats)} ý · '
-          'Dán hình cho ý số N vào `hinh/` với tên `NN.jpg` (vd `03.jpg`; thêm hình cho cùng ý: `03b.jpg`).', '']
+          'Mỗi ý có một **ô dán** (thư mục trong `hinh/`): bấm vào ô → **Add file → Upload files** → '
+          'kéo ảnh/video vào → **Commit changes**.', '']
     for b in beats:
         t = tmap.get(b['so'])
-        when = f' · {t["bat_dau"]:.1f}s → {t["ket_thuc"]:.1f}s ({t["ket_thuc"] - t["bat_dau"]:.1f}s)' if t else ''
+        dur = f'{t["ket_thuc"] - t["bat_dau"]:.1f} giây' if t else ''
+        when = f'{t["bat_dau"]:.1f}s → {t["ket_thuc"]:.1f}s ({dur})' if t else ''
+        slot = slot_of(d, b['so'])
+        if not slot:
+            slot = d / 'hinh' / (f'{b["so"]:02d}-{slug(b.get("y_chinh", ""))}'.rstrip('-'))
+            slot.mkdir(parents=True, exist_ok=True)
         have = images_for(d, b['so'])
-        L += [f'## Ý {b["so"]:02d} — {b.get("y_chinh", "")}{when}', '',
-              f'> {b["loi"].strip()}', '',
-              f'**Gợi ý hình:** {b.get("goi_y_hinh", "")}', '']
+        block = [f'> {b["loi"].strip()}', '']
+        if b.get('nghia'):
+            block += [f'**Nghĩa:** {b["nghia"]}', '']
+        block += [f'**Gợi ý hình:** {b.get("goi_y_hinh", "")}', '']
         if b.get('phuong_an_khac'):
-            L += [f'**Phương án khác:** {b["phuong_an_khac"]}', '']
-        if b.get('prompt'):
-            L += ['**Prompt tạo ảnh AI:**', '', '```', b['prompt'].strip(), '```', '']
+            block += [f'**Phương án khác:** {b["phuong_an_khac"]}', '']
         if b.get('tu_khoa'):
-            L += [f'**Từ khóa tìm ảnh:** {b["tu_khoa"]}', '']
+            block += [f'**Từ khóa tìm:** {b["tu_khoa"]}', '']
         if b.get('tu_khoa_en'):
-            L += [f'**Tìm bằng tiếng Anh (nhiều ảnh hơn):** {b["tu_khoa_en"]}', '']
-        L += [f'**Hình đã có:** {", ".join(f.name for f in have) if have else "— chưa có"}', '']
+            block += [f'**Tìm bằng tiếng Anh (nhiều kết quả hơn):** {b["tu_khoa_en"]}', '']
+        have_txt = ', '.join(f.name for f in have) if have else '— chưa có'
+        L += [f'## Ý {b["so"]:02d} — {b.get("y_chinh", "")}', '',
+              f'{when} · [**→ Ô dán ý {b["so"]:02d}**](hinh/{slot.name}/)', ''] + block + \
+             [f'**Đã dán:** {have_txt}', '']
+        R = [f'# Ý {b["so"]:02d} — {b.get("y_chinh", "")}', '',
+             f'**Dán ảnh / video cho ý này vào đây:** bấm **Add file → Upload files** (góc phải, ngay trong thư mục này) '
+             f'→ kéo file vào → **Commit changes**.', '',
+             f'Ý dài **{dur}**' + (f' (từ giây {t["bat_dau"]:.1f} đến {t["ket_thuc"]:.1f})' if t else '') + '. Nhiều file → chạy lần lượt theo tên file (chia đều thời gian). '
+             'Video: lấy từ đầu clip, tắt tiếng; clip ngắn hơn ý thì lặp lại.', ''] + block + \
+            [f'**Đã dán:** {have_txt}', '']
+        (slot / 'README.md').write_text('\n'.join(R), encoding='utf-8')
     (d / 'y.md').write_text('\n'.join(L), encoding='utf-8')
-    print(f'Đã viết {(d / "y.md").relative_to(ROOT)}')
+    print(f'Đã viết {(d / "y.md").relative_to(ROOT)} + ô dán cho {len(beats)} ý trong hinh/')
 
 
 def cmd_kiem(a):
@@ -184,11 +228,13 @@ def cmd_kiem(a):
         if not have:
             missing.append(b['so'])
     known = {f for b in beats for f in images_for(d, b['so'])}
-    stray = [f.name for f in sorted((d / 'hinh').glob('*')) if f.suffix.lower() in IMG_EXT and f not in known] \
-        if (d / 'hinh').is_dir() else []
+    stray = [str(f.relative_to(d / 'hinh')) for f in sorted((d / 'hinh').rglob('*'))
+             if f.is_file() and f.suffix.lower() in MEDIA_EXT and f not in known] if (d / 'hinh').is_dir() else []
     if stray:
-        print('Hình không khớp số ý nào (đổi tên thành NN.jpg): ' + ', '.join(stray))
+        print('File không thuộc ô dán của ý nào: ' + ', '.join(stray))
     print(f'\nCòn thiếu {len(missing)} ý: {", ".join(map(str, missing))}' if missing else '\nĐủ hình cho mọi ý.')
+    if (d / 'y.json').exists():
+        cmd_bang(a)
     return missing
 
 
@@ -409,6 +455,69 @@ class Clip:
         return self.img.transform((self.W, self.H), Image.AFFINE, (sc, 0, x0, 0, sc, y0), resample=Image.BILINEAR)
 
 
+def video_info(path):
+    """(rộng, cao, thời lượng) sau khi xoay theo metadata điện thoại."""
+    out = subprocess.run(['ffprobe', '-v', 'error', '-select_streams', 'v:0', '-show_entries',
+                          'stream=width,height:stream_side_data=rotation:stream_tags=rotate:format=duration',
+                          '-of', 'json', str(path)], capture_output=True, text=True)
+    j = json.loads(out.stdout or '{}')
+    st = (j.get('streams') or [{}])[0]
+    w, h = int(st.get('width', 0)), int(st.get('height', 0))
+    rot = 0
+    for sd in st.get('side_data_list', []) or []:
+        rot = int(float(sd.get('rotation', 0) or 0))
+    rot = rot or int(float((st.get('tags') or {}).get('rotate', 0) or 0))
+    if abs(rot) % 180 == 90:
+        w, h = h, w
+    return w, h, float((j.get('format') or {}).get('duration', 0) or 0)
+
+
+class VideoClip:
+    """Một đoạn video trên màn trong [t0, t1): tắt tiếng, lấy từ giây `tu` của clip, ngắn hơn thì lặp lại."""
+
+    def __init__(self, src, t0, t1, W, H, fps, fit, tu, extra):
+        self.t0, self.t1, self.W, self.H, self.fps = t0, t1, W, H, fps
+        iw, ih, _ = video_info(src)
+        if not iw or not ih:
+            die(f'không đọc được video {src}')
+        ratio = (iw / ih) / (W / H)
+        if fit == 'auto':
+            fit = 'contain' if (ratio > 1.45 or ratio < 1 / 1.45) else 'cover'
+        if fit == 'contain':
+            bw, bh = W // 4 // 2 * 2, H // 4 // 2 * 2
+            vf = (f'split[a][b];[a]scale={bw}:{bh}:force_original_aspect_ratio=increase,crop={bw}:{bh},'
+                  f'boxblur=10:2,scale={W}:{H},eq=brightness=-0.18[bg];'
+                  f'[b]scale={int(W * 0.94)}:{int(H * 0.94)}:force_original_aspect_ratio=decrease[fg];'
+                  f'[bg][fg]overlay=(W-w)/2:(H-h)/2,fps={fps},format=rgb24')
+        else:
+            vf = f'scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},fps={fps},format=rgb24'
+        dur = (t1 - t0) + extra + 0.2
+        self.proc = subprocess.Popen(['ffmpeg', '-v', 'error', '-stream_loop', '-1', '-ss', f'{tu:.3f}', '-i', str(src),
+                                      '-t', f'{dur:.3f}', '-an', '-filter_complex', vf, '-f', 'rawvideo', '-'],
+                                     stdout=subprocess.PIPE)
+        self.size = W * H * 3
+        self.n = -1
+        self.last = Image.new('RGB', (W, H))
+
+    def frame(self, t):
+        want = int(round((t - self.t0) * self.fps))
+        while self.n < want and self.proc:
+            buf = self.proc.stdout.read(self.size)
+            if len(buf) < self.size:
+                self.close()
+                break
+            self.last = Image.frombytes('RGB', (self.W, self.H), buf)
+            self.n += 1
+        return self.last.copy()
+
+    def close(self):
+        if self.proc:
+            self.proc.stdout.close()
+            self.proc.kill()
+            self.proc.wait()
+            self.proc = None
+
+
 def placeholder(beat, W, H):
     im = Image.new('RGB', (W, H), (24, 26, 32))
     dr = ImageDraw.Draw(im)
@@ -479,7 +588,7 @@ def render_sub(text, W, H, style):
     return img
 
 
-def build_clips(d, beats, timing, W, H, plan, allow_missing):
+def build_clips(d, beats, timing, W, H, fps, xfade, plan, allow_missing):
     tmap = {t['so']: t for t in timing['y']}
     strength = float(plan.get('do_chuyen_dong', 0.10))
     default_fit = plan.get('vua_khung', 'auto')
@@ -501,10 +610,17 @@ def build_clips(d, beats, timing, W, H, plan, allow_missing):
         mots = mot if isinstance(mot, list) else [mot] * n
         for j, src in enumerate(imgs):
             motion = mots[j] if j < len(mots) and mots[j] else MOTIONS[k % len(MOTIONS)]
+            t0, t1 = t['bat_dau'] + j * seg, t['bat_dau'] + (j + 1) * seg
+            fit = b.get('vua_khung', default_fit)
+            if is_video(src):
+                tu = b.get('video_tu', 0)
+                tu = tu[j] if isinstance(tu, list) and j < len(tu) else (tu if not isinstance(tu, list) else 0)
+                clips.append(VideoClip(src, t0, t1, W, H, fps, fit, float(tu or 0), xfade))
+                k += 1
+                continue
             if not isinstance(src, (str, Path)):
                 motion = 'none'
-            clips.append(Clip(src, t['bat_dau'] + j * seg, t['bat_dau'] + (j + 1) * seg, W, H, motion,
-                              b.get('vua_khung', default_fit), strength))
+            clips.append(Clip(src, t0, t1, W, H, motion, fit, strength))
             k += 1
     if missing and not allow_missing:
         die(f'còn thiếu hình cho ý: {", ".join(map(str, missing))} (dựng thử với ô trống: thêm --nhap)')
@@ -523,8 +639,8 @@ def cmd_dung(a):
     fps = int(plan.get('fps', 30))
     if a.nhap:
         W, H, fps = W // 2, H // 2, 24
-    clips, missing = build_clips(d, beats, timing, W, H, plan, allow_missing=a.nhap)
     xfade = float(plan.get('chuyen_canh', 0.3))
+    clips, missing = build_clips(d, beats, timing, W, H, fps, xfade, plan, allow_missing=a.nhap)
     subs_on = plan.get('phu_de', True)
     subs = []
     if subs_on:
@@ -556,6 +672,8 @@ def cmd_dung(a):
     for fi in range(nframes):
         t = fi / fps
         while ci + 1 < len(clips) and t >= clips[ci + 1].t0:
+            if ci > 0 and isinstance(clips[ci - 1], VideoClip):
+                clips[ci - 1].close()
             ci += 1
         if not clips:
             frame = Image.new('RGB', (W, H))
@@ -573,6 +691,9 @@ def cmd_dung(a):
         if fi % (fps * 10) == 0:
             print(f'  {t:5.1f}s / {total:.1f}s', flush=True)
     ff.stdin.close()
+    for c in clips:
+        if isinstance(c, VideoClip):
+            c.close()
     if ff.wait() != 0:
         die('ffmpeg dựng video lỗi')
     print(f'Xong: {out.relative_to(ROOT)}  ({W}x{H}, {total:.1f}s)')
@@ -600,7 +721,16 @@ def cmd_tobia(a):
         x = 16 + (i % cols) * (tile_w + 16)
         y = 16 + (i // cols) * (th + cap + 16)
         imgs = images_for(d, b['so'])
-        im = ImageOps.fit(open_image(imgs[0]), (tile_w, th), Image.LANCZOS) if imgs else placeholder(b, tile_w, th)
+        if not imgs:
+            im = placeholder(b, tile_w, th)
+        elif is_video(imgs[0]):
+            raw = subprocess.run(['ffmpeg', '-v', 'error', '-ss', '0.5', '-i', str(imgs[0]), '-frames:v', '1',
+                                  '-f', 'image2pipe', '-vcodec', 'png', '-'], capture_output=True).stdout
+            im = Image.open(__import__('io').BytesIO(raw)).convert('RGB') if raw else placeholder(b, tile_w, th)
+            im = ImageOps.fit(im, (tile_w, th), Image.LANCZOS)
+            ImageDraw.Draw(im).text((10, 8), '▶ VIDEO', font=font(18), fill=(255, 255, 255))
+        else:
+            im = ImageOps.fit(open_image(imgs[0]), (tile_w, th), Image.LANCZOS)
         sheet.paste(im, (x, y))
         extra = f' (+{len(imgs) - 1})' if len(imgs) > 1 else ''
         dr.text((x, y + th + 6), f'Ý {b["so"]:02d}{extra}', font=f1, fill=(240, 200, 90))

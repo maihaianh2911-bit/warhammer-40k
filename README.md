@@ -1,35 +1,38 @@
 # Ghép Hình Theo Ý
 
-Kịch bản + giọng đọc + hình của bạn → video MP4 (dọc 9:16 mặc định), mỗi hình hiện đúng lúc giọng đọc tới ý của nó,
-có chuyển động nhẹ (zoom/lia), hòa hình khi chuyển và phụ đề chạy theo giọng.
+Kịch bản + giọng đọc + ảnh/video bạn tự tìm → video MP4 (dọc 9:16 mặc định). Mỗi ảnh/video hiện đúng lúc giọng đọc
+tới ý của nó; ảnh có chuyển động nhẹ (zoom/lia), hòa hình khi chuyển, phụ đề chạy theo giọng.
 
 ## Cách làm
 
 1. **Dán kịch bản** vào `1-kich-ban/kich-ban.txt` (bấm file → cây bút ✏️ → dán → **Commit changes**).
 2. **Tải giọng đọc** vào `2-voice/` (**Add file → Upload files** → kéo file mp3/wav/m4a → **Commit changes**).
-3. **Nhắn Claude “đã dán xong”.** Claude chuyển kịch bản + giọng vào một dự án `du-an/<ten>/`, làm trống lại hai thư mục
-   (để lần sau dán video mới), rồi **phân tích kịch bản, chia ý, gợi ý hình cho từng ý** — mỗi ý có: lời đọc,
-   thời lượng (đo từ giọng thật), mô tả hình nên dùng, phương án dễ kiếm hơn, prompt tiếng Anh để tạo ảnh AI.
-   Bảng đầy đủ: `du-an/<ten>/y.md`.
-4. **Dán hình cho từng ý** — trong chat ghi “ý 3” kèm hình, hoặc tải lên GitHub vào `du-an/<ten>/hinh/`
-   với tên theo số ý: `01.jpg`, `02.png`, … Một ý nhiều hình: `03.jpg`, `03b.jpg`.
-   Hình dọc, ngang, vuông đều được (hình lệch khung nhiều sẽ giữ trọn hình trên nền mờ).
-5. **Claude soát hình rồi dựng video**, gửi MP4. Muốn sửa thì nhắn theo số ý:
-   “ý 4 đổi hình này”, “ý 7 zoom ra”, “phụ đề cao lên”, “bỏ phụ đề”, “làm bản 16:9”, “thêm nhạc nền” (gửi file nhạc).
+3. **Nhắn Claude “đã dán xong”.** Claude chuyển kịch bản + giọng vào một dự án `du-an/<ten>/`, làm trống lại hai
+   thư mục trên (để lần sau dán video mới), rồi **phân tích kịch bản, chia ý, gợi ý hình cho từng ý**: lời đọc,
+   nghĩa tiếng Việt, thời lượng (đo từ giọng thật), nên tìm hình gì, phương án dễ kiếm hơn, từ khóa tìm kiếm.
+   Bảng tất cả ý: `du-an/<ten>/y.md`.
+4. **Dán ảnh/video vào ô của từng ý.** Mỗi ý có một ô riêng: `du-an/<ten>/hinh/01-…`, `02-…`, …
+   Bấm vào ô → đọc gợi ý ngay bên dưới → **Add file → Upload files** → kéo ảnh/video vào → **Commit changes**.
+   - Tên file tùy ý. Một ô nhiều file → chạy lần lượt theo tên, chia đều thời lượng của ý.
+   - Ảnh dọc, ngang, vuông đều được (lệch khung nhiều sẽ giữ trọn trên nền mờ).
+   - Video: tắt tiếng, lấy từ đầu clip, ngắn hơn ý thì lặp lại. GitHub web nhận file tối đa 25 MB.
+5. **Nhắn Claude “dán hình xong”** → Claude soát hình rồi dựng video, gửi MP4. Muốn sửa thì nhắn theo số ý:
+   “ý 4 đổi hình”, “ý 7 video lấy từ giây 12”, “phụ đề cao lên”, “bỏ phụ đề”, “làm bản 16:9”, “thêm nhạc nền”.
 
-Kịch bản và giọng cũng có thể dán thẳng vào chat thay cho bước 1–2.
+Kịch bản, giọng, hình cũng có thể gửi thẳng trong chat.
 Chưa đủ hình vẫn xem thử được: Claude dựng **bản nháp**, ý thiếu hình hiện ô ghi gợi ý.
 
 ## Thư mục một dự án
 
 ```
 du-an/<ten>/
-  kich-ban.txt     kịch bản bạn dán
+  kich-ban.txt     kịch bản
   voice.mp3        giọng đọc
-  y.json           các ý + gợi ý hình (Claude viết)
-  y.md             bảng ý + gợi ý hình để đọc
+  y.md             bảng tất cả ý + gợi ý hình
+  hinh/01-…/       ô dán ý 1: README.md (lời, nghĩa, gợi ý) + ảnh/video bạn dán
+  hinh/02-…/       ô dán ý 2 …
+  y.json           dữ liệu các ý (Claude viết)
   thoi-gian.json   thời điểm từng từ, từng ý trong giọng đọc (máy đo)
-  hinh/01.jpg …    hình của từng ý
   nhac.mp3         (không bắt buộc) nhạc nền
   xuat/            video + ảnh soát (không lưu lên GitHub)
 ```
@@ -42,7 +45,7 @@ Trên máy riêng:
 
 ```bash
 pip install -r requirements.txt     # cần ffmpeg
-python3 ghep.py can <ten>           # căn giọng → thời lượng từng ý
+python3 ghep.py can <ten>           # căn giọng → thời lượng từng ý (+ tạo ô dán)
 python3 ghep.py kiem <ten>          # ý nào còn thiếu hình
 python3 ghep.py tobia <ten>         # ảnh soát tất cả ý
 python3 ghep.py dung <ten>          # dựng video (--nhap: bản nháp nhanh)
