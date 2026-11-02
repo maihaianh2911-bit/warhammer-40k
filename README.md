@@ -3,17 +3,21 @@
 Kịch bản + giọng đọc + hình của bạn → video MP4 (dọc 9:16 mặc định), mỗi hình hiện đúng lúc giọng đọc tới ý của nó,
 có chuyển động nhẹ (zoom/lia), hòa hình khi chuyển và phụ đề chạy theo giọng.
 
-## Cách làm (chat với Claude)
+## Cách làm
 
-1. **Dán kịch bản + giọng đọc** vào chat (giọng: file mp3/wav/m4a). Đặt tên dự án nếu muốn.
-2. **Claude phân tích kịch bản, chia ý, gợi ý hình cho từng ý** — mỗi ý có: lời đọc, thời lượng (đo từ giọng thật),
-   mô tả hình nên dùng, phương án dễ kiếm hơn, prompt tiếng Anh để tạo ảnh AI. Bảng đầy đủ: `du-an/<ten>/y.md`.
-3. **Dán hình cho từng ý** — trong chat ghi “ý 3” kèm hình, hoặc tải lên GitHub vào
-   `du-an/<ten>/hinh/` với tên theo số ý: `01.jpg`, `02.png`, … Một ý nhiều hình: `03.jpg`, `03b.jpg`.
+1. **Dán kịch bản** vào `1-kich-ban/kich-ban.txt` (bấm file → cây bút ✏️ → dán → **Commit changes**).
+2. **Tải giọng đọc** vào `2-voice/` (**Add file → Upload files** → kéo file mp3/wav/m4a → **Commit changes**).
+3. **Nhắn Claude “đã dán xong”.** Claude chuyển kịch bản + giọng vào một dự án `du-an/<ten>/`, làm trống lại hai thư mục
+   (để lần sau dán video mới), rồi **phân tích kịch bản, chia ý, gợi ý hình cho từng ý** — mỗi ý có: lời đọc,
+   thời lượng (đo từ giọng thật), mô tả hình nên dùng, phương án dễ kiếm hơn, prompt tiếng Anh để tạo ảnh AI.
+   Bảng đầy đủ: `du-an/<ten>/y.md`.
+4. **Dán hình cho từng ý** — trong chat ghi “ý 3” kèm hình, hoặc tải lên GitHub vào `du-an/<ten>/hinh/`
+   với tên theo số ý: `01.jpg`, `02.png`, … Một ý nhiều hình: `03.jpg`, `03b.jpg`.
    Hình dọc, ngang, vuông đều được (hình lệch khung nhiều sẽ giữ trọn hình trên nền mờ).
-4. **Claude soát hình rồi dựng video**, gửi MP4. Muốn sửa thì nhắn theo số ý:
+5. **Claude soát hình rồi dựng video**, gửi MP4. Muốn sửa thì nhắn theo số ý:
    “ý 4 đổi hình này”, “ý 7 zoom ra”, “phụ đề cao lên”, “bỏ phụ đề”, “làm bản 16:9”, “thêm nhạc nền” (gửi file nhạc).
 
+Kịch bản và giọng cũng có thể dán thẳng vào chat thay cho bước 1–2.
 Chưa đủ hình vẫn xem thử được: Claude dựng **bản nháp**, ý thiếu hình hiện ô ghi gợi ý.
 
 ## Thư mục một dự án

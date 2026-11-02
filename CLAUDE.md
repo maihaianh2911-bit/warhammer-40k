@@ -4,11 +4,13 @@ Chỉ cần Python 3 + Pillow + ffmpeg (+ faster-whisper để căn giọng chí
 
 ## Quy trình 4 bước (người dùng làm việc với Claude trong chat)
 
-1. **Người dùng dán kịch bản + giọng đọc.**
-   `python3 ghep.py moi <ten>` → lưu kịch bản vào `du-an/<ten>/kich-ban.txt` (giữ nguyên từng chữ),
-   giọng đọc vào `du-an/<ten>/voice.<đuôi>`. Tên dự án: chữ thường không dấu, gạch nối (vd `loa-suy-nghi`).
-   Nếu file được đính kèm trong chat thì tìm nó trên đĩa và chép vào; nếu không thấy, nhờ người dùng tải lên
-   GitHub vào đúng thư mục rồi `git pull`.
+1. **Người dùng dán kịch bản + giọng đọc** — thường vào hai thư mục nhận: `1-kich-ban/kich-ban.txt` và
+   `2-voice/<file âm thanh>` (có thể dán thẳng trong chat). `git pull` trước.
+   `python3 ghep.py moi <ten>` → chép kịch bản vào `du-an/<ten>/kich-ban.txt` (giữ nguyên từng chữ),
+   `git mv` giọng đọc thành `du-an/<ten>/voice.<đuôi>`. Rồi **làm trống thư mục nhận**: `1-kich-ban/kich-ban.txt`
+   thành file rỗng, `2-voice/` chỉ còn `README.md` — để lần sau dán video mới không lẫn.
+   Tên dự án: người dùng đặt, nếu không thì Claude đặt theo nội dung — chữ thường không dấu, gạch nối (vd `loa-suy-nghi`).
+   Thiếu một trong hai (kịch bản rỗng / chưa có file giọng) → nhắc người dùng, đừng đoán.
 
 2. **Claude phân tích kịch bản → chia ý → gợi ý hình → viết `y.json`**, rồi chạy
    `python3 ghep.py can <ten>` (căn giọng, ra thời lượng từng ý + tự viết `y.md`).
