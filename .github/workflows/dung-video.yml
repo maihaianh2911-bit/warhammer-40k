@@ -1,0 +1,47 @@
+name: Ghép Hình Theo Ý — dựng video
+
+# Dựng video cho một dự án trong du-an/<ten>/ ngay trên GitHub (không cần chat với Claude).
+# Actions → "Ghép Hình Theo Ý — dựng video" → Run workflow → nhập tên dự án. Video ở phần Artifacts của lượt chạy.
+on:
+  workflow_dispatch:
+    inputs:
+      du_an:
+        description: 'Tên dự án (thư mục trong du-an/)'
+        required: true
+      nhap:
+        description: 'Bản nháp 540p (ý thiếu hình hiện ô trống)'
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  dung:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with: { persist-credentials: false }
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - uses: actions/cache@v4
+        with: { path: ~/.cache/huggingface, key: faster-whisper-small-v1 }
+      - name: Cài đặt
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg fonts-dejavu-core >/dev/null
+          pip install -q -r requirements.txt
+      - name: Căn giọng + dựng
+        env:
+          DU_AN: ${{ inputs.du_an }}
+          NHAP: ${{ inputs.nhap && '--nhap' || '' }}
+        run: |
+          python3 ghep.py kiem "$DU_AN" || true
+          python3 ghep.py can "$DU_AN"
+          python3 ghep.py tobia "$DU_AN"
+          python3 ghep.py dung "$DU_AN" $NHAP
+      - uses: actions/upload-artifact@v4
+        with:
+          name: video-${{ inputs.du_an }}
+          path: du-an/${{ inputs.du_an }}/xuat/
+          retention-days: 30
