@@ -289,7 +289,7 @@ function render() {
   const locked = !ten || !['nhap', 'cho_chia_y'].includes(s) || !canWrite();
   $('loginBox').hidden = !!token; $('logout').hidden = !token; $('newProj').hidden = !token;
   const kb = $('kb'), tn = $('ten');
-  if (document.activeElement !== kb) kb.value = kbText;
+  if (document.activeElement !== kb) kb.value = locked ? kbText.trim() : kbText;
   if (document.activeElement !== tn) tn.value = st?.ten || '';
   kb.readOnly = tn.readOnly = locked; kb.style.minHeight = locked ? '120px' : '';
   $('voiceBtn').hidden = locked;
