@@ -17,6 +17,9 @@ Người dùng đăng nhập bằng mã GitHub (fine-grained, Contents: Read and
 **Chia ý (việc của Claude)** — người dùng nhắn “đã gửi”: `git pull` → dự án nào `cho_chia_y` → `trang-thai … dang_chia_y`
 (commit + push để trang hiện) → chia ý, viết `y.json` → `python3 ghep.py can <ten>` (tạo `thoi-gian.json`, `y.md`, ô `hinh/NN-…/`)
 → `trang-thai … chia_y_xong` → commit + push. Trang tự hiện các ý (tự kiểm tra mỗi 20 giây).
+Tác vụ Claude Code tự chạy (workflow `bao-claude.yml` gọi qua secret `CLAUDE_TASK_URL`/`CLAUDE_TASK_TOKEN`) làm đúng việc này
+cho mọi dự án `cho_chia_y`, đẩy thẳng lên `main`, rồi dừng; không có dự án nào chờ thì dừng ngay. Không hỏi lại người dùng:
+thiếu kịch bản/giọng → ghi `loi_nhan` giải thích trong `trang-thai.json` và trả về `nhap`.
 
 **Dựng video (tự động)**: bấm “Dựng video” → workflow `tu-dung.yml` dựng (`ghep.py dung --cho-phep-thieu`), đăng MP4 vào
 bản phát hành `video-<ten>`, ghi `xong` + link. Người dùng muốn chỉnh (zoom, phụ đề, video lấy từ giây…) → Claude sửa

@@ -1,0 +1,30 @@
+name: Báo Claude chia ý (bấm "Gửi cho Claude chia ý" trên trang web)
+
+# Trang web ghi du-an/<ten>/trang-thai.json = "cho_chia_y" → gọi tác vụ Claude Code (secret CLAUDE_TASK_URL +
+# CLAUDE_TASK_TOKEN). Claude chia ý, đẩy lên main, trang tự hiện các ý.
+on:
+  push:
+    branches: [main]
+    paths: ['du-an/*/trang-thai.json']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  bao:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with: { persist-credentials: false }
+      - name: Gọi Claude nếu có kịch bản chờ chia ý
+        env:
+          CLAUDE_TASK_URL: ${{ secrets.CLAUDE_TASK_URL }}
+          CLAUDE_TASK_TOKEN: ${{ secrets.CLAUDE_TASK_TOKEN }}
+        run: |
+          DS=$(python3 -c "
+          import glob, json
+          print(' '.join(p.split('/')[1] for p in sorted(glob.glob('du-an/*/trang-thai.json'))
+                         if json.load(open(p, encoding='utf-8')).get('trang_thai') == 'cho_chia_y'))")
+          if [ -z "$DS" ]; then echo "Không có kịch bản chờ chia ý"; exit 0; fi
+          scripts/goi_claude.sh "Trang web vừa gửi kịch bản cần chia ý: $DS. Làm theo CLAUDE.md, mục Chia ý."
