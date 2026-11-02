@@ -664,7 +664,11 @@ def cmd_dung(a):
                 f'[1:a][m]amix=inputs=2:duration=first:normalize=0[a]', '-map', '0:v', '-map', '[a]']
     else:
         cmd += ['-map', '0:v', '-map', '1:a', '-af', 'apad']
-    cmd += ['-c:v', 'libx264', '-preset', 'veryfast' if a.nhap else 'medium', '-crf', '24' if a.nhap else '19',
+    cap = []
+    if a.toi_da_mb:
+        kbps = int(a.toi_da_mb * 8 * 1024 * 0.9 / total) - 192
+        cap = ['-maxrate', f'{max(kbps, 300)}k', '-bufsize', f'{max(kbps, 300) * 2}k']
+    cmd += ['-c:v', 'libx264', '-preset', 'veryfast' if a.nhap else 'medium', '-crf', '24' if a.nhap else '19', *cap,
             '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '192k', '-t', f'{total:.3f}', '-movflags', '+faststart',
             str(out)]
     ff = subprocess.Popen(cmd, stdin=subprocess.PIPE)
@@ -756,6 +760,7 @@ def main():
     p = sub.add_parser('dung')
     p.add_argument('ten')
     p.add_argument('--nhap', action='store_true', help='bản nháp 540p, ý thiếu hình hiện ô trống')
+    p.add_argument('--toi-da-mb', type=float, default=0, help='giới hạn dung lượng MP4 (vd 19 để tải lên trang)')
     p.add_argument('--model', default='small')
     p.add_argument('--khong-whisper', action='store_true')
     a = ap.parse_args()

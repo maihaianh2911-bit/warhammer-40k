@@ -3,7 +3,16 @@
 Kịch bản + giọng đọc + ảnh/video bạn tự tìm → video MP4 (dọc 9:16 mặc định). Mỗi ảnh/video hiện đúng lúc giọng đọc
 tới ý của nó; ảnh có chuyển động nhẹ (zoom/lia), hòa hình khi chuyển, phụ đề chạy theo giọng.
 
-## Cách làm
+## Cách làm (đơn giản nhất)
+
+Mở trang **[Xưởng Ghép Hình](https://claude.ai/artifact/7HEbk3SNPfywFCm2dW2m8u)**:
+
+1. **+ Video mới** → dán kịch bản → chọn file giọng đọc → **Gửi cho Claude chia ý** → nhắn Claude “đã gửi”.
+2. Các ý hiện ra, mỗi ý có gợi ý nên tìm hình gì → thả / dán (Ctrl+V) ảnh hoặc video vào khung của ý →
+   **Gửi cho Claude dựng video** → nhắn Claude “đã gửi”.
+3. Video MP4 hiện ở cuối trang, bấm **Tải MP4 về máy**.
+
+## Cách làm qua GitHub (cách cũ)
 
 1. **Dán kịch bản** vào `1-kich-ban/kich-ban.txt` (bấm file → cây bút ✏️ → dán → **Commit changes**).
 2. **Tải giọng đọc** vào `2-voice/` (**Add file → Upload files** → kéo file mp3/wav/m4a → **Commit changes**).

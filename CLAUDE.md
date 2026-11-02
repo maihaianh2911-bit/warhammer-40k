@@ -2,6 +2,35 @@
 
 Chỉ cần Python 3 + Pillow + ffmpeg (+ faster-whisper để căn giọng chính xác). Xem `README.md` cho người dùng.
 
+## Cách làm chính: trang Xưởng Ghép Hình
+
+Người dùng làm mọi thứ trên trang **https://claude.ai/artifact/7HEbk3SNPfywFCm2dW2m8u** (nguồn: `trang/xuong-ghep-hinh.html`;
+sửa trang → publish lại đúng URL đó). Họ chỉ nhắn trong chat kiểu “đã gửi”. Dữ liệu ở db của trang (công cụ `ArtifactData`):
+
+- `du_an/<ten>`: `ten`, `kich_ban`, `voice` `{id, ten, b64}`, `trang_thai`, `loi_nhan` (Claude nhắn hiện thành băng trên trang),
+  `video` `{id, ten, ghi_chu}`. `<ten>` của dự án trên trang = tên thư mục `du-an/<ten>/`.
+- `du_an/<ten>/y/NN`: `so, loi, nghia, y_chinh, goi_y_hinh, phuong_an_khac, tu_khoa, tu_khoa_en, bat_dau, ket_thuc,
+  media[{id, ten, kieu: anh|video, b64, type}]`.
+- `trang_thai`: `nhap` → `cho_chia_y` (người dùng bấm gửi) → `dang_chia_y` → `chia_y_xong` (Claude ghi xong các ý)
+  → `cho_dung` (người dùng bấm gửi hình) → `dang_dung` → `xong` (có video). Gửi lại hình sau `xong` → `cho_dung` lần nữa.
+- Asset: trang lưu png/jpeg/gif/webp/mp4/webm nguyên dạng; còn lại (giọng đọc, .mov, .heic…) lưu dạng **base64 text**
+  (`b64: true`). Tải: `Artifact` `action: read`, `url`, `path: <id>` → file trong scratchpad; giải: `python3 trang.py giai`.
+
+**Khi người dùng nhắn “đã gửi”**: `ArtifactData list du_an` → dự án nào `cho_chia_y` / `cho_dung`.
+
+- `cho_chia_y`: ghi `trang_thai: dang_chia_y` → tải giọng, giải base64 thành `du-an/<ten>/voice.<đuôi>`, lưu `kich_ban`
+  thành `du-an/<ten>/kich-ban.txt` → chia ý, viết `y.json`, `python3 ghep.py can <ten>` →
+  `python3 trang.py day-y <ten> <thư mục>` → `ArtifactData batch` set `du_an/<ten>/y/NN` (file_path từng file) cùng
+  `du_an/<ten>` `trang_thai: chia_y_xong`. Commit + push repo.
+- `cho_dung`: ghi `dang_dung` → `ArtifactData list du_an/<ten>/y` với `out_dir` → tải mọi `media[].id` (Artifact read
+  `path`) vào một thư mục → `python3 trang.py nhan-y <ten> <dump/du_an/<ten>/y> <thư mục asset>` → soát (`tobia`) →
+  `python3 ghep.py dung <ten> --toi-da-mb 19` (thiếu hình: thêm `--nhap`) → tải MP4 lên trang
+  (`Artifact` publish `url`, `file_path`, `asset: true`) → update `du_an/<ten>`: `video {id, ten}`, `trang_thai: xong`.
+  Gửi MP4 cả trong chat (SendUserFile). Commit + push (hình vào repo, MP4 không).
+- Có vấn đề (hình không khớp, file hỏng) → ghi `loi_nhan` cho người dùng thấy trên trang, và nói trong chat.
+
+Cách cũ (dán qua thư mục GitHub) vẫn dùng được, xem bên dưới.
+
 ## Quy trình 4 bước (người dùng làm việc với Claude trong chat)
 
 1. **Người dùng dán kịch bản + giọng đọc** — thường vào hai thư mục nhận: `1-kich-ban/kich-ban.txt` và
