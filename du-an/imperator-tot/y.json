@@ -11,8 +11,9 @@
       "y_chinh": "Hook: Hoàng đế giờ ra sao?",
       "goi_y_hinh": "Toàn cảnh từ xa: Ngai Vàng khổng lồ giữa phòng ngai như thánh đường gothic, hàng nghìn ngọn nến, một hình người nhỏ bé bất động trên ngai, ánh sáng vàng từ trên rọi xuống.",
       "phuong_an_khac": "Ảnh Golden Throne chính thức (artbook / Codex Adeptus Custodes), hoặc cảnh phòng ngai trong trailer game Warhammer 40k.",
+      "tu_khoa": "ngai vàng hoàng đế nhân loại warhammer 40k, phòng ngai cung điện hoàng gia",
+      "tu_khoa_en": "Golden Throne, Emperor of Mankind, throne room",
       "prompt": "Wide establishing shot of the Imperial Palace throne room, a colossal golden throne at the center of a vast gothic cathedral hall, thousands of candles, tiny motionless figure seated on it, shafts of golden light from above, grimdark gothic sci-fi, Warhammer 40k aesthetic, dramatic oil painting, chiaroscuro lighting, gold and deep crimson palette, candle smoke, cinematic, highly detailed, vertical 9:16",
-      "tu_khoa": "Golden Throne, Emperor of Mankind, throne room",
       "chuyen_dong": "zoom-in"
     },
     {
@@ -21,8 +22,9 @@
       "y_chinh": "Như một xác chết khô",
       "goi_y_hinh": "Cận mặt Hoàng đế: da xám khô như giấy da, má hóp, hốc mắt sâu tối, vương miện vàng trên đầu, dây ống cắm vào cổ. Bất động, lạnh lẽo.",
       "phuong_an_khac": "Artwork “Corpse Emperor” cận mặt (fan art nổi tiếng), hoặc ảnh mặt xác ướp khô có chỉnh tông vàng.",
+      "tu_khoa": "hoàng đế xác chết warhammer, mặt hoàng đế trên ngai vàng",
+      "tu_khoa_en": "Corpse Emperor face, mummified, Golden Throne close up",
       "prompt": "Extreme close-up portrait of a withered mummified emperor with grey parchment skin and hollow eye sockets, wearing ornate golden power armor, wired into a colossal golden throne by thick cables and tubes, dry cracked skin, sunken cheeks, dark empty eye sockets, golden laurel crown, cables plugged into the neck, utterly motionless, grimdark gothic sci-fi, Warhammer 40k aesthetic, dramatic oil painting, chiaroscuro lighting, gold and deep crimson palette, candle smoke, cinematic, highly detailed, vertical 9:16",
-      "tu_khoa": "Corpse Emperor face, mummified, Golden Throne close up",
       "chuyen_dong": "zoom-in"
     },
     {
@@ -31,8 +33,9 @@
       "y_chinh": "Kẻ phản bội gọi là “Hoàng đế Xác chết”",
       "goi_y_hinh": "Một Chaos Space Marine (giáp đen-đỏ, sừng, mắt đỏ phát sáng) đứng trong bóng tối, cười nhạo khinh bỉ; phía sau mờ mờ bóng Ngai Vàng.",
       "phuong_an_khac": "Artwork Black Legion / Abaddon cười, hoặc Chaos Marine trong Space Marine 2.",
+      "tu_khoa": "chaos space marine, binh đoàn đen black legion, lính phản bội warhammer",
+      "tu_khoa_en": "Chaos Space Marine, Black Legion, traitor marine",
       "prompt": "A menacing Chaos Space Marine in spiked black and crimson armor with horns and glowing red eyes, sneering mockingly in the dark, faint silhouette of a golden throne in the background, grimdark gothic sci-fi, Warhammer 40k aesthetic, dramatic oil painting, chiaroscuro lighting, gold and deep crimson palette, candle smoke, cinematic, highly detailed, vertical 9:16",
-      "tu_khoa": "Chaos Space Marine, Black Legion, traitor marine",
       "chuyen_dong": "pan-right"
     },
     {
@@ -41,8 +44,9 @@
       "y_chinh": "Không cử động, không nói, không thở",
       "goi_y_hinh": "Cận bàn tay xương xẩu trong găng giáp vàng nằm bất động trên tay vịn ngai; bụi phủ, mạng nhện mỏng, ống truyền dẫn vào cổ tay.",
       "phuong_an_khac": "Ảnh tĩnh cận tay xác ướp + giáp vàng; hoặc chuỗi 2 hình: tay bất động (04.jpg) và môi khô khép chặt (04b.jpg).",
+      "tu_khoa": "bàn tay xác ướp, găng tay giáp vàng, tay vịn ngai vàng",
+      "tu_khoa_en": "mummified hand, golden gauntlet, throne armrest",
       "prompt": "Close-up of a skeletal withered hand in an ornate golden gauntlet resting motionless on the armrest of a golden throne, dust and thin cobwebs, feeding tubes entering the wrist, grimdark gothic sci-fi, Warhammer 40k aesthetic, dramatic oil painting, chiaroscuro lighting, gold and deep crimson palette, candle smoke, cinematic, highly detailed, vertical 9:16",
-      "tu_khoa": "mummified hand, golden gauntlet, throne armrest",
       "chuyen_dong": "pan-up"
     },
     {
@@ -51,8 +55,9 @@
       "y_chinh": "Theo mọi chuẩn mực: đó là cái chết",
       "goi_y_hinh": "Màn hình theo dõi sinh tồn kiểu gothic-cơ khí (xanh lục mờ, vỏ đồng thau) hiện đường thẳng — không nhịp tim; Hoàng đế mờ phía sau.",
       "phuong_an_khac": "Nền đen + chữ lớn “TOT” / đường điện tim thẳng màu vàng.",
+      "tu_khoa": "màn hình điện tim đường thẳng, máy theo dõi nhịp tim ngừng đập",
+      "tu_khoa_en": "flatline monitor, cogitator, Adeptus Mechanicus screen",
       "prompt": "A gothic brass cogitator screen with a flat green heart-monitor line showing no heartbeat, skulls and cables around it, a blurred withered emperor on a golden throne in the background, grimdark gothic sci-fi, Warhammer 40k aesthetic, dramatic oil painting, chiaroscuro lighting, gold and deep crimson palette, candle smoke, cinematic, highly detailed, vertical 9:16",
-      "tu_khoa": "flatline monitor, cogitator, Adeptus Mechanicus screen",
       "chuyen_dong": "zoom-in"
     },
     {
@@ -61,8 +66,9 @@
       "y_chinh": "Nhưng Ngài là một Perpetual bất tử",
       "goi_y_hinh": "Hoàng đế lúc còn sống, đỉnh cao quyền năng: chiến binh tóc đen dài, giáp vàng rực, cầm kiếm lửa, hào quang sáng chói — đối lập với xác chết ở các ý trước.",
       "phuong_an_khac": "Artwork Emperor of Mankind thời Horus Heresy (bìa sách Black Library).",
+      "tu_khoa": "hoàng đế nhân loại thời horus heresy, hoàng đế giáp vàng kiếm lửa",
+      "tu_khoa_en": "Emperor of Mankind Horus Heresy art, golden armor",
       "prompt": "The Emperor of Mankind in his prime, a godlike immortal warrior with long black hair and radiant golden power armor, holding a flaming sword, blinding golden halo of light, heroic low angle, grimdark gothic sci-fi, Warhammer 40k aesthetic, dramatic oil painting, chiaroscuro lighting, gold and deep crimson palette, candle smoke, cinematic, highly detailed, vertical 9:16",
-      "tu_khoa": "Emperor of Mankind Horus Heresy art, golden armor",
       "chuyen_dong": "zoom-out"
     },
     {
@@ -71,8 +77,9 @@
       "y_chinh": "Perpetual chết rồi tự hồi sinh",
       "goi_y_hinh": "Một cơ thể nằm trên phiến đá cổ, nửa người là xác khô, nửa người đang lành lại — da hồng trở lại, ánh vàng tỏa ra từ vết thương đang khép.",
       "phuong_an_khac": "Hình tượng phượng hoàng tái sinh từ tro, tông vàng-đỏ.",
+      "tu_khoa": "bất tử hồi sinh, cơ thể tái tạo, phượng hoàng tái sinh",
+      "tu_khoa_en": "regeneration, resurrection, immortal rebirth",
       "prompt": "An ancient immortal man lying on a stone slab, half of his body withered and dead, the other half regenerating with healthy glowing skin, golden light pouring from closing wounds, grimdark gothic sci-fi, Warhammer 40k aesthetic, dramatic oil painting, chiaroscuro lighting, gold and deep crimson palette, candle smoke, cinematic, highly detailed, vertical 9:16",
-      "tu_khoa": "regeneration, resurrection, immortal rebirth",
       "chuyen_dong": "pan-left"
     },
     {
@@ -81,8 +88,9 @@
       "y_chinh": "Không bao giờ chết hẳn",
       "goi_y_hinh": "Chữ ∞ hoặc vòng tròn rắn tự cắn đuôi (ouroboros) bằng vàng phát sáng trên nền đen, khói nến.",
       "phuong_an_khac": "Nền đen + chữ lớn “NIEMALS”.",
+      "tu_khoa": "rắn tự cắn đuôi ouroboros, biểu tượng vĩnh cửu vàng",
+      "tu_khoa_en": "ouroboros gold, eternity symbol",
       "prompt": "A glowing golden ouroboros serpent eating its own tail, floating in darkness, candle smoke, symbol of eternity, grimdark gothic sci-fi, Warhammer 40k aesthetic, dramatic oil painting, chiaroscuro lighting, gold and deep crimson palette, candle smoke, cinematic, highly detailed, vertical 9:16",
-      "tu_khoa": "ouroboros gold, eternity symbol",
       "chuyen_dong": "zoom-in"
     },
     {
@@ -91,8 +99,9 @@
       "y_chinh": "Ngai Vàng hút cạn sinh lực",
       "goi_y_hinh": "Ngai Vàng như cỗ máy khổng lồ: dây cáp như mạch máu phát sáng hút dòng năng lượng vàng ra khỏi cơ thể Hoàng đế; công nhân tech-priest nhỏ xíu đứng dưới chân.",
       "phuong_an_khac": "Ảnh mặt cắt / sơ đồ Golden Throne với dây cáp (artbook Adeptus Mechanicus).",
+      "tu_khoa": "cỗ máy ngai vàng warhammer, dây cáp ngai vàng, tech priest cơ khí",
+      "tu_khoa_en": "Golden Throne machine, cables, tech-priests",
       "prompt": "The Golden Throne as a colossal machine, thick glowing cables like veins draining streams of golden life energy out of a withered mummified emperor with grey parchment skin and hollow eye sockets, wearing ornate golden power armor, wired into a colossal golden throne by thick cables and tubes, tiny red-robed tech-priests below, grimdark gothic sci-fi, Warhammer 40k aesthetic, dramatic oil painting, chiaroscuro lighting, gold and deep crimson palette, candle smoke, cinematic, highly detailed, vertical 9:16",
-      "tu_khoa": "Golden Throne machine, cables, tech-priests",
       "chuyen_dong": "pan-down"
     },
     {
@@ -101,8 +110,9 @@
       "y_chinh": "Mắc kẹt giữa sống và chết",
       "goi_y_hinh": "Hoàng đế nhìn chính diện, ảnh chia đôi: bên trái ánh vàng sự sống, bên phải bóng tối xanh lạnh của cái chết.",
       "phuong_an_khac": "Hai hình ghép: Hoàng đế sống (giáp vàng) | xác chết trên ngai.",
+      "tu_khoa": "chân dung chia đôi sống và chết, nửa sáng nửa tối",
+      "tu_khoa_en": "life and death split, Emperor portrait",
       "prompt": "Symmetrical front portrait of a withered mummified emperor with grey parchment skin and hollow eye sockets, wearing ornate golden power armor, wired into a colossal golden throne by thick cables and tubes, the image split down the middle: left half bathed in warm golden light of life, right half in cold blue shadow of death, grimdark gothic sci-fi, Warhammer 40k aesthetic, dramatic oil painting, chiaroscuro lighting, gold and deep crimson palette, candle smoke, cinematic, highly detailed, vertical 9:16",
-      "tu_khoa": "life and death split, Emperor portrait",
       "chuyen_dong": "zoom-out"
     },
     {
@@ -111,8 +121,9 @@
       "y_chinh": "Thân xác chết, linh hồn vẫn thức",
       "goi_y_hinh": "Hồn ma vàng rực hình Hoàng đế khổng lồ đứng dậy từ thân xác khô trên ngai, mắt sáng như mặt trời, tóc bay trong năng lượng psychic.",
       "phuong_an_khac": "Artwork “Emperor's spirit / psychic ghost” trên Ngai Vàng.",
+      "tu_khoa": "linh hồn hoàng đế warhammer, bóng ma vàng psychic",
+      "tu_khoa_en": "Emperor spirit, psychic ghost, Golden Throne",
       "prompt": "A giant radiant golden ghostly spirit of the Emperor rising from a withered mummified emperor with grey parchment skin and hollow eye sockets, wearing ornate golden power armor, wired into a colossal golden throne by thick cables and tubes, eyes blazing like suns, hair flowing with psychic energy, grimdark gothic sci-fi, Warhammer 40k aesthetic, dramatic oil painting, chiaroscuro lighting, gold and deep crimson palette, candle smoke, cinematic, highly detailed, vertical 9:16",
-      "tu_khoa": "Emperor spirit, psychic ghost, Golden Throne",
       "chuyen_dong": "zoom-in"
     },
     {
@@ -121,8 +132,9 @@
       "y_chinh": "Can thiệp vào lúc nguy cấp",
       "goi_y_hinh": "Chiến trường: lính Imperial Guard sắp bị tràn ngập, bầu trời mở ra luồng sáng vàng hình Hoàng đế giáng xuống, lính ngước nhìn kinh ngạc.",
       "phuong_an_khac": "Cảnh “miracle” trong game (Dawn of War / Space Marine 2) hoặc art Saint xuất hiện trên chiến trường.",
+      "tu_khoa": "lính vệ binh đế chế imperial guard, phép màu trên chiến trường",
+      "tu_khoa_en": "Imperial Guard last stand, divine intervention",
       "prompt": "A desperate battlefield, Imperial Guard soldiers about to be overrun, the stormy sky splits open and a golden beam of light in the shape of the Emperor descends, soldiers looking up in awe, grimdark gothic sci-fi, Warhammer 40k aesthetic, dramatic oil painting, chiaroscuro lighting, gold and deep crimson palette, candle smoke, cinematic, highly detailed, vertical 9:16",
-      "tu_khoa": "Imperial Guard last stand, divine intervention",
       "chuyen_dong": "pan-up"
     },
     {
@@ -131,8 +143,9 @@
       "y_chinh": "Dẫn đường Astronomican",
       "goi_y_hinh": "Từ ngoài không gian nhìn về Terra: một cột sáng vàng khổng lồ bắn lên từ hành tinh, lan khắp thiên hà như ngọn hải đăng; tàu chiến gothic nhỏ bay về phía đó.",
       "phuong_an_khac": "Ảnh Astronomican beacon / Terra từ quỹ đạo (art chính thức).",
+      "tu_khoa": "astronomican ngọn hải đăng thiên hà, trái đất terra từ vũ trụ",
+      "tu_khoa_en": "Astronomican, Terra from space, beacon",
       "prompt": "View of Terra from space, a colossal golden psychic beam shooting up from the planet and spreading across the galaxy like a lighthouse, small gothic cathedral-like warships flying towards it, grimdark gothic sci-fi, Warhammer 40k aesthetic, dramatic oil painting, chiaroscuro lighting, gold and deep crimson palette, candle smoke, cinematic, highly detailed, vertical 9:16",
-      "tu_khoa": "Astronomican, Terra from space, beacon",
       "chuyen_dong": "zoom-out"
     },
     {
@@ -141,8 +154,9 @@
       "y_chinh": "Ban sức mạnh cho Thánh Sống",
       "goi_y_hinh": "Saint Celestine: nữ chiến binh giáp bạc-vàng, đôi cánh trắng, hào quang trên đầu, kiếm lửa, bay giữa chiến trường.",
       "phuong_an_khac": "Artwork Saint Celestine (Adepta Sororitas).",
+      "tu_khoa": "thánh celestine, thánh sống warhammer, nữ chiến binh có cánh",
+      "tu_khoa_en": "Saint Celestine, Living Saint, Adepta Sororitas",
       "prompt": "Saint Celestine, a living saint warrior woman in silver and gold armor with white feathered wings and a glowing halo, holding a burning sword, hovering above a battlefield, grimdark gothic sci-fi, Warhammer 40k aesthetic, dramatic oil painting, chiaroscuro lighting, gold and deep crimson palette, candle smoke, cinematic, highly detailed, vertical 9:16",
-      "tu_khoa": "Saint Celestine, Living Saint, Adepta Sororitas",
       "chuyen_dong": "pan-up"
     },
     {
@@ -151,8 +165,9 @@
       "y_chinh": "Hồi sinh Primarch Guilliman",
       "goi_y_hinh": "Roboute Guilliman khổng lồ trong giáp xanh-vàng đứng dậy, mắt mở, ánh vàng bao quanh, Custodes và tech-priest quỳ quanh.",
       "phuong_an_khac": "Artwork Guilliman hồi sinh (bìa Dark Imperium / Gathering Storm).",
+      "tu_khoa": "roboute guilliman hồi sinh, primarch guilliman",
+      "tu_khoa_en": "Roboute Guilliman resurrection, Gathering Storm",
       "prompt": "Primarch Roboute Guilliman, a giant warrior in ornate blue and gold armor, awakening and rising, eyes opening, surrounded by golden light, kneeling golden Custodes and tech-priests around him, grimdark gothic sci-fi, Warhammer 40k aesthetic, dramatic oil painting, chiaroscuro lighting, gold and deep crimson palette, candle smoke, cinematic, highly detailed, vertical 9:16",
-      "tu_khoa": "Roboute Guilliman resurrection, Gathering Storm",
       "chuyen_dong": "zoom-in"
     },
     {
@@ -161,8 +176,9 @@
       "y_chinh": "Đốt cháy Vườn Nurgle",
       "goi_y_hinh": "Khu vườn thối rữa của Nurgle (cây mục, nấm độc, ruồi, mủ xanh) bùng cháy dữ dội trong lửa vàng thánh.",
       "phuong_an_khac": "Artwork Garden of Nurgle burning (Warhammer 40k 8th edition).",
+      "tu_khoa": "khu vườn nurgle bốc cháy, vườn của nurgle",
+      "tu_khoa_en": "Garden of Nurgle burning, Nurgle",
       "prompt": "The rotting Garden of Nurgle, decaying trees, poisonous fungi, swarms of flies and green slime, engulfed by a roaring holy golden fire, grimdark gothic sci-fi, Warhammer 40k aesthetic, dramatic oil painting, chiaroscuro lighting, gold and deep crimson palette, candle smoke, cinematic, highly detailed, vertical 9:16",
-      "tu_khoa": "Garden of Nurgle burning, Nurgle",
       "chuyen_dong": "pan-right"
     },
     {
@@ -171,8 +187,9 @@
       "y_chinh": "Điều này không thể nếu đã chết hẳn",
       "goi_y_hinh": "Quay lại Ngai Vàng, nhưng góc thấp hùng vĩ: Hoàng đế trên ngai, phía sau mờ ảo các cảnh vừa kể (Astronomican, Guilliman, lửa) như ký ức lơ lửng.",
       "phuong_an_khac": "Dùng lại ảnh Golden Throne ở ý 1 với bộ lọc tối hơn.",
+      "tu_khoa": "ngai vàng hoàng đế góc thấp, hoàng đế warhammer hùng vĩ",
+      "tu_khoa_en": "Golden Throne, Emperor, epic low angle",
       "prompt": "Low heroic angle of a withered mummified emperor with grey parchment skin and hollow eye sockets, wearing ornate golden power armor, wired into a colossal golden throne by thick cables and tubes, faint ghostly visions floating behind him: a golden beacon, a resurrected giant warrior, holy fire, grimdark gothic sci-fi, Warhammer 40k aesthetic, dramatic oil painting, chiaroscuro lighting, gold and deep crimson palette, candle smoke, cinematic, highly detailed, vertical 9:16",
-      "tu_khoa": "Golden Throne, Emperor, epic low angle",
       "chuyen_dong": "zoom-out"
     },
     {
@@ -181,8 +198,9 @@
       "y_chinh": "Kết hài: xác ướp còn khỏe hơn",
       "goi_y_hinh": "Ghép đôi hài hước: bên trái xác ướp Ai Cập trong quan tài vàng trông còn “hồng hào”, bên phải Hoàng đế khô quắt trên ngai. Có thể thêm biểu tượng 🤨.",
       "phuong_an_khac": "Ảnh thật xác ướp Ai Cập (bảo tàng) + ảnh Corpse Emperor đặt cạnh nhau.",
+      "tu_khoa": "xác ướp ai cập trong quan tài vàng, xác ướp bảo tàng",
+      "tu_khoa_en": "Egyptian mummy sarcophagus, museum mummy",
       "prompt": "Humorous side by side comparison: on the left an ancient Egyptian mummy in a golden sarcophagus looking surprisingly healthy, on the right a withered mummified emperor with grey parchment skin and hollow eye sockets, wearing ornate golden power armor, wired into a colossal golden throne by thick cables and tubes looking far worse, grimdark gothic sci-fi, Warhammer 40k aesthetic, dramatic oil painting, chiaroscuro lighting, gold and deep crimson palette, candle smoke, cinematic, highly detailed, vertical 9:16",
-      "tu_khoa": "Egyptian mummy sarcophagus, museum mummy",
       "chuyen_dong": "zoom-in"
     }
   ]

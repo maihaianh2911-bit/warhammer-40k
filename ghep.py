@@ -167,6 +167,8 @@ def cmd_bang(a):
             L += ['**Prompt tạo ảnh AI:**', '', '```', b['prompt'].strip(), '```', '']
         if b.get('tu_khoa'):
             L += [f'**Từ khóa tìm ảnh:** {b["tu_khoa"]}', '']
+        if b.get('tu_khoa_en'):
+            L += [f'**Tìm bằng tiếng Anh (nhiều ảnh hơn):** {b["tu_khoa_en"]}', '']
         L += [f'**Hình đã có:** {", ".join(f.name for f in have) if have else "— chưa có"}', '']
     (d / 'y.md').write_text('\n'.join(L), encoding='utf-8')
     print(f'Đã viết {(d / "y.md").relative_to(ROOT)}')

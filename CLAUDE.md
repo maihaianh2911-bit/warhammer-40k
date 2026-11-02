@@ -52,7 +52,8 @@ Mỗi ý viết:
 - `prompt`: prompt tạo ảnh AI **tiếng Anh**, một đoạn, kèm tỉ lệ khung (`vertical 9:16` / `16:9`),
   và phong cách thống nhất cho cả video (giống nhau ở mọi ý: cùng kiểu ảnh, bảng màu, ánh sáng, nhân vật
   lặp lại thì tả y hệt mỗi lần — tuổi, tóc, quần áo).
-- `tu_khoa` (không bắt buộc): từ khóa tìm ảnh stock (tiếng Anh).
+- `tu_khoa`: từ khóa tìm ảnh **bằng tiếng Việt** (Google Ảnh, Pinterest…); tên riêng giữ nguyên (Guilliman, Nurgle).
+- `tu_khoa_en` (không bắt buộc): cùng từ khóa bằng tiếng Anh — với chủ đề nước ngoài thường ra nhiều ảnh hơn.
 - Sự kiện/người/địa điểm có thật → ưu tiên gợi ý ảnh tư liệu thật, ghi rõ nên tìm ảnh gì.
 
 ## `y.json`
@@ -72,7 +73,8 @@ Mỗi ý viết:
       "goi_y_hinh": "…",
       "phuong_an_khac": "…",
       "prompt": "…, vertical 9:16",
-      "tu_khoa": "speaker, thoughts",
+      "tu_khoa": "chiếc loa, suy nghĩ",
+      "tu_khoa_en": "speaker, thoughts",
       "chuyen_dong": "zoom-in"
     }
   ]

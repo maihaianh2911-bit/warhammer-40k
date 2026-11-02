@@ -18,7 +18,9 @@ Khung hình: **9:16** · 18 ý · Dán hình cho ý số N vào `hinh/` với t�
 Wide establishing shot of the Imperial Palace throne room, a colossal golden throne at the center of a vast gothic cathedral hall, thousands of candles, tiny motionless figure seated on it, shafts of golden light from above, grimdark gothic sci-fi, Warhammer 40k aesthetic, dramatic oil painting, chiaroscuro lighting, gold and deep crimson palette, candle smoke, cinematic, highly detailed, vertical 9:16
 ```
 
-**Từ khóa tìm ảnh:** Golden Throne, Emperor of Mankind, throne room
+**Từ khóa tìm ảnh:** ngai vàng hoàng đế nhân loại warhammer 40k, phòng ngai cung điện hoàng gia
+
+**Tìm bằng tiếng Anh (nhiều ảnh hơn):** Golden Throne, Emperor of Mankind, throne room
 
 **Hình đã có:** — chưa có
 
@@ -36,7 +38,9 @@ Wide establishing shot of the Imperial Palace throne room, a colossal golden thr
 Extreme close-up portrait of a withered mummified emperor with grey parchment skin and hollow eye sockets, wearing ornate golden power armor, wired into a colossal golden throne by thick cables and tubes, dry cracked skin, sunken cheeks, dark empty eye sockets, golden laurel crown, cables plugged into the neck, utterly motionless, grimdark gothic sci-fi, Warhammer 40k aesthetic, dramatic oil painting, chiaroscuro lighting, gold and deep crimson palette, candle smoke, cinematic, highly detailed, vertical 9:16
 ```
 
-**Từ khóa tìm ảnh:** Corpse Emperor face, mummified, Golden Throne close up
+**Từ khóa tìm ảnh:** hoàng đế xác chết warhammer, mặt hoàng đế trên ngai vàng
+
+**Tìm bằng tiếng Anh (nhiều ảnh hơn):** Corpse Emperor face, mummified, Golden Throne close up
 
 **Hình đã có:** — chưa có
 
@@ -54,7 +58,9 @@ Extreme close-up portrait of a withered mummified emperor with grey parchment sk
 A menacing Chaos Space Marine in spiked black and crimson armor with horns and glowing red eyes, sneering mockingly in the dark, faint silhouette of a golden throne in the background, grimdark gothic sci-fi, Warhammer 40k aesthetic, dramatic oil painting, chiaroscuro lighting, gold and deep crimson palette, candle smoke, cinematic, highly detailed, vertical 9:16
 ```
 
-**Từ khóa tìm ảnh:** Chaos Space Marine, Black Legion, traitor marine
+**Từ khóa tìm ảnh:** chaos space marine, binh đoàn đen black legion, lính phản bội warhammer
+
+**Tìm bằng tiếng Anh (nhiều ảnh hơn):** Chaos Space Marine, Black Legion, traitor marine
 
 **Hình đã có:** — chưa có
 
@@ -72,7 +78,9 @@ A menacing Chaos Space Marine in spiked black and crimson armor with horns and g
 Close-up of a skeletal withered hand in an ornate golden gauntlet resting motionless on the armrest of a golden throne, dust and thin cobwebs, feeding tubes entering the wrist, grimdark gothic sci-fi, Warhammer 40k aesthetic, dramatic oil painting, chiaroscuro lighting, gold and deep crimson palette, candle smoke, cinematic, highly detailed, vertical 9:16
 ```
 
-**Từ khóa tìm ảnh:** mummified hand, golden gauntlet, throne armrest
+**Từ khóa tìm ảnh:** bàn tay xác ướp, găng tay giáp vàng, tay vịn ngai vàng
+
+**Tìm bằng tiếng Anh (nhiều ảnh hơn):** mummified hand, golden gauntlet, throne armrest
 
 **Hình đã có:** — chưa có
 
@@ -90,7 +98,9 @@ Close-up of a skeletal withered hand in an ornate golden gauntlet resting motion
 A gothic brass cogitator screen with a flat green heart-monitor line showing no heartbeat, skulls and cables around it, a blurred withered emperor on a golden throne in the background, grimdark gothic sci-fi, Warhammer 40k aesthetic, dramatic oil painting, chiaroscuro lighting, gold and deep crimson palette, candle smoke, cinematic, highly detailed, vertical 9:16
 ```
 
-**Từ khóa tìm ảnh:** flatline monitor, cogitator, Adeptus Mechanicus screen
+**Từ khóa tìm ảnh:** màn hình điện tim đường thẳng, máy theo dõi nhịp tim ngừng đập
+
+**Tìm bằng tiếng Anh (nhiều ảnh hơn):** flatline monitor, cogitator, Adeptus Mechanicus screen
 
 **Hình đã có:** — chưa có
 
@@ -108,7 +118,9 @@ A gothic brass cogitator screen with a flat green heart-monitor line showing no 
 The Emperor of Mankind in his prime, a godlike immortal warrior with long black hair and radiant golden power armor, holding a flaming sword, blinding golden halo of light, heroic low angle, grimdark gothic sci-fi, Warhammer 40k aesthetic, dramatic oil painting, chiaroscuro lighting, gold and deep crimson palette, candle smoke, cinematic, highly detailed, vertical 9:16
 ```
 
-**Từ khóa tìm ảnh:** Emperor of Mankind Horus Heresy art, golden armor
+**Từ khóa tìm ảnh:** hoàng đế nhân loại thời horus heresy, hoàng đế giáp vàng kiếm lửa
+
+**Tìm bằng tiếng Anh (nhiều ảnh hơn):** Emperor of Mankind Horus Heresy art, golden armor
 
 **Hình đã có:** — chưa có
 
@@ -126,7 +138,9 @@ The Emperor of Mankind in his prime, a godlike immortal warrior with long black 
 An ancient immortal man lying on a stone slab, half of his body withered and dead, the other half regenerating with healthy glowing skin, golden light pouring from closing wounds, grimdark gothic sci-fi, Warhammer 40k aesthetic, dramatic oil painting, chiaroscuro lighting, gold and deep crimson palette, candle smoke, cinematic, highly detailed, vertical 9:16
 ```
 
-**Từ khóa tìm ảnh:** regeneration, resurrection, immortal rebirth
+**Từ khóa tìm ảnh:** bất tử hồi sinh, cơ thể tái tạo, phượng hoàng tái sinh
+
+**Tìm bằng tiếng Anh (nhiều ảnh hơn):** regeneration, resurrection, immortal rebirth
 
 **Hình đã có:** — chưa có
 
@@ -144,7 +158,9 @@ An ancient immortal man lying on a stone slab, half of his body withered and dea
 A glowing golden ouroboros serpent eating its own tail, floating in darkness, candle smoke, symbol of eternity, grimdark gothic sci-fi, Warhammer 40k aesthetic, dramatic oil painting, chiaroscuro lighting, gold and deep crimson palette, candle smoke, cinematic, highly detailed, vertical 9:16
 ```
 
-**Từ khóa tìm ảnh:** ouroboros gold, eternity symbol
+**Từ khóa tìm ảnh:** rắn tự cắn đuôi ouroboros, biểu tượng vĩnh cửu vàng
+
+**Tìm bằng tiếng Anh (nhiều ảnh hơn):** ouroboros gold, eternity symbol
 
 **Hình đã có:** — chưa có
 
@@ -162,7 +178,9 @@ A glowing golden ouroboros serpent eating its own tail, floating in darkness, ca
 The Golden Throne as a colossal machine, thick glowing cables like veins draining streams of golden life energy out of a withered mummified emperor with grey parchment skin and hollow eye sockets, wearing ornate golden power armor, wired into a colossal golden throne by thick cables and tubes, tiny red-robed tech-priests below, grimdark gothic sci-fi, Warhammer 40k aesthetic, dramatic oil painting, chiaroscuro lighting, gold and deep crimson palette, candle smoke, cinematic, highly detailed, vertical 9:16
 ```
 
-**Từ khóa tìm ảnh:** Golden Throne machine, cables, tech-priests
+**Từ khóa tìm ảnh:** cỗ máy ngai vàng warhammer, dây cáp ngai vàng, tech priest cơ khí
+
+**Tìm bằng tiếng Anh (nhiều ảnh hơn):** Golden Throne machine, cables, tech-priests
 
 **Hình đã có:** — chưa có
 
@@ -180,7 +198,9 @@ The Golden Throne as a colossal machine, thick glowing cables like veins drainin
 Symmetrical front portrait of a withered mummified emperor with grey parchment skin and hollow eye sockets, wearing ornate golden power armor, wired into a colossal golden throne by thick cables and tubes, the image split down the middle: left half bathed in warm golden light of life, right half in cold blue shadow of death, grimdark gothic sci-fi, Warhammer 40k aesthetic, dramatic oil painting, chiaroscuro lighting, gold and deep crimson palette, candle smoke, cinematic, highly detailed, vertical 9:16
 ```
 
-**Từ khóa tìm ảnh:** life and death split, Emperor portrait
+**Từ khóa tìm ảnh:** chân dung chia đôi sống và chết, nửa sáng nửa tối
+
+**Tìm bằng tiếng Anh (nhiều ảnh hơn):** life and death split, Emperor portrait
 
 **Hình đã có:** — chưa có
 
@@ -198,7 +218,9 @@ Symmetrical front portrait of a withered mummified emperor with grey parchment s
 A giant radiant golden ghostly spirit of the Emperor rising from a withered mummified emperor with grey parchment skin and hollow eye sockets, wearing ornate golden power armor, wired into a colossal golden throne by thick cables and tubes, eyes blazing like suns, hair flowing with psychic energy, grimdark gothic sci-fi, Warhammer 40k aesthetic, dramatic oil painting, chiaroscuro lighting, gold and deep crimson palette, candle smoke, cinematic, highly detailed, vertical 9:16
 ```
 
-**Từ khóa tìm ảnh:** Emperor spirit, psychic ghost, Golden Throne
+**Từ khóa tìm ảnh:** linh hồn hoàng đế warhammer, bóng ma vàng psychic
+
+**Tìm bằng tiếng Anh (nhiều ảnh hơn):** Emperor spirit, psychic ghost, Golden Throne
 
 **Hình đã có:** — chưa có
 
@@ -216,7 +238,9 @@ A giant radiant golden ghostly spirit of the Emperor rising from a withered mumm
 A desperate battlefield, Imperial Guard soldiers about to be overrun, the stormy sky splits open and a golden beam of light in the shape of the Emperor descends, soldiers looking up in awe, grimdark gothic sci-fi, Warhammer 40k aesthetic, dramatic oil painting, chiaroscuro lighting, gold and deep crimson palette, candle smoke, cinematic, highly detailed, vertical 9:16
 ```
 
-**Từ khóa tìm ảnh:** Imperial Guard last stand, divine intervention
+**Từ khóa tìm ảnh:** lính vệ binh đế chế imperial guard, phép màu trên chiến trường
+
+**Tìm bằng tiếng Anh (nhiều ảnh hơn):** Imperial Guard last stand, divine intervention
 
 **Hình đã có:** — chưa có
 
@@ -234,7 +258,9 @@ A desperate battlefield, Imperial Guard soldiers about to be overrun, the stormy
 View of Terra from space, a colossal golden psychic beam shooting up from the planet and spreading across the galaxy like a lighthouse, small gothic cathedral-like warships flying towards it, grimdark gothic sci-fi, Warhammer 40k aesthetic, dramatic oil painting, chiaroscuro lighting, gold and deep crimson palette, candle smoke, cinematic, highly detailed, vertical 9:16
 ```
 
-**Từ khóa tìm ảnh:** Astronomican, Terra from space, beacon
+**Từ khóa tìm ảnh:** astronomican ngọn hải đăng thiên hà, trái đất terra từ vũ trụ
+
+**Tìm bằng tiếng Anh (nhiều ảnh hơn):** Astronomican, Terra from space, beacon
 
 **Hình đã có:** — chưa có
 
@@ -252,7 +278,9 @@ View of Terra from space, a colossal golden psychic beam shooting up from the pl
 Saint Celestine, a living saint warrior woman in silver and gold armor with white feathered wings and a glowing halo, holding a burning sword, hovering above a battlefield, grimdark gothic sci-fi, Warhammer 40k aesthetic, dramatic oil painting, chiaroscuro lighting, gold and deep crimson palette, candle smoke, cinematic, highly detailed, vertical 9:16
 ```
 
-**Từ khóa tìm ảnh:** Saint Celestine, Living Saint, Adepta Sororitas
+**Từ khóa tìm ảnh:** thánh celestine, thánh sống warhammer, nữ chiến binh có cánh
+
+**Tìm bằng tiếng Anh (nhiều ảnh hơn):** Saint Celestine, Living Saint, Adepta Sororitas
 
 **Hình đã có:** — chưa có
 
@@ -270,7 +298,9 @@ Saint Celestine, a living saint warrior woman in silver and gold armor with whit
 Primarch Roboute Guilliman, a giant warrior in ornate blue and gold armor, awakening and rising, eyes opening, surrounded by golden light, kneeling golden Custodes and tech-priests around him, grimdark gothic sci-fi, Warhammer 40k aesthetic, dramatic oil painting, chiaroscuro lighting, gold and deep crimson palette, candle smoke, cinematic, highly detailed, vertical 9:16
 ```
 
-**Từ khóa tìm ảnh:** Roboute Guilliman resurrection, Gathering Storm
+**Từ khóa tìm ảnh:** roboute guilliman hồi sinh, primarch guilliman
+
+**Tìm bằng tiếng Anh (nhiều ảnh hơn):** Roboute Guilliman resurrection, Gathering Storm
 
 **Hình đã có:** — chưa có
 
@@ -288,7 +318,9 @@ Primarch Roboute Guilliman, a giant warrior in ornate blue and gold armor, awake
 The rotting Garden of Nurgle, decaying trees, poisonous fungi, swarms of flies and green slime, engulfed by a roaring holy golden fire, grimdark gothic sci-fi, Warhammer 40k aesthetic, dramatic oil painting, chiaroscuro lighting, gold and deep crimson palette, candle smoke, cinematic, highly detailed, vertical 9:16
 ```
 
-**Từ khóa tìm ảnh:** Garden of Nurgle burning, Nurgle
+**Từ khóa tìm ảnh:** khu vườn nurgle bốc cháy, vườn của nurgle
+
+**Tìm bằng tiếng Anh (nhiều ảnh hơn):** Garden of Nurgle burning, Nurgle
 
 **Hình đã có:** — chưa có
 
@@ -306,7 +338,9 @@ The rotting Garden of Nurgle, decaying trees, poisonous fungi, swarms of flies a
 Low heroic angle of a withered mummified emperor with grey parchment skin and hollow eye sockets, wearing ornate golden power armor, wired into a colossal golden throne by thick cables and tubes, faint ghostly visions floating behind him: a golden beacon, a resurrected giant warrior, holy fire, grimdark gothic sci-fi, Warhammer 40k aesthetic, dramatic oil painting, chiaroscuro lighting, gold and deep crimson palette, candle smoke, cinematic, highly detailed, vertical 9:16
 ```
 
-**Từ khóa tìm ảnh:** Golden Throne, Emperor, epic low angle
+**Từ khóa tìm ảnh:** ngai vàng hoàng đế góc thấp, hoàng đế warhammer hùng vĩ
+
+**Tìm bằng tiếng Anh (nhiều ảnh hơn):** Golden Throne, Emperor, epic low angle
 
 **Hình đã có:** — chưa có
 
@@ -324,6 +358,8 @@ Low heroic angle of a withered mummified emperor with grey parchment skin and ho
 Humorous side by side comparison: on the left an ancient Egyptian mummy in a golden sarcophagus looking surprisingly healthy, on the right a withered mummified emperor with grey parchment skin and hollow eye sockets, wearing ornate golden power armor, wired into a colossal golden throne by thick cables and tubes looking far worse, grimdark gothic sci-fi, Warhammer 40k aesthetic, dramatic oil painting, chiaroscuro lighting, gold and deep crimson palette, candle smoke, cinematic, highly detailed, vertical 9:16
 ```
 
-**Từ khóa tìm ảnh:** Egyptian mummy sarcophagus, museum mummy
+**Từ khóa tìm ảnh:** xác ướp ai cập trong quan tài vàng, xác ướp bảo tàng
+
+**Tìm bằng tiếng Anh (nhiều ảnh hơn):** Egyptian mummy sarcophagus, museum mummy
 
 **Hình đã có:** — chưa có
