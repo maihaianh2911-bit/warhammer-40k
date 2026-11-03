@@ -972,5 +972,10 @@
   ],
   "vi_tri_phu_de": 0.8,
   "kieu_edit": "lia_xen_ke",
-  "nhac": "cinematic_suspense"
+  "nhac": "cinematic_suspense",
+  "tieu_de_mo": {
+    "chu": "WARHAMMER|40K",
+    "phu": "IST DER IMPERATOR TOT?",
+    "den": 3.6
+  }
 }

@@ -149,6 +149,13 @@ audio { max-width: 100%; height: 36px; }
       <button type="button" id="musicDel" hidden>Bỏ, dùng mặc định</button>
       <input type="file" id="musicIn" accept="audio/*,.mp3,.wav,.m4a,.aac,.ogg" hidden>
     </div>
+    <div class="voice" id="logoRow" hidden>
+      <span>🏷 Logo mở đầu:</span>
+      <span id="logoInfo" class="ghost">chữ kim loại do máy làm (tùy chọn: tải logo PNG nền trong suốt)</span>
+      <button type="button" id="logoBtn">Tải logo</button>
+      <button type="button" id="logoDel" hidden>Bỏ logo</button>
+      <input type="file" id="logoIn" accept="image/png,image/webp" hidden>
+    </div>
     <div class="row" id="s2foot" hidden><button class="primary" type="button" id="send2">Dựng video</button><span id="s2note" class="note"></span></div>
   </section>
 
@@ -178,7 +185,7 @@ const STATUS = {
 };
 const ls = { get(k) { try { return localStorage.getItem(k); } catch { return null; } }, set(k, v) { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch {} } };
 let token = ls.get('ghep.token');
-let musicFile = null;
+let musicFile = null, logoFile = null;
 let projects = [], ten = null, st = null, kbText = '', ideas = [], slots = {}, voiceFile = null, uploading = {}, focusSlot = null, pendingFor = null, poll = null;
 const local = {}; // preview tạm cho file vừa tải lên (raw.githubusercontent cache vài phút)
 
@@ -271,6 +278,7 @@ async function loadProject() {
   const AUD = /\.(mp3|wav|m4a|aac|ogg|flac|opus)$/i;
   voiceFile = files.find((f) => /^voice\./i.test(f.name)) || files.find((f) => AUD.test(f.name) && !/^nhac\./i.test(f.name)) || null;
   musicFile = files.find((f) => /^nhac\./i.test(f.name) && AUD.test(f.name)) || null;
+  logoFile = files.find((f) => /^logo\.(png|webp)$/i.test(f.name)) || null;
   const tm = {}; if (tj) JSON.parse(tj.text).y.forEach((t) => (tm[t.so] = t));
   const plan = yj ? JSON.parse(yj.text) : {};
   FRAME = ({ '16:9': [1920, 1080], '1:1': [1080, 1080], '4:5': [1080, 1350] })[plan.khung] || [1080, 1920];
@@ -367,8 +375,10 @@ function renderVo() {
 function chips(y) {
   const out = [];
   const add = (t) => (t || '').split(/[,;]/).map((k) => k.trim()).filter(Boolean)
-    .forEach((k) => out.push(`<a href="https://www.google.com/search?tbm=isch&q=${encodeURIComponent(k)}" target="_blank" rel="noopener">🔍 ${esc(k)}</a>`));
+    .forEach((k) => out.push(`<a href="https://www.google.com/search?tbm=isch&tbs=isz:l&q=${encodeURIComponent(k)}" target="_blank" rel="noopener" title="Google Ảnh, chỉ ảnh cỡ lớn">🔍 ${esc(k)}</a>`));
   add(y.tu_khoa); add(y.tu_khoa_en);
+  const en = (y.tu_khoa_en || '').split(/[,;]/)[0].trim();
+  if (en) out.push(`<a href="https://www.google.com/search?tbm=isch&tbs=isz:l&q=${encodeURIComponent(en + ' wallpaper 4k')}" target="_blank" rel="noopener" title="Hình nền 4K: thường là art chính thức, rất nét">🖼 ${esc(en)} 4K</a>`);
   return out.length ? `<div class="chips">${out.join('')}</div>` : '';
 }
 function renderIdeas() {
@@ -410,8 +420,17 @@ function renderMusic() {
   $('musicDel').hidden = !musicFile;
   $('musicBtn').textContent = musicFile ? 'Đổi nhạc khác' : 'Dùng nhạc của bạn';
 }
+function renderLogo() {
+  const show = ideas.length && canWrite();
+  $('logoRow').hidden = !show;
+  if (!show) return;
+  $('logoInfo').innerHTML = uploading.logo ? 'Đang tải logo lên…' : logoFile ? `<b>✓ ${esc(logoFile.name)}</b> — logo này sẽ nhảy vào màn hình lúc mở đầu` : 'chữ kim loại do máy làm (tùy chọn: tải logo PNG nền trong suốt)';
+  $('logoInfo').className = logoFile ? '' : 'ghost';
+  $('logoDel').hidden = !logoFile;
+  $('logoBtn').textContent = logoFile ? 'Đổi logo' : 'Tải logo';
+}
 function renderFoot() {
-  renderMusic();
+  renderMusic(); renderLogo();
   const s = st?.trang_thai, n = ideas.length, have = ideas.filter((y) => (slots[y.so]?.files || []).length).length;
   $('s2foot').hidden = !n || !['chia_y_xong', 'cho_dung', 'dang_dung', 'xong', 'loi'].includes(s) || !canWrite();
   $('send2').disabled = !have || ['cho_dung', 'dang_dung'].includes(s) || Object.values(uploading).some(Boolean);
@@ -522,6 +541,23 @@ $('send1').addEventListener('click', async () => {
     await saveStatus({ ten: $('ten').value.trim() || st?.ten || ten, trang_thai: 'cho_chia_y' });
     schedulePoll();
   } catch (e) { showStatus('Chưa gửi được: ' + e.message, 'err'); }
+});
+$('logoBtn').addEventListener('click', () => $('logoIn').click());
+$('logoIn').addEventListener('change', async (e) => {
+  const f = e.target.files[0]; e.target.value = ''; if (!f || !ten) return;
+  uploading.logo = true; renderFoot();
+  try {
+    const ext = f.type === 'image/webp' ? '.webp' : '.png';
+    if (logoFile && logoFile.name !== 'logo' + ext) await del(logoFile.path, `${ten}: bỏ logo cũ`);
+    const res = await put(`du-an/${ten}/logo${ext}`, await fileB64(f), `${ten}: logo mở đầu`);
+    logoFile = { name: res.content.name, path: res.content.path };
+  } catch (err) { showStatus('Không tải được logo: ' + err.message, 'err'); }
+  uploading.logo = false; renderFoot();
+});
+$('logoDel').addEventListener('click', async () => {
+  if (!logoFile) return;
+  const f = logoFile; logoFile = null; renderFoot();
+  try { await del(f.path, `${ten}: bỏ logo`); } catch (e) { showStatus('Không bỏ được logo: ' + e.message, 'err'); }
 });
 $('musicBtn').addEventListener('click', () => $('musicIn').click());
 $('musicIn').addEventListener('change', async (e) => {

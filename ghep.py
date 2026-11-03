@@ -491,6 +491,13 @@ def cmd_dung(a):
     bien_tap.SMOKE_COLOR = list(plan.get('mau_khoi', [255, 110, 25]))
     import chu
     chu_blocks = chu.build(beats, timing, W, H, plan, bien_tap.cut_at, bien_tap.word_times)
+    import tieu_de
+    title = tieu_de.build(d, plan, timing, W, H)
+    if title:  # chữ nhấn bắt đầu trong lúc tiêu đề hiện thì dời ra sau tiêu đề
+        for blk in chu_blocks:
+            if blk.t0 < title.t_end:
+                blk.t0 = max(blk.t0, title.t_end)
+        chu_blocks = [blk for blk in chu_blocks if blk.t1 - blk.t0 >= 0.5]
     fade_out = float(plan.get('mo_cuoi', 0.7))
     subs_on = plan.get('phu_de', True)
     subs = []
@@ -508,6 +515,10 @@ def cmd_dung(a):
     import am_thanh
     mix = out_dir / 'am-thanh.wav'
     ev = am_thanh.su_kien(clips, beats, timing, plan, bien_tap.cut_at, bien_tap.word_times)
+    if title:
+        ev = [e for e in ev if e[0] > 0.05] + [(tieu_de.LAND, 'hit', 1), (tieu_de.LAND, 'boom', 0),
+                                              (title.t_end - tieu_de.OUT * 0.6, 'whoosh', 0)]
+        ev.sort()
     info = am_thanh.tron(d, voice, total, ev, plan, mix)
     print(f'Âm thanh: nhạc {info["nhac"] or "không"} · {info["hieu_ung"]} hiệu ứng')
     cmd = ['ffmpeg', '-y', '-loglevel', 'error', '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-s', f'{W}x{H}',
@@ -529,6 +540,8 @@ def cmd_dung(a):
             ci += 1
         frame = bien_tap.compose(clips, ci, t, W, H, total, fade_out) if clips else Image.new('RGB', (W, H))
         frame = Image.fromarray(look.apply(frame))
+        if title and title.active(t):
+            frame = title.draw(frame, t)
         if chu_blocks:
             frame = chu.draw_all(chu_blocks, frame, t)
         for s, e, img in subs:

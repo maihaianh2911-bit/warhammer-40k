@@ -109,6 +109,14 @@ từ chính màu xanh ngọc to, chữ phụ trắng nhỏ, bật lên đúng l�
 - `y[].vao: "khoi"` ở chỗ sang đoạn/đảo ý (2–4 lần một video), `"nhoe"` cho chuyển ý thường; còn lại cắt thẳng.
   `mau_khoi` đổi màu khói (mặc định cam [255,110,25]).
 
+## Tiêu đề mở đầu + màu
+
+`tieu_de_mo` trong y.json (`{"chu": "WARHAMMER|40K", "phu": "IST DER IMPERATOR TOT?", "den": 3.6}`, xem `tieu_de.py`):
+chữ kim loại trên dải tối viền vàng đập vào màn hình (rung + chớp + tiếng va), trôi chậm rồi vụt ra; người dùng tải
+`logo.png` trên trang thì dùng logo đó. Không vẽ lại logo chính thức của Games Workshop. Chữ nhấn trong lúc tiêu đề hiện
+tự dời ra sau. Màu: `bao_hoa` (1.15, rực như art chính thức), `vien_toi` (0.18), `tuong_phan` (1.06).
+Nút tìm ảnh trên trang chỉ lấy ảnh cỡ lớn (Google `isz:l`) và có thêm “<từ khóa> wallpaper 4k”.
+
 ## Âm thanh
 
 `am_thanh.py` (gọi từ `ghep.py dung`): giọng + nhạc nền (tự nhỏ khi có giọng) + hiệu ứng tự đặt theo cách chuyển cảnh

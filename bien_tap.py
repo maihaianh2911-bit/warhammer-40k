@@ -349,8 +349,9 @@ class Look:
     """Lớp màu chung: tương phản nhẹ, viền tối, hạt phim."""
 
     def __init__(self, W, H, plan):
-        self.contrast = float(plan.get('tuong_phan', 1.07))
-        vig = float(plan.get('vien_toi', 0.32))
+        self.contrast = float(plan.get('tuong_phan', 1.06))
+        self.sat = float(plan.get('bao_hoa', 1.15))  # màu rực hơn, giống art chính thức
+        vig = float(plan.get('vien_toi', 0.18))
         grain = float(plan.get('hat_phim', 0))  # hạt phim làm video nặng gấp chục lần — mặc định tắt
         yy, xx = np.mgrid[0:H, 0:W].astype(np.float32)
         r = np.sqrt(((xx - W / 2) / (W / 2)) ** 2 + ((yy - H / 2) / (H / 2)) ** 2) / math.sqrt(2)
@@ -362,6 +363,9 @@ class Look:
     def apply(self, frame):
         a = np.asarray(frame, dtype=np.float32)
         a = (a - 128) * self.contrast + 128
+        if abs(self.sat - 1) > 0.01:
+            g = a.mean(axis=2, keepdims=True)
+            a = g + (a - g) * self.sat
         a *= self.vmask
         if self.grain is not None:
             a += self.grain[self.i % len(self.grain)]
