@@ -122,7 +122,7 @@ class VideoSource:
         self.fps = fps
         self.proc = subprocess.Popen(['ffmpeg', '-v', 'error', '-stream_loop', '-1', '-ss', f'{tu_giay:.3f}', '-i', str(path),
                                       '-t', f'{dur + 0.5:.3f}', '-an', '-filter_complex', vf, '-f', 'rawvideo', '-'],
-                                     stdout=subprocess.PIPE)
+                                     stdout=subprocess.PIPE, stderr=subprocess.DEVNULL)
         self.n = -1
         self.last = Image.new('RGB', self.size)
         self.orig = self.size

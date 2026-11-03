@@ -142,6 +142,13 @@ audio { max-width: 100%; height: 36px; }
     <p class="note" id="s2help">Sau khi Claude chia ý, từng ý hiện ở đây kèm gợi ý nên tìm hình gì.</p>
     <div id="voSum" class="banner err" hidden></div>
     <div class="ideas" id="ideas"></div>
+    <div class="voice" id="musicRow" hidden>
+      <span>🎵 Nhạc nền:</span>
+      <span id="musicInfo" class="ghost">mặc định (u tối, điện ảnh) — tự nhỏ đi khi có giọng</span>
+      <button type="button" id="musicBtn">Dùng nhạc của bạn</button>
+      <button type="button" id="musicDel" hidden>Bỏ, dùng mặc định</button>
+      <input type="file" id="musicIn" accept="audio/*,.mp3,.wav,.m4a,.aac,.ogg" hidden>
+    </div>
     <div class="row" id="s2foot" hidden><button class="primary" type="button" id="send2">Dựng video</button><span id="s2note" class="note"></span></div>
   </section>
 
@@ -171,6 +178,7 @@ const STATUS = {
 };
 const ls = { get(k) { try { return localStorage.getItem(k); } catch { return null; } }, set(k, v) { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch {} } };
 let token = ls.get('ghep.token');
+let musicFile = null;
 let projects = [], ten = null, st = null, kbText = '', ideas = [], slots = {}, voiceFile = null, uploading = {}, focusSlot = null, pendingFor = null, poll = null;
 const local = {}; // preview tạm cho file vừa tải lên (raw.githubusercontent cache vài phút)
 
@@ -260,7 +268,9 @@ async function loadProject() {
   if (id !== ten) return;
   st = s ? JSON.parse(s.text) : { ten: id, trang_thai: 'nhap' };
   kbText = kb ? kb.text : '';
-  voiceFile = files.find((f) => /\.(mp3|wav|m4a|aac|ogg|flac|opus)$/i.test(f.name)) || null;
+  const AUD = /\.(mp3|wav|m4a|aac|ogg|flac|opus)$/i;
+  voiceFile = files.find((f) => /^voice\./i.test(f.name)) || files.find((f) => AUD.test(f.name) && !/^nhac\./i.test(f.name)) || null;
+  musicFile = files.find((f) => /^nhac\./i.test(f.name) && AUD.test(f.name)) || null;
   const tm = {}; if (tj) JSON.parse(tj.text).y.forEach((t) => (tm[t.so] = t));
   const plan = yj ? JSON.parse(yj.text) : {};
   FRAME = ({ '16:9': [1920, 1080], '1:1': [1080, 1080], '4:5': [1080, 1350] })[plan.khung] || [1080, 1920];
@@ -391,7 +401,17 @@ function renderIdeas() {
   if (focusSlot != null) box.querySelector(`[data-slot="${focusSlot}"]`)?.focus({ preventScroll: true });
   renderVo();
 }
+function renderMusic() {
+  const show = ideas.length && canWrite();
+  $('musicRow').hidden = !show;
+  if (!show) return;
+  $('musicInfo').innerHTML = uploading.music ? 'Đang tải nhạc lên…' : musicFile ? `<b>✓ ${esc(musicFile.name)}</b> — tự nhỏ đi khi có giọng` : 'mặc định (u tối, điện ảnh) — tự nhỏ đi khi có giọng';
+  $('musicInfo').className = musicFile ? '' : 'ghost';
+  $('musicDel').hidden = !musicFile;
+  $('musicBtn').textContent = musicFile ? 'Đổi nhạc khác' : 'Dùng nhạc của bạn';
+}
 function renderFoot() {
+  renderMusic();
   const s = st?.trang_thai, n = ideas.length, have = ideas.filter((y) => (slots[y.so]?.files || []).length).length;
   $('s2foot').hidden = !n || !['chia_y_xong', 'cho_dung', 'dang_dung', 'xong', 'loi'].includes(s) || !canWrite();
   $('send2').disabled = !have || ['cho_dung', 'dang_dung'].includes(s) || Object.values(uploading).some(Boolean);
@@ -502,6 +522,24 @@ $('send1').addEventListener('click', async () => {
     await saveStatus({ ten: $('ten').value.trim() || st?.ten || ten, trang_thai: 'cho_chia_y' });
     schedulePoll();
   } catch (e) { showStatus('Chưa gửi được: ' + e.message, 'err'); }
+});
+$('musicBtn').addEventListener('click', () => $('musicIn').click());
+$('musicIn').addEventListener('change', async (e) => {
+  const f = e.target.files[0]; e.target.value = ''; if (!f || !ten) return;
+  if (f.size > MAX) { showStatus('File nhạc quá 25 MB — hãy dùng mp3.', 'err'); return; }
+  uploading.music = true; renderFoot();
+  try {
+    const ext = (f.name.match(/\.[a-z0-9]+$/i) || ['.mp3'])[0].toLowerCase();
+    if (musicFile && musicFile.name !== 'nhac' + ext) await del(musicFile.path, `${ten}: bỏ nhạc cũ`);
+    const res = await put(`du-an/${ten}/nhac${ext}`, await fileB64(f), `${ten}: nhạc nền`);
+    musicFile = { name: res.content.name, path: res.content.path };
+  } catch (err) { showStatus('Không tải được nhạc: ' + err.message, 'err'); }
+  uploading.music = false; renderFoot();
+});
+$('musicDel').addEventListener('click', async () => {
+  if (!musicFile) return;
+  const f = musicFile; musicFile = null; renderFoot();
+  try { await del(f.path, `${ten}: bỏ nhạc nền`); } catch (e) { showStatus('Không bỏ được nhạc: ' + e.message, 'err'); }
 });
 $('send2').addEventListener('click', async () => {
   try { await saveStatus({ trang_thai: 'cho_dung', loi_nhan: '' }); showStatus(''); schedulePoll(); }

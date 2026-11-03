@@ -99,6 +99,14 @@ Kiểu `kieu_edit: "lia_xen_ke"` (người dùng chọn cho imperator-tot): mỗ
 phải→trái, zoom dần vào `chu_the` của ý; video giữ nguyên. Claude chỉ cần đặt `chu_the` đúng chủ thể của từng ảnh.
 Toàn video: `vien_toi` (0.32), `hat_phim` (0 — bật 0.03 sẽ làm file nặng gấp nhiều lần), `tuong_phan` (1.07), `mo_cuoi` (0.7 s tối dần cuối video).
 
+## Âm thanh
+
+`am_thanh.py` (gọi từ `ghep.py dung`): giọng + nhạc nền (tự nhỏ khi có giọng) + hiệu ứng tự đặt theo cách chuyển cảnh
+(`lia`→vút, `giat`→va + bùm, `flash`→dồn ngược + ngân, sang ý mới→vút nhẹ, đầu video→bùm), master −9 LUFS, đỉnh ≈ −0.5 dB
+(người dùng muốn to). Nhạc: `du-an/<ten>/nhac.*` (người dùng tải trên trang) hoặc `nhac` trong y.json
+(`cinematic_suspense` mặc định · `mystery` · `horror_tension` · `false`). Hiệu ứng thêm ở từ nhấn: `y[].am`
+(`[{"loai": "boom", "tu_chu": "Tod"}]`). Kho CC0 ở `am-thanh/` (`thu-vien.json`, `CREDITS.md`). Chỉnh: `do_to`, `nhac_db`, `sfx_db`.
+
 ## Làm nét ảnh nhỏ (AI)
 
 `python3 lam_net.py <ten>` (Real-ESRGAN ×4, cần `pip install torch`): ảnh có cạnh dài < 1400 px → `hinh/NN-…/.net/<tên>.jpg`,

@@ -116,6 +116,12 @@
       "chu_the": [
         0.32,
         0.7
+      ],
+      "am": [
+        {
+          "loai": "hit",
+          "tu_chu": "Leichen-Imperator"
+        }
       ]
     },
     {
@@ -214,6 +220,16 @@
       "chu_the": [
         0.5,
         0.13
+      ],
+      "am": [
+        {
+          "loai": "boom",
+          "tu_chu": "Tod"
+        },
+        {
+          "loai": "hit",
+          "tu_chu": "Tod"
+        }
       ]
     },
     {
@@ -256,6 +272,12 @@
       "chu_the": [
         0.48,
         0.18
+      ],
+      "am": [
+        {
+          "loai": "shimmer",
+          "luc": 0.05
+        }
       ]
     },
     {
@@ -328,6 +350,12 @@
       "chu_the": [
         0.5,
         0.4
+      ],
+      "am": [
+        {
+          "loai": "boom",
+          "tu_chu": "niemals"
+        }
       ]
     },
     {
@@ -501,6 +529,12 @@
       "chu_the": [
         0.72,
         0.45
+      ],
+      "am": [
+        {
+          "loai": "riser",
+          "tu_chu": "sogar"
+        }
       ]
     },
     {
@@ -530,6 +564,12 @@
       "chu_the": [
         0.5,
         0.45
+      ],
+      "am": [
+        {
+          "loai": "shimmer",
+          "tu_chu": "Astronomican"
+        }
       ]
     },
     {
@@ -602,6 +642,12 @@
       "chu_the": [
         0.5,
         0.62
+      ],
+      "am": [
+        {
+          "loai": "hit",
+          "tu_chu": "Guilliman"
+        }
       ]
     },
     {
@@ -632,6 +678,12 @@
       "chu_the": [
         0.5,
         0.5
+      ],
+      "am": [
+        {
+          "loai": "boom",
+          "tu_chu": "Brand"
+        }
       ]
     },
     {
@@ -730,9 +782,16 @@
       "chu_the": [
         0.55,
         0.23
+      ],
+      "am": [
+        {
+          "loai": "riser",
+          "tu_chu": "Mumien"
+        }
       ]
     }
   ],
   "vi_tri_phu_de": 0.8,
-  "kieu_edit": "lia_xen_ke"
+  "kieu_edit": "lia_xen_ke",
+  "nhac": "cinematic_suspense"
 }

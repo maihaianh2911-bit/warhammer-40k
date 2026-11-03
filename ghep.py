@@ -502,16 +502,13 @@ def cmd_dung(a):
     out_dir = d / 'xuat'
     out_dir.mkdir(exist_ok=True)
     out = out_dir / (f'{a.ten}-nhap.mp4' if a.nhap else f'{a.ten}.mp4')
-    music = next((f for f in sorted(d.glob('nhac.*')) if f.suffix.lower() in AUDIO_EXT), None)
+    import am_thanh
+    mix = out_dir / 'am-thanh.wav'
+    ev = am_thanh.su_kien(clips, beats, timing, plan, bien_tap.cut_at, bien_tap.word_times)
+    info = am_thanh.tron(d, voice, total, ev, plan, mix)
+    print(f'Âm thanh: nhạc {info["nhac"] or "không"} · {info["hieu_ung"]} hiệu ứng')
     cmd = ['ffmpeg', '-y', '-loglevel', 'error', '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-s', f'{W}x{H}',
-           '-r', str(fps), '-i', '-', '-i', str(voice)]
-    if music:
-        vol = float(plan.get('am_luong_nhac', 0.12))
-        cmd += ['-stream_loop', '-1', '-i', str(music), '-filter_complex',
-                f'[2:a]volume={vol},afade=t=out:st={max(0, total - 2):.2f}:d=2[m];'
-                f'[1:a][m]amix=inputs=2:duration=first:normalize=0[a]', '-map', '0:v', '-map', '[a]']
-    else:
-        cmd += ['-map', '0:v', '-map', '1:a', '-af', 'apad']
+           '-r', str(fps), '-i', '-', '-i', str(mix), '-map', '0:v', '-map', '1:a']
     cap = ['-maxrate', '8M', '-bufsize', '16M']
     if a.toi_da_mb:
         kbps = int(a.toi_da_mb * 8 * 1024 * 0.9 / total) - 192

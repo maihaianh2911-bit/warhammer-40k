@@ -1,0 +1,157 @@
+{
+ "_ve": "Âm thanh CC0 chọn từ kho sound-kit (repo geister-video-factory). peak = giây đỉnh âm trong file (đặt đúng lúc cắt).",
+ "sfx": {
+  "whoosh": [
+   {
+    "file": "am-thanh/sfx/whoosh/fs-30240-swoop1-flac-1.mp3",
+    "peak": 0.13,
+    "dur": 0.511
+   },
+   {
+    "file": "am-thanh/sfx/whoosh/fs-30241-swoop2g-flac-1.mp3",
+    "peak": 0.122,
+    "dur": 0.418
+   },
+   {
+    "file": "am-thanh/sfx/whoosh/fs-449992-whoosh-short-low-wav-1.mp3",
+    "peak": 0.143,
+    "dur": 0.407
+   }
+  ],
+  "transition": [
+   {
+    "file": "am-thanh/sfx/transition/fs-234533-wet-transition-1.mp3",
+    "peak": 0.23,
+    "dur": 0.804
+   },
+   {
+    "file": "am-thanh/sfx/transition/fs-432294-swoosh-2-wav-2.mp3",
+    "peak": 0.215,
+    "dur": 0.697
+   },
+   {
+    "file": "am-thanh/sfx/transition/fs-444623-swoosh-10-wav-1.mp3",
+    "peak": 0.186,
+    "dur": 0.51
+   },
+   {
+    "file": "am-thanh/sfx/transition/fs-522693-arrow-ghost-pass-whoosh-1.mp3",
+    "peak": 0.272,
+    "dur": 0.953
+   }
+  ],
+  "boom": [
+   {
+    "file": "am-thanh/sfx/boom/fs-337695-transition-bass-1.mp3",
+    "peak": 0.008,
+    "dur": 1.691
+   },
+   {
+    "file": "am-thanh/sfx/boom/fs-535615-low-bit-boom-1.mp3",
+    "peak": 0.034,
+    "dur": 1.526
+   },
+   {
+    "file": "am-thanh/sfx/boom/fs-636624-deep-hit-2.mp3",
+    "peak": 0.012,
+    "dur": 1.814
+   }
+  ],
+  "hit": [
+   {
+    "file": "am-thanh/sfx/hit/fs-337831-long-metal-hit-02-wav-1.mp3",
+    "peak": 0.011,
+    "dur": 1.235
+   },
+   {
+    "file": "am-thanh/sfx/hit/fs-558238-distorted-impact-short-wav-1.mp3",
+    "peak": 0.023,
+    "dur": 1.242
+   },
+   {
+    "file": "am-thanh/sfx/hit/fs-578790-metal-hit-1-1.mp3",
+    "peak": 0.011,
+    "dur": 1.168
+   },
+   {
+    "file": "am-thanh/sfx/hit/fs-592034-braams-hit-1-1.mp3",
+    "peak": 0.054,
+    "dur": 1.132
+   }
+  ],
+  "riser": [
+   {
+    "file": "am-thanh/sfx/riser/fs-275512-reversed-riser-wav-1.mp3",
+    "peak": 1.65,
+    "dur": 1.689
+   },
+   {
+    "file": "am-thanh/sfx/riser/fs-396161-scary-hits-risers-001-1.mp3",
+    "peak": 1.483,
+    "dur": 1.843
+   },
+   {
+    "file": "am-thanh/sfx/riser/fs-503799-reverse-fx-9-wav-1.mp3",
+    "peak": 1.201,
+    "dur": 1.239
+   },
+   {
+    "file": "am-thanh/sfx/riser/fs-503801-reverse-fx-3-wav-1.mp3",
+    "peak": 1.406,
+    "dur": 1.468
+   }
+  ],
+  "shimmer": [
+   {
+    "file": "am-thanh/sfx/shimmer/fs-376745-fantasy-ui-button-3-wav-2.mp3",
+    "peak": 0.191,
+    "dur": 0.981
+   },
+   {
+    "file": "am-thanh/sfx/shimmer/fs-389789-chimes-3.mp3",
+    "peak": 0.055,
+    "dur": 1.563
+   },
+   {
+    "file": "am-thanh/sfx/shimmer/fs-452371-small-bell-2.mp3",
+    "peak": 0.055,
+    "dur": 0.735
+   },
+   {
+    "file": "am-thanh/sfx/shimmer/fs-462095-sparkling-star-01-wav-2.mp3",
+    "peak": 0.055,
+    "dur": 1.962
+   }
+  ],
+  "reverse": [
+   {
+    "file": "am-thanh/sfx/reverse/fs-198389-ani-cocktail-glass-hard-reve-1.mp3",
+    "peak": 0.551,
+    "dur": 0.564
+   },
+   {
+    "file": "am-thanh/sfx/reverse/fs-503803-reverse-fx-13-wav-1.mp3",
+    "peak": 0.683,
+    "dur": 0.726
+   },
+   {
+    "file": "am-thanh/sfx/reverse/fs-710864-metal-pole-hit-reverse-3.mp3",
+    "peak": 0.401,
+    "dur": 0.417
+   }
+  ]
+ },
+ "nhac": {
+  "cinematic_suspense": [
+   "am-thanh/nhac/cinematic_suspense/ov-4f19eb05.mp3",
+   "am-thanh/nhac/cinematic_suspense/ov-ef6aadad.mp3"
+  ],
+  "horror_tension": [
+   "am-thanh/nhac/horror_tension/ov-0a7fb1b1.mp3"
+  ],
+  "mystery": [
+   "am-thanh/nhac/mystery/ov-55581ed0.mp3",
+   "am-thanh/nhac/mystery/ov-5902f111.mp3"
+  ]
+ }
+}
