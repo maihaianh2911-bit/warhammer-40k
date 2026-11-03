@@ -105,7 +105,7 @@ Toàn video: `vien_toi` (0.32), `hat_phim` (0 — bật 0.03 sẽ làm file nặ
 (`lia`→vút, `giat`→va + bùm, `flash`→dồn ngược + ngân, sang ý mới→vút nhẹ, đầu video→bùm), master −9 LUFS, đỉnh ≈ −0.5 dB
 (người dùng muốn to). Nhạc: `du-an/<ten>/nhac.*` (người dùng tải trên trang) hoặc `nhac` trong y.json
 (`cinematic_suspense` mặc định · `mystery` · `horror_tension` · `false`). Hiệu ứng thêm ở từ nhấn: `y[].am`
-(`[{"loai": "boom", "tu_chu": "Tod"}]`). Kho CC0 ở `am-thanh/` (`thu-vien.json`, `CREDITS.md`). Chỉnh: `do_to`, `nhac_db`, `sfx_db`.
+(`[{"loai": "boom", "tu_chu": "Tod"}]`). Kho CC0 ở `am-thanh/` (`thu-vien.json`, `CREDITS.md`). Chỉnh: `do_to`, `nhac_db` (−3 mặc định ≈ nhạc 6 LU dưới giọng; người dùng từng chê nhạc quá nhỏ), `sfx_db`.
 
 ## Làm nét ảnh nhỏ (AI)
 

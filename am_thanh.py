@@ -5,7 +5,7 @@ Tự động theo cách dựng:
   · `mo` → `transition` nhẹ · `toi` → `boom` nhẹ · cắt thẳng sang ý mới → `whoosh` rất nhẹ.
 Trong y.json (đều không bắt buộc):
   "nhac": "cinematic_suspense" | "mystery" | "horror_tension" | false   (file du-an/<ten>/nhac.* của bạn luôn được ưu tiên)
-  "do_to": -9           độ to tổng (LUFS; −14 nhỏ hơn, chuẩn nền tảng) · "nhac_db": -15  độ to nhạc so với giọng (dB) · "sfx_db": 0  cộng/trừ cho mọi hiệu ứng
+  "do_to": -9           độ to tổng (LUFS; −14 nhỏ hơn, chuẩn nền tảng) · "nhac_db": -3  độ to nhạc (cao hơn = to hơn; 0 ≈ ngang giọng) so với giọng (dB) · "sfx_db": 0  cộng/trừ cho mọi hiệu ứng
   "am_thanh": false     chỉ giữ giọng đọc
   y[].am: [{"loai": "boom", "tu_chu": "Tod", "db": -8}]   thêm hiệu ứng ở từ đó (hoặc "luc": giây tính từ đầu ý)
 Loại có sẵn: whoosh, transition, boom, hit, riser, shimmer, reverse (am-thanh/thu-vien.json, đều CC0).
@@ -83,10 +83,10 @@ def tron(d, voice, total, events, plan, out):
     n = 1
     if nhac:
         inputs += ['-stream_loop', '-1', '-i', str(nhac)]
-        ndb = float(plan.get('nhac_db', -15))
+        ndb = float(plan.get('nhac_db', -3))  # −3 → nhạc nằm ~6 LU dưới giọng (đo trên imperator-tot); −15 cũ = 29 LU, không nghe thấy
         chains.append(f'[{n}:a]{fmt},atrim=0:{total:.3f},volume={ndb}dB,afade=t=in:d=1.2,'
                       f'afade=t=out:st={max(0, total - 2.5):.2f}:d=2.5[m0];'
-                      f'[m0][vsc]sidechaincompress=threshold=0.02:ratio=6:attack=20:release=450[m]')
+                      f'[m0][vsc]sidechaincompress=threshold=0.08:ratio=2.5:attack=20:release=450[m]')
         labels.append('[m]')
         n += 1
     else:
