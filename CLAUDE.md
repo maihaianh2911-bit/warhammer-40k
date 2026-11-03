@@ -104,7 +104,8 @@ Toàn video: `vien_toi` (0.32), `hat_phim` (0 — bật 0.03 sẽ làm file nặ
 `python3 lam_net.py <ten>` (Real-ESRGAN ×4, cần `pip install torch`): ảnh có cạnh dài < 1400 px → `hinh/NN-…/.net/<tên>.jpg`,
 `ghep.py` tự dùng bản đó. Workflow `tu-dung.yml` tự chạy trước khi dựng và commit `.net/` (chỉ làm một lần mỗi ảnh).
 Model `x4plus` (mặc định, giữ nét vẽ, ~20–60 s/ảnh trên CPU) hoặc `--model general` (nhanh ~10 lần, mịn hơn).
-Ảnh gốc to vẫn đẹp hơn mọi cách phóng — trang web gắn nhãn “ảnh nhỏ” cho ảnh < 900 px.
+Ảnh gốc to vẫn đẹp hơn mọi cách phóng. Trang web báo ngay ảnh “sẽ vỡ” (phải phóng > 1.5 lần mới lấp đầy khung) ở từng ý,
+kèm link tải ảnh gốc; người dùng tự làm nét bằng Gemini/ChatGPT rồi dán lại. `python3 ghep.py vo <ten>` liệt kê cùng danh sách.
 
 ## Cách chia ý
 

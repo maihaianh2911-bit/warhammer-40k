@@ -546,6 +546,41 @@ def cmd_dung(a):
         print(f'(bản nháp — ý chưa có hình hiện ô trống: {", ".join(map(str, missing))})')
 
 
+VO_NGUONG = 1.5  # ảnh phải phóng to hơn 1.5 lần mới lấp đầy khung → sẽ bị vỡ (chưa tính zoom)
+
+
+def anh_vo(d, plan, beats):
+    """Danh sách ảnh quá nhỏ so với khung: [{so, file, rong, cao, can_rong, can_cao}]."""
+    W, H = FORMATS.get(plan.get('khung', '9:16'), FORMATS['9:16'])
+    out = []
+    for b in beats:
+        for f in images_for(d, b['so']):
+            if is_video(f):
+                continue
+            try:
+                w, h = Image.open(f).size
+            except Exception:
+                continue
+            s = max(W / w, H / h)
+            if s > VO_NGUONG:
+                k = s  # cỡ tối thiểu để lấp đầy khung
+                out.append({'so': b['so'], 'file': str(f.relative_to(d)), 'rong': w, 'cao': h,
+                            'can_rong': round(w * k), 'can_cao': round(h * k)})
+    return out
+
+
+def cmd_vo(a):
+    d = proj_dir(a.ten)
+    plan, beats = load_plan(d)
+    vo = anh_vo(d, plan, beats)
+    if a.json:
+        print(json.dumps(vo, ensure_ascii=False))
+        return
+    for v in vo:
+        print(f'Ý {v["so"]:02d}: {v["file"]} {v["rong"]}×{v["cao"]} — nên làm nét lên ít nhất {v["can_rong"]}×{v["can_cao"]}')
+    print(f'{len(vo)} ảnh sẽ bị vỡ.' if vo else 'Không có ảnh nào bị vỡ.')
+
+
 def cmd_tobia(a):
     """Ảnh soát: mỗi ý một ô (hình + số + lời) để kiểm tra hình có khớp ý không."""
     d = proj_dir(a.ten)
@@ -594,6 +629,9 @@ def main():
     sub = ap.add_subparsers(dest='cmd', required=True)
     for name in ('moi', 'bang', 'kiem', 'tobia'):
         sub.add_parser(name).add_argument('ten')
+    p = sub.add_parser('vo', help='liệt kê ảnh quá nhỏ (sẽ bị vỡ)')
+    p.add_argument('ten')
+    p.add_argument('--json', action='store_true')
     p = sub.add_parser('can')
     p.add_argument('ten')
     p.add_argument('--model', default='small')
@@ -607,7 +645,7 @@ def main():
     p.add_argument('--khong-whisper', action='store_true')
     a = ap.parse_args()
     {'moi': cmd_moi, 'bang': cmd_bang, 'kiem': cmd_kiem, 'tobia': cmd_tobia,
-     'can': cmd_can, 'dung': cmd_dung}[a.cmd](a)
+     'can': cmd_can, 'dung': cmd_dung, 'vo': cmd_vo}[a.cmd](a)
 
 
 if __name__ == '__main__':

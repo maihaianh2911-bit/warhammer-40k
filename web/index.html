@@ -83,8 +83,11 @@ audio { max-width: 100%; height: 36px; }
 .th img, .th video { width: 100%; height: 100%; object-fit: cover; display: block; }
 .th .lbl { position: absolute; inset: auto 0 0 0; font-size: 10.5px; padding: 2px 5px; background: rgba(0,0,0,.6); color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .th .file { display: grid; place-items: center; height: 100%; font: 500 12px var(--f-mono); color: var(--muted); text-align: center; padding: 4px; }
-.th .warn { display: none; position: absolute; top: 4px; left: 4px; font-size: 10px; font-weight: 600; padding: 1px 6px; border-radius: 999px; background: #f0a640; color: #1a1203; }
+.th .warn { display: none; position: absolute; top: 4px; left: 4px; font-size: 10px; font-weight: 600; padding: 1px 6px; border-radius: 999px; background: var(--err); color: #fff; }
 .th.small .warn { display: block; }
+.th.small { outline: 2px solid var(--err); outline-offset: -2px; }
+.vo { margin: 8px 0 0; padding: 8px 10px; border-radius: 8px; background: var(--err-soft); color: var(--err); font-size: 13.5px; }
+.vo a { color: inherit; font-weight: 600; }
 .th .x { position: absolute; top: 4px; right: 4px; width: 24px; height: 24px; padding: 0; border-radius: 50%; border: 0; background: rgba(0,0,0,.65); color: #fff; font-size: 14px; line-height: 24px; }
 .th.up { display: grid; place-items: center; color: var(--muted); font-size: 12px; text-align: center; padding: 4px; }
 .final video { width: 100%; max-height: 70vh; border-radius: 10px; background: #000; }
@@ -137,6 +140,7 @@ audio { max-width: 100%; height: 36px; }
   <section class="step" id="s2">
     <div class="step-h"><span class="num">2</span><h2>Ảnh / video cho từng ý</h2><span id="s2pill" class="pill" hidden></span></div>
     <p class="note" id="s2help">Sau khi Claude chia ý, từng ý hiện ở đây kèm gợi ý nên tìm hình gì.</p>
+    <div id="voSum" class="banner err" hidden></div>
     <div class="ideas" id="ideas"></div>
     <div class="row" id="s2foot" hidden><button class="primary" type="button" id="send2">Dựng video</button><span id="s2note" class="note"></span></div>
   </section>
@@ -258,7 +262,9 @@ async function loadProject() {
   kbText = kb ? kb.text : '';
   voiceFile = files.find((f) => /\.(mp3|wav|m4a|aac|ogg|flac|opus)$/i.test(f.name)) || null;
   const tm = {}; if (tj) JSON.parse(tj.text).y.forEach((t) => (tm[t.so] = t));
-  ideas = yj ? JSON.parse(yj.text).y.map((y, i) => ({ ...y, so: y.so || i + 1, ...(tm[y.so || i + 1] || {}) })) : [];
+  const plan = yj ? JSON.parse(yj.text) : {};
+  FRAME = ({ '16:9': [1920, 1080], '1:1': [1080, 1080], '4:5': [1080, 1350] })[plan.khung] || [1080, 1920];
+  ideas = yj ? plan.y.map((y, i) => ({ ...y, so: y.so || i + 1, ...(tm[y.so || i + 1] || {}) })) : [];
   slots = {};
   for (const t of (tree?.tree || [])) {
     if (t.type !== 'tree' || !t.path.startsWith(base + '/hinh/') || t.path.split('/').length !== 4) continue;
@@ -311,10 +317,43 @@ function thumb(f, so, i) {
   let inner;
   if (!SHOWABLE.test(f.name)) inner = `<div class="file">${esc(f.name.split('.').pop().toUpperCase())}</div>`;
   else if (VID.test(f.name)) inner = `<video src="${esc(url)}#t=0.5" muted preload="metadata"></video>`;
-  else inner = `<img src="${esc(url)}" alt="" loading="lazy" onload="if(Math.max(this.naturalWidth,this.naturalHeight)<900)this.parentNode.classList.add('small')" data-px="">`;
+  else inner = `<img src="${esc(url)}" alt="" onload="ghepSize(this)" data-path="${esc(f.path)}">`;
   const rm = editIdeas() ? `<button class="x" type="button" data-rm="${so}:${i}" aria-label="Bỏ file này">×</button>` : '';
-  return `<div class="th">${inner}<span class="warn" title="Ảnh nhỏ: máy sẽ làm nét bằng AI, nhưng ảnh to (từ 1000 px) vẫn đẹp hơn">ảnh nhỏ</span><span class="lbl">${VID.test(f.name) ? '▶ ' : ''}${esc(f.name.replace(/^\d+-/, ''))}</span>${rm}</div>`;
+  return `<div class="th">${inner}<span class="warn" title="Ảnh quá nhỏ — sẽ bị vỡ khi dựng">⚠ sẽ vỡ</span><span class="lbl">${VID.test(f.name) ? '▶ ' : ''}${esc(f.name.replace(/^\d+-/, ''))}</span>${rm}</div>`;
 }
+// ───── ảnh sẽ bị vỡ ─────
+const sizeOf = {};
+let FRAME = [1080, 1920];
+const VO = 1.5; // phải phóng > 1.5 lần mới lấp đầy khung → vỡ
+window.ghepSize = (img) => {
+  sizeOf[img.dataset.path] = [img.naturalWidth, img.naturalHeight];
+  renderVo();
+};
+function voOf(f) {
+  const sz = sizeOf[f.path]; if (!sz || !sz[0]) return null;
+  const k = Math.max(FRAME[0] / sz[0], FRAME[1] / sz[1]);
+  return k > VO ? { w: sz[0], h: sz[1], cw: Math.round(sz[0] * k), ch: Math.round(sz[1] * k) } : null;
+}
+function renderVo() {
+  const bad = [];
+  for (const y of ideas) {
+    const el = $('vo-' + y.so); if (!el) continue;
+    const lines = [];
+    (slots[y.so]?.files || []).forEach((f) => {
+      const v = voOf(f);
+      document.querySelector(`img[data-path="${CSS.escape(f.path)}"]`)?.parentNode.classList.toggle('small', !!v);
+      if (v) lines.push(`⚠ Ảnh <b>${esc(f.name.replace(/^\d+-/, ''))}</b> chỉ ${v.w}×${v.h} — sẽ bị vỡ. ` +
+        `<a href="${esc(f.download_url)}" target="_blank" rel="noopener">Tải ảnh gốc</a>, nhờ Gemini / ChatGPT làm nét lên ít nhất ${v.cw}×${v.ch}, ` +
+        `rồi bấm × bỏ ảnh này và dán ảnh mới vào.`);
+    });
+    el.innerHTML = lines.join('<br>'); el.hidden = !lines.length;
+    if (lines.length) bad.push(y.so);
+  }
+  const sum = $('voSum');
+  sum.hidden = !bad.length;
+  sum.textContent = bad.length ? `${bad.length} ý có ảnh quá nhỏ, sẽ bị vỡ khi dựng: ý ${bad.join(', ')}. Làm nét các ảnh này rồi dán lại (xem dòng đỏ ở từng ý).` : '';
+}
+
 function chips(y) {
   const out = [];
   const add = (t) => (t || '').split(/[,;]/).map((k) => k.trim()).filter(Boolean)
@@ -344,11 +383,13 @@ function renderIdeas() {
         ${y.goi_y_hinh ? `<p class="hint"><b>Nên tìm:</b> ${esc(y.goi_y_hinh)}</p>` : ''}
         ${y.phuong_an_khac ? `<p class="hint"><b>Hoặc:</b> ${esc(y.phuong_an_khac)}</p>` : ''}
         ${chips(y)}
+        <div class="vo" id="vo-${y.so}" hidden></div>
       </div>
       <div class="slot${focusSlot === y.so ? ' focus' : ''}" tabindex="${edit ? 0 : -1}" data-slot="${y.so}" aria-label="Khung ảnh/video cho ý ${y.so}">${inner}</div>
     </article>`;
   }).join('');
   if (focusSlot != null) box.querySelector(`[data-slot="${focusSlot}"]`)?.focus({ preventScroll: true });
+  renderVo();
 }
 function renderFoot() {
   const s = st?.trang_thai, n = ideas.length, have = ideas.filter((y) => (slots[y.so]?.files || []).length).length;
