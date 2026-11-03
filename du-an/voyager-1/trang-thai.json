@@ -1,7 +1,11 @@
 {
   "ten": "Voyager 1 – Das letzte Zeichen der Menschheit",
-  "trang_thai": "dang_dung",
+  "trang_thai": "xong",
   "tao_luc": 1793780000,
   "loi_nhan": "",
-  "cap_nhat": 1793715871
+  "cap_nhat": 1793716154,
+  "video": {
+    "url": "https://github.com/maihaianh2911-bit/warhammer-40k/releases/download/video-voyager-1/voyager-1-1103-1429.mp4",
+    "ten": "voyager-1-1103-1429.mp4"
+  }
 }
