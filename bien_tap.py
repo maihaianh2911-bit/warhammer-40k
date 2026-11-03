@@ -17,6 +17,11 @@ Mỗi ý trong y.json có thể có `canh` — danh sách cảnh do Claude biên
   `giat` (giật zoom) · `lia` (lia nhanh) · `toi` (từ đen ra).
 - `rung`: rung máy 0–1. `vua`: `cover` (lấp đầy) / `contain` (giữ trọn ảnh trên nền mờ). `muot`: true = chậm dần.
 
+Kiểu dựng cả video (`kieu_edit` trong y.json, đè lên `canh`):
+- `lia_xen_ke`: mỗi ảnh lấp đầy khung, ảnh lẻ dịch từ trái sang phải, ảnh chẵn từ phải sang trái, đồng thời zoom
+  dần vào chủ thể (video giữ nguyên, không zoom/lia). Chủ thể từng ý: `chu_the: [x, y]` (hoặc danh sách, một điểm cho mỗi file). Chỉnh:
+  `zoom_dau` (1.22), `zoom_cuoi` (1.48), `do_lia` (0.16 — quãng dịch, tính theo bề ngang ảnh).
+
 Không có `canh` → máy tự biên tập (ý dài chia 2 cảnh toàn → cận, ảnh ngang thì lia ngang, chuyển động đều).
 """
 import json, math, re, subprocess
@@ -239,11 +244,38 @@ def auto_canh(b, media, sizes, words, t0, t1, k):
     return out
 
 
+def lia_xen_ke(b, media, words, t0, t1, plan, counter):
+    """Mỗi file một cảnh lấp đầy khung; hướng dịch xen kẽ; kết thúc ở chủ thể với zoom lớn hơn."""
+    n = len(media)
+    z0, z1 = float(plan.get('zoom_dau', 1.22)), float(plan.get('zoom_cuoi', 1.48))
+    dx = float(plan.get('do_lia', 0.16))
+    ct = b.get('chu_the') or [0.5, 0.42]
+    pts = ct if ct and isinstance(ct[0], (list, tuple)) else [ct] * n
+    bounds = [t0]
+    for j in range(1, n):
+        target = t0 + (t1 - t0) * j / n
+        best = min((s for _w, s, _e in words if bounds[-1] + 0.6 < s < t1 - 0.6), key=lambda s: abs(s - target), default=target)
+        bounds.append(best - 0.07)
+    out = []
+    for j in range(n):
+        if isinstance(media[j], Path) and _is_video(media[j]):  # video: giữ nguyên, không zoom/lia
+            out.append(dict(luc=bounds[j] - t0, file=j + 1, vua='cover', tu=[0.5, 0.5, 1.0], den=[0.5, 0.5, 1.0]))
+            continue
+        sx, sy = (pts[j] if j < len(pts) else pts[-1])[:2]
+        # ảnh dịch trái → phải = khung nhìn đi từ bên phải chủ thể về chủ thể (và ngược lại)
+        d = 1 if counter[0] % 2 == 0 else -1
+        counter[0] += 1
+        out.append(dict(luc=bounds[j] - t0, file=j + 1, vua='cover',
+                        tu=[sx + d * dx, sy, z0], den=[sx, sy, z1]))
+    return out
+
+
 def build_shots(d, beats, timing, W, H, fps, plan, images_for, open_image, placeholder, allow_missing, die):
     tmap = {t['so']: t for t in timing['y']}
     total = timing['tong']
     default_fit = plan.get('vua_khung', 'auto')
     shots, missing = [], []
+    counter = [0]
     for k, b in enumerate(beats):
         t = tmap.get(b['so'])
         if not t:
@@ -265,7 +297,10 @@ def build_shots(d, beats, timing, W, H, fps, plan, images_for, open_image, place
                 stills[id(m)] = im
                 sizes.append(im.size)
         words = word_times(timing, b['so'])
-        canh = b.get('canh') or auto_canh(b, media, sizes, words, t0, t1, k)
+        if plan.get('kieu_edit') == 'lia_xen_ke':
+            canh = lia_xen_ke(b, media, words, t0, t1, plan, counter)
+        else:
+            canh = b.get('canh') or auto_canh(b, media, sizes, words, t0, t1, k)
         # thời điểm cắt
         starts, prev = [], t0 - 1
         for i, c in enumerate(canh):

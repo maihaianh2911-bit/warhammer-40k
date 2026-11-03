@@ -95,6 +95,8 @@ Máy tự biên tập được (không có `canh`) nhưng chỉ ở mức khá. 
   `lia` cho chuỗi liệt kê nhanh; `mo` cho câu chậm/suy tư; `toi` khi sang đoạn mới. Không lặp một kiểu liên tục.
 - `rung` 0.4–0.8 ở chỗ kịch tính/chiến trận. Chuyển động mặc định đều (tuyến tính); `muot: true` chỉ cho cảnh chậm.
 - Dựng nháp (`--nhap`), trích khung ở mỗi lần cắt để soát, rồi `trang-thai … cho_dung` + push để GitHub dựng bản thật.
+Kiểu `kieu_edit: "lia_xen_ke"` (người dùng chọn cho imperator-tot): mỗi ảnh lấp đầy khung, xen kẽ dịch trái→phải /
+phải→trái, zoom dần vào `chu_the` của ý; video giữ nguyên. Claude chỉ cần đặt `chu_the` đúng chủ thể của từng ảnh.
 Toàn video: `vien_toi` (0.32), `hat_phim` (0 — bật 0.03 sẽ làm file nặng gấp nhiều lần), `tuong_phan` (1.07), `mo_cuoi` (0.7 s tối dần cuối video).
 
 ## Cách chia ý
