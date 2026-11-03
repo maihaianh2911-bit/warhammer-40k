@@ -268,13 +268,13 @@ async function loadProjects() {
 
 async function selectProject(id) {
   ten = id; ls.set('ghep.ten', id || ''); $('proj').value = id || '';
-  st = null; kbText = ''; ideas = []; slots = {}; voiceFile = null;
+  st = null; kbText = ''; ideas = []; slots = {}; voiceFile = null; musicFile = null; logoFile = null; showStatus(''); if ($('voSum')) $('voSum').hidden = true;
   render();
   if (!id) return;
   await loadProject();
 }
 
-async function loadProject() {
+async function loadProject(retry = 0) {
   const id = ten, base = `du-an/${id}`;
   const [s, kb, yj, tj, tree] = await Promise.all([
     readText(`${base}/trang-thai.json`), readText(`${base}/kich-ban.txt`),
@@ -289,6 +289,13 @@ async function loadProject() {
   kenhBieu = (tree?.tree || []).filter((t) => t.type === 'blob' && /^kenh\/nhan-vat\/[a-z_]+\.png$/.test(t.path))
     .map((t) => ({ path: t.path, name: t.path.split('/').pop().replace('.png', ''), download_url: raw(t.path) + '?v=' + t.sha.slice(0, 7) }));
   if (id !== ten) return;
+  // dự án vừa được đẩy lên: GitHub có thể chưa trả về file ngay → thử lại vài lần thay vì hiện như video trống
+  if ((!s || (!yj && JSON.parse(s.text).trang_thai !== 'nhap' && !['cho_chia_y', 'dang_chia_y'].includes(JSON.parse(s.text).trang_thai))) && retry < 4) {
+    showStatus('Đang tải dữ liệu video…', '');
+    setTimeout(() => { if (id === ten) loadProject(retry + 1).catch(() => {}); }, 2500 * (retry + 1));
+    return;
+  }
+  if (retry) showStatus('');
   st = s ? JSON.parse(s.text) : { ten: id, trang_thai: 'nhap' };
   kbText = kb ? kb.text : '';
   const AUD = /\.(mp3|wav|m4a|aac|ogg|flac|opus)$/i;
@@ -400,7 +407,7 @@ function chips(y) {
 }
 function renderIdeas() {
   const box = $('ideas');
-  if (!ideas.length) { box.innerHTML = ''; $('s2help').hidden = false; return; }
+  if (!ideas.length) { box.innerHTML = ''; $('s2help').hidden = false; $('voSum').hidden = true; return; }
   $('s2help').hidden = true;
   const edit = editIdeas();
   box.innerHTML = ideas.map((y) => {
