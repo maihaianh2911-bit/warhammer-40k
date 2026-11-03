@@ -152,6 +152,14 @@
           "tu_chu": "„Leichen-Imperator“",
           "chu": "„*LEICHEN-*|*IMPERATOR*“"
         }
+      ],
+      "nhan_vat": [
+        {
+          "bieu_cam": "ngac_nhien",
+          "tu_chu": "Leichen-Imperator",
+          "giay": 2.3,
+          "ben": "phai"
+        }
       ]
     },
     {
@@ -283,6 +291,14 @@
         {
           "tu_chu": "Tod",
           "chu": "der|*TOD*"
+        }
+      ],
+      "nhan_vat": [
+        {
+          "bieu_cam": "so",
+          "tu_chu": "Tod",
+          "giay": 1.8,
+          "ben": "trai"
         }
       ]
     },
@@ -441,6 +457,14 @@
         {
           "tu_chu": "niemals",
           "chu": "*NIEMALS*|endgültig sterben"
+        }
+      ],
+      "nhan_vat": [
+        {
+          "bieu_cam": "chi_tay",
+          "tu_chu": "niemals",
+          "giay": 1.9,
+          "ben": "phai"
         }
       ]
     },
@@ -602,7 +626,15 @@
           "chu": "*HELLWACH*"
         }
       ],
-      "vao": "khoi"
+      "vao": "khoi",
+      "nhan_vat": [
+        {
+          "bieu_cam": "suy_nghi",
+          "tu_chu": "biologisch",
+          "giay": 2.4,
+          "ben": "trai"
+        }
+      ]
     },
     {
       "so": 12,
@@ -841,6 +873,14 @@
           "tu_chu": "Nurgles",
           "chu": "*NURGLES*|*GARTEN*|in Brand gesteckt"
         }
+      ],
+      "nhan_vat": [
+        {
+          "bieu_cam": "ngac_nhien",
+          "tu_chu": "Nurgles",
+          "giay": 2.0,
+          "ben": "phai"
+        }
       ]
     },
     {
@@ -967,7 +1007,15 @@
           "chu": "sehen|*GESÜNDER*|aus als er"
         }
       ],
-      "vao": "nhoe"
+      "vao": "nhoe",
+      "nhan_vat": [
+        {
+          "bieu_cam": "cuoi",
+          "tu_chu": "Mumien",
+          "giay": 2.6,
+          "ben": "phai"
+        }
+      ]
     }
   ],
   "vi_tri_phu_de": 0.8,

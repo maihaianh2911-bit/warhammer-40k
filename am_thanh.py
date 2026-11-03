@@ -18,7 +18,7 @@ LIB = json.loads((ROOT / 'am-thanh' / 'thu-vien.json').read_text(encoding='utf-8
 AUDIO_EXT = ('.mp3', '.wav', '.m4a', '.aac', '.ogg', '.flac', '.opus')
 
 # loại → độ to mặc định (dB), chỉnh theo đo thực tế: giọng ~ −18 LUFS; vút nhỏ hơn giọng ~8 LU, va/bùm ngang giọng
-DB = {'whoosh': 0, 'transition': -9, 'boom': -2, 'hit': 0, 'riser': -5, 'shimmer': -11, 'reverse': -2}
+DB = {'pop': -4, 'whoosh': 0, 'transition': -9, 'boom': -2, 'hit': 0, 'riser': -5, 'shimmer': -11, 'reverse': -2}
 
 
 def pick(loai, k):

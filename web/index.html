@@ -163,6 +163,16 @@ audio { max-width: 100%; height: 36px; }
     <div class="step-h"><span class="num">3</span><h2>Video</h2><span id="s3pill" class="pill" hidden></span></div>
     <div id="s3body"><p class="note">Video MP4 hiện ở đây khi dựng xong.</p></div>
   </section>
+
+  <section class="step" id="kenh" hidden>
+    <div class="step-h"><span class="num">★</span><h2>Nhân vật kênh</h2><span class="pill">dùng cho mọi video</span></div>
+    <p class="note">Tải <b>một ảnh vẽ 6 tư thế</b> (nền xanh lá) hoặc 6 ảnh riêng — máy tự tách 6 biểu cảm và xóa nền khi dựng.
+      Câu lệnh vẽ “Otto der Archivar” cho Gemini/ChatGPT: <a id="promptLink" target="_blank" rel="noopener">xem ở đây</a>.</p>
+    <div class="thumbs" id="kenhGoc" style="grid-template-columns:repeat(auto-fill,minmax(120px,1fr))"></div>
+    <div class="row"><button type="button" id="kenhBtn">Tải ảnh nhân vật</button><span id="kenhNote" class="note"></span></div>
+    <input type="file" id="kenhIn" accept="image/png,image/jpeg,image/webp" multiple hidden>
+    <div class="thumbs" id="kenhBieu" style="grid-template-columns:repeat(auto-fill,minmax(90px,1fr))"></div>
+  </section>
 </div>
 <input type="file" id="mediaIn" accept="image/*,video/*,.heic,.mov" multiple hidden>
 
@@ -185,7 +195,8 @@ const STATUS = {
 };
 const ls = { get(k) { try { return localStorage.getItem(k); } catch { return null; } }, set(k, v) { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch {} } };
 let token = ls.get('ghep.token');
-let musicFile = null, logoFile = null;
+let musicFile = null, logoFile = null, kenhGoc = [], kenhBieu = [];
+const BIEU = { binh_thuong: 'bình thường', ngac_nhien: 'ngạc nhiên', cuoi: 'cười', so: 'sợ', suy_nghi: 'suy nghĩ', chi_tay: 'chỉ tay' };
 let projects = [], ten = null, st = null, kbText = '', ideas = [], slots = {}, voiceFile = null, uploading = {}, focusSlot = null, pendingFor = null, poll = null;
 const local = {}; // preview tạm cho file vừa tải lên (raw.githubusercontent cache vài phút)
 
@@ -272,6 +283,11 @@ async function loadProject() {
   const paths = (tree?.tree || []).filter((t) => t.type === 'blob' && t.path.startsWith(base + '/'))
     .map((t) => ({ path: t.path, name: t.path.split('/').pop(), sha: t.sha, download_url: `https://raw.githubusercontent.com/${REPO}/${BRANCH}/${enc(t.path)}` }));
   const files = paths.filter((f) => f.path.split('/').length === 3);
+  const raw = (p) => `https://raw.githubusercontent.com/${REPO}/${BRANCH}/${enc(p)}`;
+  kenhGoc = (tree?.tree || []).filter((t) => t.type === 'blob' && /^kenh\/nhan-vat\/goc\/[^/]+\.(png|jpe?g|webp)$/i.test(t.path))
+    .map((t) => ({ path: t.path, name: t.path.split('/').pop(), download_url: raw(t.path) }));
+  kenhBieu = (tree?.tree || []).filter((t) => t.type === 'blob' && /^kenh\/nhan-vat\/[a-z_]+\.png$/.test(t.path))
+    .map((t) => ({ path: t.path, name: t.path.split('/').pop().replace('.png', ''), download_url: raw(t.path) + '?v=' + t.sha.slice(0, 7) }));
   if (id !== ten) return;
   st = s ? JSON.parse(s.text) : { ten: id, trang_thai: 'nhap' };
   kbText = kb ? kb.text : '';
@@ -429,8 +445,18 @@ function renderLogo() {
   $('logoDel').hidden = !logoFile;
   $('logoBtn').textContent = logoFile ? 'Đổi logo' : 'Tải logo';
 }
+function renderKenh() {
+  $('kenh').hidden = !canWrite();
+  if (!canWrite()) return;
+  $('promptLink').href = `https://github.com/${REPO}/blob/${BRANCH}/kenh/nhan-vat/README.md`;
+  $('kenhGoc').innerHTML = kenhGoc.map((f, i) => `<div class="th" style="aspect-ratio:3/2"><img src="${esc(local[f.path] || f.download_url)}" alt="" style="object-fit:contain;background:#0a0"><span class="lbl">${esc(f.name)}</span><button class="x" type="button" data-krm="${i}" aria-label="Bỏ ảnh này">×</button></div>`).join('')
+    + (uploading.kenh ? '<div class="th up" style="aspect-ratio:3/2">Đang tải…</div>' : '');
+  $('kenhBieu').innerHTML = kenhBieu.map((f) => `<div class="th" style="aspect-ratio:1/1.4;background:transparent"><img src="${esc(f.download_url)}" alt="" style="object-fit:contain"><span class="lbl">${esc(BIEU[f.name] || f.name)}</span></div>`).join('');
+  $('kenhNote').textContent = kenhGoc.length && !kenhBieu.length ? 'Đã có ảnh — biểu cảm sẽ được tách ở lần dựng video tới.'
+    : kenhBieu.length ? `${kenhBieu.length} biểu cảm sẵn sàng (hàng dưới).` : 'Chưa có nhân vật.';
+}
 function renderFoot() {
-  renderMusic(); renderLogo();
+  renderMusic(); renderLogo(); renderKenh();
   const s = st?.trang_thai, n = ideas.length, have = ideas.filter((y) => (slots[y.so]?.files || []).length).length;
   $('s2foot').hidden = !n || !['chia_y_xong', 'cho_dung', 'dang_dung', 'xong', 'loi'].includes(s) || !canWrite();
   $('send2').disabled = !have || ['cho_dung', 'dang_dung'].includes(s) || Object.values(uploading).some(Boolean);
@@ -541,6 +567,26 @@ $('send1').addEventListener('click', async () => {
     await saveStatus({ ten: $('ten').value.trim() || st?.ten || ten, trang_thai: 'cho_chia_y' });
     schedulePoll();
   } catch (e) { showStatus('Chưa gửi được: ' + e.message, 'err'); }
+});
+$('kenhBtn').addEventListener('click', () => $('kenhIn').click());
+$('kenhIn').addEventListener('change', async (e) => {
+  const fs = [...e.target.files]; e.target.value = ''; if (!fs.length) return;
+  uploading.kenh = true; renderKenh();
+  for (const f of fs) {
+    try {
+      if (f.size > MAX) throw new Error(`${f.name} quá 25 MB`);
+      const name = f.name.replace(/[\\/:*?"<>|#%\s]+/g, '_');
+      const res = await put(`kenh/nhan-vat/goc/${name}`, await fileB64(f), `nhân vật kênh: ${name}`);
+      local[res.content.path] = URL.createObjectURL(f);
+      kenhGoc = kenhGoc.filter((k) => k.path !== res.content.path).concat([{ path: res.content.path, name: res.content.name, download_url: res.content.download_url }]);
+    } catch (err) { showStatus('Không tải được ảnh nhân vật: ' + err.message, 'err'); }
+  }
+  uploading.kenh = false; renderKenh();
+});
+$('kenhGoc').addEventListener('click', async (e) => {
+  const b = e.target.closest('[data-krm]'); if (!b) return;
+  const f = kenhGoc[+b.dataset.krm]; kenhGoc.splice(+b.dataset.krm, 1); renderKenh();
+  try { await del(f.path, `nhân vật kênh: bỏ ${f.name}`); } catch (err) { showStatus('Không bỏ được ảnh: ' + err.message, 'err'); }
 });
 $('logoBtn').addEventListener('click', () => $('logoIn').click());
 $('logoIn').addEventListener('change', async (e) => {

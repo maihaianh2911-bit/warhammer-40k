@@ -139,6 +139,23 @@
     "peak": 0.401,
     "dur": 0.417
    }
+  ],
+  "pop": [
+   {
+    "file": "am-thanh/sfx/pop/fs-188381-3-popping-pops-1.mp3",
+    "peak": 0.011,
+    "dur": 0.155
+   },
+   {
+    "file": "am-thanh/sfx/pop/fs-206152-bottlepop44-wav-1.mp3",
+    "peak": 0.011,
+    "dur": 0.15
+   },
+   {
+    "file": "am-thanh/sfx/pop/fs-503162-mouth-pops-magic-bottle-cork-3.mp3",
+    "peak": 0.008,
+    "dur": 0.15
+   }
   ]
  },
  "nhac": {

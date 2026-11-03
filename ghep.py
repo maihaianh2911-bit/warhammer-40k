@@ -491,6 +491,9 @@ def cmd_dung(a):
     bien_tap.SMOKE_COLOR = list(plan.get('mau_khoi', [255, 110, 25]))
     import chu
     chu_blocks = chu.build(beats, timing, W, H, plan, bien_tap.cut_at, bien_tap.word_times)
+    import nhan_vat
+    apps = nhan_vat.build(beats, timing, W, H, plan, bien_tap.cut_at, bien_tap.word_times)
+    env = nhan_vat.voice_env(voice, fps, timing['tong'] + 1) if apps else None
     import tieu_de
     title = tieu_de.build(d, plan, timing, W, H)
     if title:  # chữ nhấn bắt đầu trong lúc tiêu đề hiện thì dời ra sau tiêu đề
@@ -515,6 +518,8 @@ def cmd_dung(a):
     import am_thanh
     mix = out_dir / 'am-thanh.wav'
     ev = am_thanh.su_kien(clips, beats, timing, plan, bien_tap.cut_at, bien_tap.word_times)
+    for ap in apps:
+        ev += [(ap.t0 + 0.12, 'pop', -4), (ap.t1 - 0.15, 'whoosh', -10)]
     if title:
         ev = [e for e in ev if e[0] > 0.05] + [(tieu_de.LAND, 'hit', 1), (tieu_de.LAND, 'boom', 0),
                                               (title.t_end - tieu_de.OUT * 0.6, 'whoosh', 0)]
@@ -544,6 +549,8 @@ def cmd_dung(a):
             frame = title.draw(frame, t)
         if chu_blocks:
             frame = chu.draw_all(chu_blocks, frame, t)
+        if apps:
+            frame = nhan_vat.draw_all(apps, frame, t, float(env[min(fi, len(env) - 1)]))
         for s, e, img in subs:
             if s <= t < e:
                 frame.paste(img, (0, int(H * sub_y - img.height / 2)), img)

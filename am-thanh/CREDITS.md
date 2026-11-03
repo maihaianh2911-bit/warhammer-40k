@@ -29,6 +29,9 @@ Tất cả đều CC0 (dùng tự do, kể cả thương mại, không bắt bu�
 - `am-thanh/sfx/reverse/fs-198389-ani-cocktail-glass-hard-reve-1.mp3` — "ANI - Cocktail Glass - Hard Reversed 1a" by ani_music — https://freesound.org/people/ani_music/sounds/198389
 - `am-thanh/sfx/reverse/fs-503803-reverse-fx-13-wav-1.mp3` — "reverse fx 13.wav" by neezen. — https://freesound.org/people/neezen./sounds/503803
 - `am-thanh/sfx/reverse/fs-710864-metal-pole-hit-reverse-3.mp3` — "Metal Pole Hit Reverse" by NapierFreesound — https://freesound.org/people/NapierFreesound/sounds/710864
+- `am-thanh/sfx/pop/fs-188381-3-popping-pops-1.mp3` — "3 Popping Pops" by wubitog — https://freesound.org/people/wubitog/sounds/188381
+- `am-thanh/sfx/pop/fs-206152-bottlepop44-wav-1.mp3` — "bottlepop44.wav" by ahill86 — https://freesound.org/people/ahill86/sounds/206152
+- `am-thanh/sfx/pop/fs-503162-mouth-pops-magic-bottle-cork-3.mp3` — "MOUTH POPS - MAGIC BOTTLE CORK OPEN.wav" by BathroomCrooner — https://freesound.org/people/BathroomCrooner/sounds/503162
 
 ## Nhạc nền
 

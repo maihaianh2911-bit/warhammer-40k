@@ -117,6 +117,15 @@ chữ kim loại trên dải tối viền vàng đập vào màn hình (rung + c
 tự dời ra sau. Màu: `bao_hoa` (1.15, rực như art chính thức), `vien_toi` (0.18), `tuong_phan` (1.06).
 Nút tìm ảnh trên trang chỉ lấy ảnh cỡ lớn (Google `isz:l`) và có thêm “<từ khóa> wallpaper 4k”.
 
+## Nhân vật kênh (Otto der Archivar)
+
+Linh vật chung cho mọi video: ông cụ thủ thư người Đức (mũ Pickelhaube, ria mép trắng, kính tròn, áo choàng đỏ, sách
+xích). Câu lệnh vẽ cho Gemini/ChatGPT: `kenh/nhan-vat/README.md`. Người dùng tải ảnh lên trang → `kenh/nhan-vat/goc/`;
+`python3 nhan_vat.py` (workflow tự chạy) tách 6 biểu cảm + xóa nền → `kenh/nhan-vat/<bieu_cam>.png`.
+Khi edit, Claude đặt `y[].nhan_vat` ở 4–7 chỗ có cảm xúc rõ (ngạc nhiên ở chi tiết bất ngờ, sợ ở chỗ chết chóc,
+cười ở câu đùa, suy nghĩ ở câu hỏi, chỉ tay khi giới thiệu), xen kẽ `ben` trái/phải, không đặt ở ý có chủ thể nằm sát
+đáy khung. Cú pháp ở đầu `nhan_vat.py`. Chưa có ảnh nhân vật thì máy bỏ qua.
+
 ## Âm thanh
 
 `am_thanh.py` (gọi từ `ghep.py dung`): giọng + nhạc nền (tự nhỏ khi có giọng) + hiệu ứng tự đặt theo cách chuyển cảnh
