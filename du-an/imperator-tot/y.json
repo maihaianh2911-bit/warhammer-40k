@@ -3,7 +3,7 @@
   "tom_tat": "Lore Warhammer 40K: Hoàng đế trông như xác chết nhưng là Perpetual bất tử, linh hồn vẫn can thiệp vào thiên hà. Giọng điệu bí ẩn, kết hài hước. Nên chọn hình cùng một kiểu (tranh/art Warhammer tông tối, vàng – đỏ) cho đồng bộ.",
   "ngon_ngu": "de",
   "khung": "9:16",
-  "phu_de": true,
+  "phu_de": false,
   "y": [
     {
       "so": 1,
@@ -31,6 +31,16 @@
       "chu_the": [
         0.5,
         0.38
+      ],
+      "chu_nhan": [
+        {
+          "tu_chu": "Imperator",
+          "chu": "der|*IMPERATOR*|der Menschheit"
+        },
+        {
+          "tu_chu": "nicht",
+          "chu": "steht es|*NICHT GUT*|um ihn"
+        }
       ]
     },
     {
@@ -73,6 +83,16 @@
       "chu_the": [
         0.5,
         0.28
+      ],
+      "chu_nhan": [
+        {
+          "tu_chu": "vertrockneten",
+          "chu": "einer vertrockneten|*LEICHE*"
+        },
+        {
+          "tu_chu": "regungslos",
+          "chu": "*REGUNGSLOS*"
+        }
       ]
     },
     {
@@ -121,6 +141,16 @@
         {
           "loai": "hit",
           "tu_chu": "Leichen-Imperator"
+        }
+      ],
+      "chu_nhan": [
+        {
+          "tu_chu": "Verräter",
+          "chu": "die|*VERRÄTER*"
+        },
+        {
+          "tu_chu": "„Leichen-Imperator“",
+          "chu": "„*LEICHEN-*|*IMPERATOR*“"
         }
       ]
     },
@@ -177,6 +207,24 @@
       "chu_the": [
         0.5,
         0.33
+      ],
+      "chu_nhan": [
+        {
+          "tu_chu": "bewegt",
+          "chu": "bewegt sich|*NICHT*"
+        },
+        {
+          "tu_chu": "spricht",
+          "chu": "spricht|*NICHT*"
+        },
+        {
+          "tu_chu": "Nahrung",
+          "chu": "KEINE|*NAHRUNG*"
+        },
+        {
+          "tu_chu": "atmet",
+          "chu": "atmet|*NICHT*|einmal mehr"
+        }
       ]
     },
     {
@@ -230,6 +278,12 @@
           "loai": "hit",
           "tu_chu": "Tod"
         }
+      ],
+      "chu_nhan": [
+        {
+          "tu_chu": "Tod",
+          "chu": "der|*TOD*"
+        }
       ]
     },
     {
@@ -278,7 +332,22 @@
           "loai": "shimmer",
           "luc": 0.05
         }
-      ]
+      ],
+      "chu_nhan": [
+        {
+          "tu_chu": "gewöhnlicher",
+          "chu": "kein|*GEWÖHNLICHER*|Mensch"
+        },
+        {
+          "tu_chu": "unsterblicher",
+          "chu": "ein|*UNSTERBLICHER*"
+        },
+        {
+          "tu_chu": "Perpetual",
+          "chu": "ein sogenannter|*PERPETUAL*"
+        }
+      ],
+      "vao": "khoi"
     },
     {
       "so": 7,
@@ -320,7 +389,18 @@
       "chu_the": [
         0.47,
         0.3
-      ]
+      ],
+      "chu_nhan": [
+        {
+          "tu_chu": "stirbt",
+          "chu": "wenn ein Perpetual|*STIRBT*"
+        },
+        {
+          "tu_chu": "regeneriert",
+          "chu": "*REGENERIERT*|sich selbst"
+        }
+      ],
+      "vao": "nhoe"
     },
     {
       "so": 8,
@@ -355,6 +435,12 @@
         {
           "loai": "boom",
           "tu_chu": "niemals"
+        }
+      ],
+      "chu_nhan": [
+        {
+          "tu_chu": "niemals",
+          "chu": "*NIEMALS*|endgültig sterben"
         }
       ]
     },
@@ -411,7 +497,18 @@
       "chu_the": [
         0.5,
         0.38
-      ]
+      ],
+      "chu_nhan": [
+        {
+          "tu_chu": "Goldenen",
+          "chu": "der|*GOLDENE THRON*"
+        },
+        {
+          "tu_chu": "Lebenskraft",
+          "chu": "zehrt seine|*LEBENSKRAFT*|auf"
+        }
+      ],
+      "vao": "nhoe"
     },
     {
       "so": 10,
@@ -440,6 +537,12 @@
       "chu_the": [
         0.4,
         0.3
+      ],
+      "chu_nhan": [
+        {
+          "tu_chu": "zwischen",
+          "chu": "zwischen|*LEBEN*|*UND TOD*"
+        }
       ]
     },
     {
@@ -484,7 +587,22 @@
       "chu_the": [
         0.43,
         0.32
-      ]
+      ],
+      "chu_nhan": [
+        {
+          "tu_chu": "biologisch",
+          "chu": "*BIOLOGISCH*|tot"
+        },
+        {
+          "tu_chu": "Geist",
+          "chu": "doch sein|*GEIST*"
+        },
+        {
+          "tu_chu": "hellwach",
+          "chu": "*HELLWACH*"
+        }
+      ],
+      "vao": "khoi"
     },
     {
       "so": 12,
@@ -535,6 +653,20 @@
           "loai": "riser",
           "tu_chu": "sogar"
         }
+      ],
+      "chu_nhan": [
+        {
+          "tu_chu": "kommunizieren",
+          "chu": "*KOMMUNIZIEREN*"
+        },
+        {
+          "tu_chu": "größter",
+          "chu": "in Momenten|*GRÖSSTER NOT*"
+        },
+        {
+          "tu_chu": "eingreifen",
+          "chu": "direkt|*EINGREIFEN*"
+        }
       ]
     },
     {
@@ -570,7 +702,14 @@
           "loai": "shimmer",
           "tu_chu": "Astronomican"
         }
-      ]
+      ],
+      "chu_nhan": [
+        {
+          "tu_chu": "Astronomican",
+          "chu": "lenkt das|*ASTRONOMICAN*"
+        }
+      ],
+      "vao": "nhoe"
     },
     {
       "so": 14,
@@ -599,6 +738,12 @@
       "chu_the": [
         0.5,
         0.28
+      ],
+      "chu_nhan": [
+        {
+          "tu_chu": "Lebenden",
+          "chu": "den|*LEBENDEN*|*HEILIGEN*"
+        }
       ]
     },
     {
@@ -648,6 +793,12 @@
           "loai": "hit",
           "tu_chu": "Guilliman"
         }
+      ],
+      "chu_nhan": [
+        {
+          "tu_chu": "Guilliman",
+          "chu": "Primarch|*GUILLIMAN*|wiederbelebt"
+        }
       ]
     },
     {
@@ -683,6 +834,12 @@
         {
           "loai": "boom",
           "tu_chu": "Brand"
+        }
+      ],
+      "chu_nhan": [
+        {
+          "tu_chu": "Nurgles",
+          "chu": "*NURGLES*|*GARTEN*|in Brand gesteckt"
         }
       ]
     },
@@ -726,7 +883,14 @@
       "chu_the": [
         0.5,
         0.22
-      ]
+      ],
+      "chu_nhan": [
+        {
+          "tu_chu": "unmöglich",
+          "chu": "schlichtweg|*UNMÖGLICH*"
+        }
+      ],
+      "vao": "khoi"
     },
     {
       "so": 18,
@@ -788,7 +952,22 @@
           "loai": "riser",
           "tu_chu": "Mumien"
         }
-      ]
+      ],
+      "chu_nhan": [
+        {
+          "tu_chu": "Verwirrung",
+          "chu": "die|*VERWIRRUNG*"
+        },
+        {
+          "tu_chu": "Mumien",
+          "chu": "altägyptische|*MUMIEN*"
+        },
+        {
+          "tu_chu": "gesünder",
+          "chu": "sehen|*GESÜNDER*|aus als er"
+        }
+      ],
+      "vao": "nhoe"
     }
   ],
   "vi_tri_phu_de": 0.8,

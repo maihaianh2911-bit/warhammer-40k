@@ -14,7 +14,8 @@ Mỗi ý trong y.json có thể có `canh` — danh sách cảnh do Claude biên
   Hoặc `luc`: giây tính từ đầu ý.
 - `file`: file thứ mấy trong ô của ý (1 = đầu tiên). `tu_giay`: video bắt đầu lấy từ giây nào.
 - `vao`: cách vào cảnh: `cat` (cắt thẳng, mặc định) · `mo` (hòa hình) · `flash` (chớp trắng) ·
-  `giat` (giật zoom) · `lia` (lia nhanh) · `toi` (từ đen ra).
+  `giat` (giật zoom) · `lia` (lia nhanh) · `toi` (từ đen ra) · `khoi` (khói/lửa màu quét qua, `mau_khoi`) ·
+  `nhoe` (nhòe mờ rồi hiện ra). Với `kieu_edit` có thể đặt `vao` cho cả ý: `y[].vao`.
 - `rung`: rung máy 0–1. `vua`: `cover` (lấp đầy) / `contain` (giữ trọn ảnh trên nền mờ). `muot`: true = chậm dần.
 
 Kiểu dựng cả video (`kieu_edit` trong y.json, đè lên `canh`):
@@ -259,13 +260,14 @@ def lia_xen_ke(b, media, words, t0, t1, plan, counter):
     out = []
     for j in range(n):
         if isinstance(media[j], Path) and _is_video(media[j]):  # video: giữ nguyên, không zoom/lia
-            out.append(dict(luc=bounds[j] - t0, file=j + 1, vua='cover', tu=[0.5, 0.5, 1.0], den=[0.5, 0.5, 1.0]))
+            out.append(dict(luc=bounds[j] - t0, file=j + 1, vua='cover', tu=[0.5, 0.5, 1.0], den=[0.5, 0.5, 1.0],
+                            vao=(b.get('vao') or 'cat') if j == 0 else 'cat'))
             continue
         sx, sy = (pts[j] if j < len(pts) else pts[-1])[:2]
         # ảnh dịch trái → phải = khung nhìn đi từ bên phải chủ thể về chủ thể (và ngược lại)
         d = 1 if counter[0] % 2 == 0 else -1
         counter[0] += 1
-        out.append(dict(luc=bounds[j] - t0, file=j + 1, vua='cover',
+        out.append(dict(luc=bounds[j] - t0, file=j + 1, vua='cover', vao=(b.get('vao') or 'cat') if j == 0 else 'cat',
                         tu=[sx + d * dx, sy, z0], den=[sx, sy, z1]))
     return out
 
@@ -378,10 +380,65 @@ def whip(img, amount, W):
     return Image.fromarray(np.clip(acc / n, 0, 255).astype(np.uint8))
 
 
+_SMOKE = {}
+
+
+def smoke(frame, cover, t, W, H, color):
+    """Khói màu quét từ dưới-trái lên: cover 0 → không có, 1 → phủ kín."""
+    key = (W, H)
+    if key not in _SMOKE:
+        rng = np.random.default_rng(3)
+        w, h = max(8, W // 12), max(8, H // 12)
+        def octave(blur):
+            r = rng.random((h * 2, w))
+            return np.asarray(Image.fromarray((r * 255).astype(np.uint8)).filter(ImageFilter.GaussianBlur(blur)), dtype=np.float32)
+        n = octave(4) * 0.65 + octave(1.2) * 0.35  # khói có thớ
+        n = (n - n.min()) / max(1e-6, n.max() - n.min())
+        yy, xx = np.mgrid[0:h, 0:w].astype(np.float32)
+        grad = 1 - ((yy / h) * 0.6 + (1 - xx / w) * 0.4)  # dưới-trái tới trước
+        _SMOKE[key] = (n, grad, w, h)
+    n, grad, w, h = _SMOKE[key]
+    off = int((t * 0.6 % 1) * h)
+    field = n[off:off + h] * 0.55 + grad * 0.45
+    m = np.clip((field - 0.85 * (1 - cover) - 0.1) * 4.0, 0, 1)  # chỉ gần kín đúng lúc cắt, không đứng màu lâu
+    if m.max() <= 0:
+        return frame
+    mi = Image.fromarray((m * 255).astype(np.uint8)).resize((W, H), Image.BILINEAR).filter(ImageFilter.GaussianBlur(W // 90))
+    mm = np.asarray(mi, dtype=np.float32)[..., None] / 255
+    c0 = np.array(color, dtype=np.float32)
+    hot = np.array([255, 205, 120], dtype=np.float32)
+    col = c0 * (1 - mm * 0.35) + hot * (mm * 0.35)
+    a = np.asarray(frame, dtype=np.float32)
+    return Image.fromarray(np.clip(a * (1 - mm) + col * mm, 0, 255).astype(np.uint8))
+
+
+def blur_zoom(frame, amount, W, H):
+    if amount <= 0.01:
+        return frame
+    small = frame.resize((W // 4, H // 4), Image.BILINEAR).filter(ImageFilter.GaussianBlur(1 + 5 * amount))
+    big = small.resize((W, H), Image.BILINEAR)
+    z = 1 + 0.06 * amount
+    cw, ch = W / z, H / z
+    big = big.transform((W, H), Image.AFFINE, (1 / z, 0, (W - cw) / 2, 0, 1 / z, (H - ch) / 2), resample=Image.BILINEAR)
+    return Image.blend(frame, big, min(1.0, amount * 1.4))
+
+
+SMOKE_COLOR = [255, 110, 25]
+
+
 def compose(shots, ci, t, W, H, total, fade_out):
     c = shots[ci]
     frame = c.frame(t)
     dt = t - c.t0
+    nxt = shots[ci + 1] if ci + 1 < len(shots) else None
+    if nxt is not None and nxt.vao == 'khoi' and nxt.t0 - t < 0.32:
+        frame = smoke(frame, _ease(1 - (nxt.t0 - t) / 0.32), t, W, H, SMOKE_COLOR)
+    if nxt is not None and nxt.vao == 'nhoe' and nxt.t0 - t < 0.22:
+        frame = blur_zoom(frame, 1 - (nxt.t0 - t) / 0.22, W, H)
+    if ci > 0 and c.vao == 'khoi' and dt < 0.45:
+        frame = smoke(frame, 1 - _ease(dt / 0.45), t, W, H, SMOKE_COLOR)
+    if ci > 0 and c.vao == 'nhoe' and dt < 0.3:
+        frame = blur_zoom(frame, 1 - dt / 0.3, W, H)
     if ci > 0:
         if c.vao == 'mo' and dt < 0.35:
             frame = Image.blend(shots[ci - 1].frame(t), frame, _ease(dt / 0.35))

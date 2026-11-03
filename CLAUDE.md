@@ -99,6 +99,16 @@ Kiểu `kieu_edit: "lia_xen_ke"` (người dùng chọn cho imperator-tot): mỗ
 phải→trái, zoom dần vào `chu_the` của ý; video giữ nguyên. Claude chỉ cần đặt `chu_the` đúng chủ thể của từng ảnh.
 Toàn video: `vien_toi` (0.32), `hat_phim` (0 — bật 0.03 sẽ làm file nặng gấp nhiều lần), `tuong_phan` (1.07), `mo_cuoi` (0.7 s tối dần cuối video).
 
+## Chữ nhấn + chuyển cảnh khói/nhòe (theo video mẫu người dùng thích)
+
+Người dùng thích kiểu video lore tiếng Việt: không phụ đề cả câu, chỉ **chữ nhấn** 1–3 từ khóa (Montserrat Black Italic,
+từ chính màu xanh ngọc to, chữ phụ trắng nhỏ, bật lên đúng lúc giọng đọc tới), chuyển cảnh **khói cam** và **nhòe**.
+- `y[].chu_nhan`: `[{"tu_chu": "Perpetual", "chu": "ein sogenannter|*PERPETUAL*"}]` — dòng ngăn `|`, VIẾT HOA = to,
+  `*…*` = màu nhấn. Chọn từ khóa đúng ngôn ngữ giọng đọc; 1–3 khối mỗi ý, mỗi khối ≤ 3 dòng. Cú pháp đủ ở đầu `chu.py`.
+- Bật kiểu này thì đặt `phu_de: false`. `mau_nhan` (màu nhấn), `co_chu` (cỡ chữ).
+- `y[].vao: "khoi"` ở chỗ sang đoạn/đảo ý (2–4 lần một video), `"nhoe"` cho chuyển ý thường; còn lại cắt thẳng.
+  `mau_khoi` đổi màu khói (mặc định cam [255,110,25]).
+
 ## Âm thanh
 
 `am_thanh.py` (gọi từ `ghep.py dung`): giọng + nhạc nền (tự nhỏ khi có giọng) + hiệu ứng tự đặt theo cách chuyển cảnh

@@ -2,7 +2,7 @@
 
 Tự động theo cách dựng:
   đầu video → `boom` · cảnh `lia` → `whoosh` · `giat` → `hit` + `boom` · `flash` → `reverse` (dồn vào lúc cắt) + `shimmer`
-  · `mo` → `transition` nhẹ · `toi` → `boom` nhẹ · cắt thẳng sang ý mới → `whoosh` rất nhẹ.
+  · `mo` → `transition` nhẹ · `toi` → `boom` nhẹ · `khoi` → `transition` + `boom` · `nhoe` → `whoosh` · cắt thẳng sang ý mới → `whoosh` rất nhẹ.
 Trong y.json (đều không bắt buộc):
   "nhac": "cinematic_suspense" | "mystery" | "horror_tension" | false   (file du-an/<ten>/nhac.* của bạn luôn được ưu tiên)
   "do_to": -9           độ to tổng (LUFS; −14 nhỏ hơn, chuẩn nền tảng) · "nhac_db": -3  độ to nhạc (cao hơn = to hơn; 0 ≈ ngang giọng) so với giọng (dB) · "sfx_db": 0  cộng/trừ cho mọi hiệu ứng
@@ -43,6 +43,10 @@ def su_kien(shots, beats, timing, plan, cut_at, word_times):
             ev += [(t, 'reverse', DB['reverse']), (t + 0.05, 'shimmer', DB['shimmer'])]
         elif v == 'mo':
             ev.append((t, 'transition', DB['transition'] - 4))
+        elif v == 'khoi':
+            ev += [(t, 'transition', DB['transition'] + 3), (t + 0.02, 'boom', DB['boom'] - 3)]
+        elif v == 'nhoe':
+            ev.append((t, 'whoosh', DB['whoosh'] - 2))
         elif v == 'toi':
             ev.append((t, 'boom', DB['boom'] - 4))
         elif new_idea:

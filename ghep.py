@@ -488,6 +488,9 @@ def cmd_dung(a):
     clips, missing = bien_tap.build_shots(d, beats, timing, W, H, fps, plan, images_for, open_image, placeholder,
                                           a.nhap or a.cho_phep_thieu, die)
     look = bien_tap.Look(W, H, plan)
+    bien_tap.SMOKE_COLOR = list(plan.get('mau_khoi', [255, 110, 25]))
+    import chu
+    chu_blocks = chu.build(beats, timing, W, H, plan, bien_tap.cut_at, bien_tap.word_times)
     fade_out = float(plan.get('mo_cuoi', 0.7))
     subs_on = plan.get('phu_de', True)
     subs = []
@@ -526,6 +529,8 @@ def cmd_dung(a):
             ci += 1
         frame = bien_tap.compose(clips, ci, t, W, H, total, fade_out) if clips else Image.new('RGB', (W, H))
         frame = Image.fromarray(look.apply(frame))
+        if chu_blocks:
+            frame = chu.draw_all(chu_blocks, frame, t)
         for s, e, img in subs:
             if s <= t < e:
                 frame.paste(img, (0, int(H * sub_y - img.height / 2)), img)
