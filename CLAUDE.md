@@ -133,7 +133,7 @@ cười ở câu đùa, suy nghĩ ở câu hỏi, chỉ tay khi giới thiệu),
 (`lia`→vút, `giat`→va + bùm, `flash`→dồn ngược + ngân, sang ý mới→vút nhẹ, đầu video→bùm), master −9 LUFS, đỉnh ≈ −0.5 dB
 (người dùng muốn to). Nhạc: `du-an/<ten>/nhac.*` (người dùng tải trên trang) hoặc `nhac` trong y.json
 (`cinematic_suspense` mặc định · `mystery` · `horror_tension` · `false`). Hiệu ứng thêm ở từ nhấn: `y[].am`
-(`[{"loai": "boom", "tu_chu": "Tod"}]`). Kho CC0 ở `am-thanh/` (`thu-vien.json`, `CREDITS.md`). Giọng được ép + nâng 3 kHz cho rõ. Chỉnh: `do_to`, `giong_db`, `nhac_db` (−5 mặc định ≈ nhạc 10 LU dưới giọng; người dùng chê cả nhạc quá nhỏ ở 29 LU lẫn giọng quá nhỏ ở 6 LU), `sfx_db` (−2).
+(`[{"loai": "boom", "tu_chu": "Tod"}]`). Kho CC0 ở `am-thanh/` (`thu-vien.json`, `CREDITS.md`). Giọng được ép + nâng 3 kHz cho rõ. Chỉnh: `do_to`, `giong_db` (+5 mặc định — người dùng yêu cầu), `nhac_db` (−5 mặc định ≈ nhạc 10 LU dưới giọng; người dùng chê cả nhạc quá nhỏ ở 29 LU lẫn giọng quá nhỏ ở 6 LU), `sfx_db` (−2).
 
 ## Làm nét ảnh nhỏ (AI)
 

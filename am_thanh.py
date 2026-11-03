@@ -5,7 +5,7 @@ Tự động theo cách dựng:
   · `mo` → `transition` nhẹ · `toi` → `boom` nhẹ · `khoi` → `transition` + `boom` · `nhoe` → `whoosh` · cắt thẳng sang ý mới → `whoosh` rất nhẹ.
 Trong y.json (đều không bắt buộc):
   "nhac": "cinematic_suspense" | "mystery" | "horror_tension" | false   (file du-an/<ten>/nhac.* của bạn luôn được ưu tiên)
-  "giong_db": 0         cộng/trừ riêng cho giọng · "do_to": -9  độ to tổng (LUFS; −14 nhỏ hơn, chuẩn nền tảng) · "nhac_db": -3  độ to nhạc (cao hơn = to hơn; 0 ≈ ngang giọng) so với giọng (dB) · "sfx_db": 0  cộng/trừ cho mọi hiệu ứng
+  "giong_db": 5         cộng/trừ riêng cho giọng · "do_to": -9  độ to tổng (LUFS; −14 nhỏ hơn, chuẩn nền tảng) · "nhac_db": -3  độ to nhạc (cao hơn = to hơn; 0 ≈ ngang giọng) so với giọng (dB) · "sfx_db": 0  cộng/trừ cho mọi hiệu ứng
   "am_thanh": false     chỉ giữ giọng đọc
   y[].am: [{"loai": "boom", "tu_chu": "Tod", "db": -8}]   thêm hiệu ứng ở từ đó (hoặc "luc": giây tính từ đầu ý)
 Loại có sẵn: whoosh, transition, boom, hit, riser, shimmer, reverse (am-thanh/thu-vien.json, đều CC0).
@@ -83,7 +83,7 @@ def tron(d, voice, total, events, plan, out):
     inputs, chains, labels = ['-i', str(voice)], [], []
     fmt = 'aformat=sample_fmts=fltp:sample_rates=48000:channel_layouts=stereo'
     # giọng: cắt ù, ép cho đều và dày, nâng 3 kHz cho rõ lời (người dùng chê giọng nhỏ so với nhạc)
-    gdb = float(plan.get('giong_db', 0))
+    gdb = float(plan.get('giong_db', 5))  # người dùng muốn giọng +5 dB
     vchain = (f'highpass=f=80,acompressor=threshold=-22dB:ratio=3.5:attack=5:release=90:makeup=8dB,'
               f'equalizer=f=3200:t=q:w=1.2:g=3,volume={gdb}dB')
     chains.append(f'[0:a]{fmt},{vchain},apad,atrim=0:{total:.3f},asplit=2[v][vsc]')
