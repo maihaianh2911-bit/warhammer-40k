@@ -314,7 +314,7 @@ class Look:
     def __init__(self, W, H, plan):
         self.contrast = float(plan.get('tuong_phan', 1.07))
         vig = float(plan.get('vien_toi', 0.32))
-        grain = float(plan.get('hat_phim', 0.045))
+        grain = float(plan.get('hat_phim', 0))  # hạt phim làm video nặng gấp chục lần — mặc định tắt
         yy, xx = np.mgrid[0:H, 0:W].astype(np.float32)
         r = np.sqrt(((xx - W / 2) / (W / 2)) ** 2 + ((yy - H / 2) / (H / 2)) ** 2) / math.sqrt(2)
         self.vmask = (1 - vig * np.clip(r, 0, 1) ** 2.2)[..., None].astype(np.float32)

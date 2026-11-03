@@ -509,7 +509,7 @@ def cmd_dung(a):
                 f'[1:a][m]amix=inputs=2:duration=first:normalize=0[a]', '-map', '0:v', '-map', '[a]']
     else:
         cmd += ['-map', '0:v', '-map', '1:a', '-af', 'apad']
-    cap = []
+    cap = ['-maxrate', '8M', '-bufsize', '16M']
     if a.toi_da_mb:
         kbps = int(a.toi_da_mb * 8 * 1024 * 0.9 / total) - 192
         cap = ['-maxrate', f'{max(kbps, 300)}k', '-bufsize', f'{max(kbps, 300) * 2}k']
