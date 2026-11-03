@@ -16,4 +16,4 @@
 
 **Tìm bằng tiếng Anh (nhiều kết quả hơn):** Imperium collapse, fall of Cadia
 
-**Đã dán:** — chưa có
+**Đã dán:** 01-9.jpg

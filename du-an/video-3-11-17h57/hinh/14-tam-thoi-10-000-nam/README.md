@@ -16,4 +16,4 @@
 
 **Tìm bằng tiếng Anh (nhiều kết quả hơn):** Emperor interred Golden Throne
 
-**Đã dán:** — chưa có
+**Đã dán:** 01-images.jfif

@@ -16,4 +16,4 @@
 
 **Tìm bằng tiếng Anh (nhiều kết quả hơn):** Golden Throne machine, Adeptus Mechanicus throne
 
-**Đã dán:** — chưa có
+**Đã dán:** 01-4.jfif

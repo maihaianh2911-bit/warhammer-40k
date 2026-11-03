@@ -16,4 +16,4 @@
 
 **Tìm bằng tiếng Anh (nhiều kết quả hơn):** comment icon
 
-**Đã dán:** — chưa có
+**Đã dán:** 01-4.jfif

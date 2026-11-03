@@ -16,4 +16,4 @@
 
 **Tìm bằng tiếng Anh (nhiều kết quả hơn):** Tyranid swarm, Hive Fleet
 
-**Đã dán:** — chưa có
+**Đã dán:** 01-images (1).jfif

@@ -16,4 +16,4 @@
 
 **Tìm bằng tiếng Anh (nhiều kết quả hơn):** Emperor vs Horus, Horus Heresy duel
 
-**Đã dán:** — chưa có
+**Đã dán:** 01-2.jfif

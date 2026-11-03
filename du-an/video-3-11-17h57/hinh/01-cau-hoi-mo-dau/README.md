@@ -16,4 +16,4 @@
 
 **Tìm bằng tiếng Anh (nhiều kết quả hơn):** Emperor on the Golden Throne, Golden Throne
 
-**Đã dán:** — chưa có
+**Đã dán:** 01-1.webp

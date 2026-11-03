@@ -16,4 +16,4 @@
 
 **Tìm bằng tiếng Anh (nhiều kết quả hơn):** Tyranid hive fleet consuming planet
 
-**Đã dán:** — chưa có
+**Đã dán:** 01-vanqynfqbes7llps.jpg

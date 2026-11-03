@@ -20,7 +20,7 @@ Khung hình: **9:16** · 20 ý · Mỗi ý có một **ô dán** (thư mục tro
 
 **Tìm bằng tiếng Anh (nhiều kết quả hơn):** Emperor on the Golden Throne, Golden Throne
 
-**Đã dán:** — chưa có
+**Đã dán:** 01-1.webp
 
 ## Ý 02 — Trận chiến với Horus
 
@@ -38,7 +38,7 @@ Khung hình: **9:16** · 20 ý · Mỗi ý có một **ô dán** (thư mục tro
 
 **Tìm bằng tiếng Anh (nhiều kết quả hơn):** Emperor vs Horus, Horus Heresy duel
 
-**Đã dán:** — chưa có
+**Đã dán:** 01-2.jfif
 
 ## Ý 03 — 10.000 năm giữa sống và chết
 
@@ -56,7 +56,7 @@ Khung hình: **9:16** · 20 ý · Mỗi ý có một **ô dán** (thư mục tro
 
 **Tìm bằng tiếng Anh (nhiều kết quả hơn):** Corpse Emperor close up
 
-**Đã dán:** — chưa có
+**Đã dán:** 01-3.jfif
 
 ## Ý 04 — Cỗ máy Ngai Vàng
 
@@ -74,7 +74,7 @@ Khung hình: **9:16** · 20 ý · Mỗi ý có một **ô dán** (thư mục tro
 
 **Tìm bằng tiếng Anh (nhiều kết quả hơn):** Golden Throne machine, Adeptus Mechanicus throne
 
-**Đã dán:** — chưa có
+**Đã dán:** 01-4.jfif
 
 ## Ý 05 — 1.000 psyker bị hiến tế mỗi ngày
 
@@ -92,7 +92,7 @@ Khung hình: **9:16** · 20 ý · Mỗi ý có một **ô dán** (thư mục tro
 
 **Tìm bằng tiếng Anh (nhiều kết quả hơn):** psyker sacrifice Golden Throne, Black Ships psykers
 
-**Đã dán:** — chưa có
+**Đã dán:** 01-8exf750aeveh1.png
 
 ## Ý 06 — Nếu Ngài thật sự chết
 
@@ -110,7 +110,7 @@ Khung hình: **9:16** · 20 ý · Mỗi ý có một **ô dán** (thư mục tro
 
 **Tìm bằng tiếng Anh (nhiều kết quả hơn):** Golden Throne dark, Emperor dying
 
-**Đã dán:** — chưa có
+**Đã dán:** 01-6.jfif
 
 ## Ý 07 — Tàu vũ trụ đi xa
 
@@ -128,7 +128,7 @@ Khung hình: **9:16** · 20 ý · Mỗi ý có một **ô dán** (thư mục tro
 
 **Tìm bằng tiếng Anh (nhiều kết quả hơn):** Imperial Navy battleship, Warhammer 40k spaceship
 
-**Đã dán:** — chưa có
+**Đã dán:** 01-7.jfif
 
 ## Ý 08 — Xuyên qua Warp
 
@@ -146,7 +146,7 @@ Khung hình: **9:16** · 20 ý · Mỗi ý có một **ô dán** (thư mục tro
 
 **Tìm bằng tiếng Anh (nhiều kết quả hơn):** Warp travel, warp storm Warhammer
 
-**Đã dán:** — chưa có
+**Đã dán:** 01-9.jpg
 
 ## Ý 09 — Navigator & Astronomican
 
@@ -164,7 +164,7 @@ Khung hình: **9:16** · 20 ý · Mỗi ý có một **ô dán** (thư mục tro
 
 **Tìm bằng tiếng Anh (nhiều kết quả hơn):** Navigator Warhammer 40k third eye
 
-**Đã dán:** — chưa có
+**Đã dán:** 01-8.jfif
 
 ## Ý 10 — Chỉ Hoàng đế điều khiển
 
@@ -182,7 +182,7 @@ Khung hình: **9:16** · 20 ý · Mỗi ý có một **ô dán** (thư mục tro
 
 **Tìm bằng tiếng Anh (nhiều kết quả hơn):** Astronomican beacon, Terra from space
 
-**Đã dán:** — chưa có
+**Đã dán:** 01-1.webp
 
 ## Ý 11 — Ánh sáng tắt
 
@@ -200,7 +200,7 @@ Khung hình: **9:16** · 20 ý · Mỗi ý có một **ô dán** (thư mục tro
 
 **Tìm bằng tiếng Anh (nhiều kết quả hơn):** light goes out, candle extinguished dark
 
-**Đã dán:** — chưa có
+**Đã dán:** 01-4.jfif
 
 ## Ý 12 — Đế chế sụp đổ
 
@@ -218,7 +218,7 @@ Khung hình: **9:16** · 20 ý · Mỗi ý có một **ô dán** (thư mục tro
 
 **Tìm bằng tiếng Anh (nhiều kết quả hơn):** Imperium collapse, fall of Cadia
 
-**Đã dán:** — chưa có
+**Đã dán:** 01-9.jpg
 
 ## Ý 13 — Miễn cưỡng đồng ý
 
@@ -236,7 +236,7 @@ Khung hình: **9:16** · 20 ý · Mỗi ý có một **ô dán** (thư mục tro
 
 **Tìm bằng tiếng Anh (nhiều kết quả hơn):** Emperor of Mankind portrait
 
-**Đã dán:** — chưa có
+**Đã dán:** 01-astropath-choir.webp
 
 ## Ý 14 — Tạm thời 10.000 năm
 
@@ -254,7 +254,7 @@ Khung hình: **9:16** · 20 ý · Mỗi ý có một **ô dán** (thư mục tro
 
 **Tìm bằng tiếng Anh (nhiều kết quả hơn):** Emperor interred Golden Throne
 
-**Đã dán:** — chưa có
+**Đã dán:** 01-images.jfif
 
 ## Ý 15 — Ngai Vàng mục nát
 
@@ -272,7 +272,7 @@ Khung hình: **9:16** · 20 ý · Mỗi ý có một **ô dán** (thư mục tro
 
 **Tìm bằng tiếng Anh (nhiều kết quả hơn):** rusted machinery gothic, Golden Throne failing
 
-**Đã dán:** — chưa có
+**Đã dán:** 01-1.webp
 
 ## Ý 16 — Ánh sáng hút bầy Tyranid
 
@@ -290,7 +290,7 @@ Khung hình: **9:16** · 20 ý · Mỗi ý có một **ô dán** (thư mục tro
 
 **Tìm bằng tiếng Anh (nhiều kết quả hơn):** Tyranid swarm, Hive Fleet
 
-**Đã dán:** — chưa có
+**Đã dán:** 01-images (1).jfif
 
 ## Ý 17 — Nuốt chửng thiên hà
 
@@ -308,7 +308,7 @@ Khung hình: **9:16** · 20 ý · Mỗi ý có một **ô dán** (thư mục tro
 
 **Tìm bằng tiếng Anh (nhiều kết quả hơn):** Tyranid hive fleet consuming planet
 
-**Đã dán:** — chưa có
+**Đã dán:** 01-vanqynfqbes7llps.jpg
 
 ## Ý 18 — Như thiêu thân lao vào đèn
 
@@ -326,7 +326,7 @@ Khung hình: **9:16** · 20 ý · Mỗi ý có một **ô dán** (thư mục tro
 
 **Tìm bằng tiếng Anh (nhiều kết quả hơn):** moths flying to light
 
-**Đã dán:** — chưa có
+**Đã dán:** 01-TyranidsvChaos.jpg
 
 ## Ý 19 — Câu hỏi cho người xem
 
@@ -344,7 +344,7 @@ Khung hình: **9:16** · 20 ý · Mỗi ý có một **ô dán** (thư mục tro
 
 **Tìm bằng tiếng Anh (nhiều kết quả hơn):** Golden Throne glowing, Astronomican light
 
-**Đã dán:** — chưa có
+**Đã dán:** 01-6.jfif
 
 ## Ý 20 — Kêu gọi bình luận
 
@@ -362,4 +362,4 @@ Khung hình: **9:16** · 20 ý · Mỗi ý có một **ô dán** (thư mục tro
 
 **Tìm bằng tiếng Anh (nhiều kết quả hơn):** comment icon
 
-**Đã dán:** — chưa có
+**Đã dán:** 01-4.jfif

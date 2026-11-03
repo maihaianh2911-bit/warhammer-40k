@@ -16,4 +16,4 @@
 
 **Tìm bằng tiếng Anh (nhiều kết quả hơn):** Imperial Navy battleship, Warhammer 40k spaceship
 
-**Đã dán:** — chưa có
+**Đã dán:** 01-7.jfif

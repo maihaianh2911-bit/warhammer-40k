@@ -16,4 +16,4 @@
 
 **Tìm bằng tiếng Anh (nhiều kết quả hơn):** Corpse Emperor close up
 
-**Đã dán:** — chưa có
+**Đã dán:** 01-3.jfif

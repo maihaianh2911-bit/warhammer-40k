@@ -24,7 +24,8 @@ Kiểu dựng cả video (`kieu_edit` trong y.json, đè lên `canh`):
   `zoom_dau` (1.22), `zoom_cuoi` (1.48), `do_lia` (0.16 — quãng dịch, tính theo bề ngang ảnh).
 
 - `theo_mau` (mặc định người dùng chọn, đo từ video mẫu): xen kẽ `zoom_ra` (vào phóng ~1.45, lùi nhanh rồi chậm dần
-  tới đứng yên ~2–3 s) và `troi` (trôi ngang đều ~3.5% bề ngang/giây, zoom cố định 1.18). `y[].chuyen` đặt riêng kiểu.
+  tới đứng yên ~2–3 s) và `troi` (trôi ngang đều ~3.5% bề ngang/giây, zoom cố định 1.18). `y[].chuyen` đặt riêng kiểu,
+  `y[].zoom_cuoi` giữ khung chặt hơn ở cuối (né chữ/watermark ở mép ảnh).
   Chỉnh: `zoom_dau`, `zoom_troi`, `toc_do_troi`. Trong `canh` tự viết cũng dùng được `kieu: "zoom_ra" | "troi"`, `toc_do`.
 
 Không có `canh` → máy tự biên tập (ý dài chia 2 cảnh toàn → cận, ảnh ngang thì lia ngang, chuyển động đều).
@@ -317,13 +318,17 @@ def theo_mau(b, media, words, t0, t1, plan, counter):
         k = counter[0]
         counter[0] += 1
         kieu = b.get('chuyen') or ('zoom_ra' if (vao in ('khoi', 'nhoe', 'flash', 'giat') or k % 2 == 0) else 'troi')
+        zc = b.get('zoom_cuoi')  # giữ khung chặt hơn (vd né chữ/watermark ở mép ảnh)
         if kieu == 'zoom_ra':
+            ze = float(zc or 1.0)
+            ex, ey = (sx, sy) if zc else (0.5 + (sx - 0.5) * 0.4, 0.5 + (sy - 0.5) * 0.4)
             out.append(dict(luc=bounds[j] - t0, file=j + 1, vua='cover', vao=vao, kieu='zoom_ra',
-                            tu=[sx, sy, z_dau], den=[0.5 + (sx - 0.5) * 0.4, 0.5 + (sy - 0.5) * 0.4, 1.0]))
+                            tu=[sx, sy, max(z_dau, ze + 0.4)], den=[ex, ey, ze]))
         else:
             d = 1 if (k // 2) % 2 == 0 else -1
+            zt = float(zc or z_troi)
             out.append(dict(luc=bounds[j] - t0, file=j + 1, vua='cover', vao=vao, kieu='troi', toc_do=v * d,
-                            tu=[sx, sy, z_troi], den=[sx, sy, z_troi]))
+                            tu=[sx, sy, zt], den=[sx, sy, zt]))
     return out
 
 

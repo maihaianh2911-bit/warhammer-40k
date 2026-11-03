@@ -16,4 +16,4 @@
 
 **Tìm bằng tiếng Anh (nhiều kết quả hơn):** Navigator Warhammer 40k third eye
 
-**Đã dán:** — chưa có
+**Đã dán:** 01-8.jfif

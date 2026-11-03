@@ -16,4 +16,4 @@
 
 **Tìm bằng tiếng Anh (nhiều kết quả hơn):** psyker sacrifice Golden Throne, Black Ships psykers
 
-**Đã dán:** — chưa có
+**Đã dán:** 01-8exf750aeveh1.png

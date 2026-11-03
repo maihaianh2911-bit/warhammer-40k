@@ -16,4 +16,4 @@
 
 **Tìm bằng tiếng Anh (nhiều kết quả hơn):** rusted machinery gothic, Golden Throne failing
 
-**Đã dán:** — chưa có
+**Đã dán:** 01-1.webp

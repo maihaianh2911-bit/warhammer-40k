@@ -16,4 +16,4 @@
 
 **Tìm bằng tiếng Anh (nhiều kết quả hơn):** moths flying to light
 
-**Đã dán:** — chưa có
+**Đã dán:** 01-TyranidsvChaos.jpg

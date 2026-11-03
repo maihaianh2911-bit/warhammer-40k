@@ -16,4 +16,4 @@
 
 **Tìm bằng tiếng Anh (nhiều kết quả hơn):** Emperor of Mankind portrait
 
-**Đã dán:** — chưa có
+**Đã dán:** 01-astropath-choir.webp

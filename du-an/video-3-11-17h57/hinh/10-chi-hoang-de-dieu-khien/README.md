@@ -16,4 +16,4 @@
 
 **Tìm bằng tiếng Anh (nhiều kết quả hơn):** Astronomican beacon, Terra from space
 
-**Đã dán:** — chưa có
+**Đã dán:** 01-1.webp

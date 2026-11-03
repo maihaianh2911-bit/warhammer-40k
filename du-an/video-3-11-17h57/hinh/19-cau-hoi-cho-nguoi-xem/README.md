@@ -16,4 +16,4 @@
 
 **Tìm bằng tiếng Anh (nhiều kết quả hơn):** Golden Throne glowing, Astronomican light
 
-**Đã dán:** — chưa có
+**Đã dán:** 01-6.jfif

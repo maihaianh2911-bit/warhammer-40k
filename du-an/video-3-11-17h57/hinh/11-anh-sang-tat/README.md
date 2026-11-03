@@ -16,4 +16,4 @@
 
 **Tìm bằng tiếng Anh (nhiều kết quả hơn):** light goes out, candle extinguished dark
 
-**Đã dán:** — chưa có
+**Đã dán:** 01-4.jfif
