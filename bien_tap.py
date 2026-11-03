@@ -23,6 +23,10 @@ Kiểu dựng cả video (`kieu_edit` trong y.json, đè lên `canh`):
   dần vào chủ thể (video giữ nguyên, không zoom/lia). Chủ thể từng ý: `chu_the: [x, y]` (hoặc danh sách, một điểm cho mỗi file). Chỉnh:
   `zoom_dau` (1.22), `zoom_cuoi` (1.48), `do_lia` (0.16 — quãng dịch, tính theo bề ngang ảnh).
 
+- `theo_mau` (mặc định người dùng chọn, đo từ video mẫu): xen kẽ `zoom_ra` (vào phóng ~1.45, lùi nhanh rồi chậm dần
+  tới đứng yên ~2–3 s) và `troi` (trôi ngang đều ~3.5% bề ngang/giây, zoom cố định 1.18). `y[].chuyen` đặt riêng kiểu.
+  Chỉnh: `zoom_dau`, `zoom_troi`, `toc_do_troi`. Trong `canh` tự viết cũng dùng được `kieu: "zoom_ra" | "troi"`, `toc_do`.
+
 Không có `canh` → máy tự biên tập (ý dài chia 2 cảnh toàn → cận, ảnh ngang thì lia ngang, chuyển động đều).
 """
 import json, math, re, subprocess
@@ -151,20 +155,30 @@ class VideoSource:
 # ───────────────────────── cảnh ─────────────────────────
 
 class Shot:
-    def __init__(self, src, t0, t1, W, H, tu, den, vao='cat', rung=0.0, muot=False, so=0):
+    def __init__(self, src, t0, t1, W, H, tu, den, vao='cat', rung=0.0, muot=False, so=0, kieu='deu', toc_do=0.035):
         self.src, self.t0, self.t1, self.W, self.H = src, t0, t1, W, H
         self.tu, self.den = [float(v) for v in tu], [float(v) for v in den]
         self.vao, self.rung, self.muot, self.so = vao or 'cat', float(rung or 0), bool(muot), so
+        self.kieu, self.toc_do = kieu or 'deu', float(toc_do)
         self.seed = (so * 7.13 + t0 * 3.7) % 100
 
     def frame(self, t):
         span = max(0.001, self.t1 - self.t0)
-        p = (t - self.t0) / span
-        p = _ease(p) if self.muot else min(1.0, max(0.0, p))
-        (x0, y0, z0), (x1, y1, z1) = self.tu, self.den
-        cx, cy = x0 + (x1 - x0) * p, y0 + (y1 - y0) * p
-        z = math.exp(math.log(max(1.0, z0)) + (math.log(max(1.0, z1)) - math.log(max(1.0, z0))) * p)
         dt = t - self.t0
+        (x0, y0, z0), (x1, y1, z1) = self.tu, self.den
+        if self.kieu == 'zoom_ra':  # lùi ra nhanh rồi chậm dần tới đứng yên (theo video mẫu)
+            tau = min(0.9, span / 3.5)
+            k = math.exp(-max(0.0, dt) / tau)
+            z = z1 + (z0 - z1) * k
+            cx, cy = x1 + (x0 - x1) * k, y1 + (y0 - y1) * k
+        elif self.kieu == 'troi':  # trôi ngang đều, không zoom; `toc_do` = phần bề ngang khung mỗi giây
+            z = z0
+            cx, cy = x0, y0
+        else:
+            p = dt / span
+            p = _ease(p) if self.muot else min(1.0, max(0.0, p))
+            cx, cy = x0 + (x1 - x0) * p, y0 + (y1 - y0) * p
+            z = math.exp(math.log(max(1.0, z0)) + (math.log(max(1.0, z1)) - math.log(max(1.0, z0))) * p)
         if self.vao == 'giat' and dt < 0.28:
             z *= 1 + 0.16 * (1 - dt / 0.28) ** 3
         img = self.src.get(dt)
@@ -173,6 +187,12 @@ class Shot:
         sc = min(sc, iw / self.W, ih / self.H)
         vw, vh = self.W * sc, self.H * sc
         px, py = cx * iw, cy * ih
+        if self.kieu == 'troi':  # đi hết quãng, chủ thể ở giữa quãng
+            travel = abs(self.toc_do) * self.W * sc * span
+            slack = max(0.0, iw - vw)
+            travel = min(travel, slack)
+            lo = min(max(px - travel / 2, vw / 2), iw - vw / 2 - travel)
+            px = lo + travel * min(1.0, max(0.0, dt / span)) if self.toc_do >= 0 else lo + travel * (1 - min(1.0, max(0.0, dt / span)))
         if self.rung:
             a = self.rung * self.W * 0.006
             px += sc * a * (math.sin(t * 7.3 + self.seed) + 0.6 * math.sin(t * 13.1 + self.seed * 2))
@@ -272,6 +292,41 @@ def lia_xen_ke(b, media, words, t0, t1, plan, counter):
     return out
 
 
+def theo_mau(b, media, words, t0, t1, plan, counter):
+    """Theo video mẫu người dùng thích: mỗi ảnh một cảnh lấp đầy khung, xen kẽ hai kiểu
+    `zoom_ra` (vào cảnh phóng to ~1.45 rồi lùi nhanh, chậm dần tới đứng yên) và `troi` (trôi ngang đều, không zoom).
+    Ý có `vao` khói/nhòe/chớp/giật luôn dùng zoom_ra. Đặt riêng: `y[].chuyen: "zoom_ra" | "troi"`."""
+    n = len(media)
+    ct = b.get('chu_the') or [0.5, 0.42]
+    pts = ct if ct and isinstance(ct[0], (list, tuple)) else [ct] * n
+    bounds = [t0]
+    for j in range(1, n):
+        target = t0 + (t1 - t0) * j / n
+        best = min((s for _w, s, _e in words if bounds[-1] + 0.6 < s < t1 - 0.6), key=lambda s: abs(s - target), default=target)
+        bounds.append(best - 0.07)
+    z_dau = float(plan.get('zoom_dau', 1.45))
+    z_troi = float(plan.get('zoom_troi', 1.18))
+    v = float(plan.get('toc_do_troi', 0.035))
+    out = []
+    for j in range(n):
+        vao = (b.get('vao') or 'cat') if j == 0 else 'cat'
+        if isinstance(media[j], Path) and _is_video(media[j]):
+            out.append(dict(luc=bounds[j] - t0, file=j + 1, vua='cover', tu=[0.5, 0.5, 1.0], den=[0.5, 0.5, 1.0], vao=vao))
+            continue
+        sx, sy = (pts[j] if j < len(pts) else pts[-1])[:2]
+        k = counter[0]
+        counter[0] += 1
+        kieu = b.get('chuyen') or ('zoom_ra' if (vao in ('khoi', 'nhoe', 'flash', 'giat') or k % 2 == 0) else 'troi')
+        if kieu == 'zoom_ra':
+            out.append(dict(luc=bounds[j] - t0, file=j + 1, vua='cover', vao=vao, kieu='zoom_ra',
+                            tu=[sx, sy, z_dau], den=[0.5 + (sx - 0.5) * 0.4, 0.5 + (sy - 0.5) * 0.4, 1.0]))
+        else:
+            d = 1 if (k // 2) % 2 == 0 else -1
+            out.append(dict(luc=bounds[j] - t0, file=j + 1, vua='cover', vao=vao, kieu='troi', toc_do=v * d,
+                            tu=[sx, sy, z_troi], den=[sx, sy, z_troi]))
+    return out
+
+
 def build_shots(d, beats, timing, W, H, fps, plan, images_for, open_image, placeholder, allow_missing, die):
     tmap = {t['so']: t for t in timing['y']}
     total = timing['tong']
@@ -301,6 +356,8 @@ def build_shots(d, beats, timing, W, H, fps, plan, images_for, open_image, place
         words = word_times(timing, b['so'])
         if plan.get('kieu_edit') == 'lia_xen_ke':
             canh = lia_xen_ke(b, media, words, t0, t1, plan, counter)
+        elif plan.get('kieu_edit') == 'theo_mau':
+            canh = theo_mau(b, media, words, t0, t1, plan, counter)
         else:
             canh = b.get('canh') or auto_canh(b, media, sizes, words, t0, t1, k)
         # thời điểm cắt
@@ -339,7 +396,8 @@ def build_shots(d, beats, timing, W, H, fps, plan, images_for, open_image, place
                 src = StillSource(stills[id(m)], W, H, zmax, fit)
             if not isinstance(m, Path):
                 tu = den = [0.5, 0.5, 1.0]
-            shots.append(Shot(src, s, e, W, H, tu, den, c.get('vao', 'cat'), c.get('rung', 0), c.get('muot', False), b['so']))
+            shots.append(Shot(src, s, e, W, H, tu, den, c.get('vao', 'cat'), c.get('rung', 0), c.get('muot', False), b['so'],
+                              c.get('kieu', 'deu'), c.get('toc_do', 0.035)))
     return shots, missing
 
 
