@@ -1,0 +1,469 @@
+{
+  "tieu_de": "Warum darf der Imperator nicht sterben?",
+  "tom_tat": "Lore Warhammer 40K: vì sao Đế chế buộc phải giữ Hoàng đế sống — 1.000 psyker mỗi ngày, Astronomican dẫn đường qua Warp, Ngai Vàng mục nát, và ánh sáng còn hút cả bầy Tyranid. Kết bằng câu hỏi cho người xem. Nên dùng art chính thức tông tối vàng–đỏ, cỡ lớn.",
+  "ngon_ngu": "de",
+  "khung": "9:16",
+  "phu_de": false,
+  "kieu_edit": "theo_mau",
+  "nhac": "cinematic_suspense",
+  "tieu_de_mo": {
+    "chu": "WARHAMMER|40K",
+    "phu": "WARUM DARF ER NICHT STERBEN?",
+    "den": 3.4
+  },
+  "y": [
+    {
+      "so": 1,
+      "loi": "Warum wagt es das gesamte Imperium nicht, den Imperator sterben zu lassen?",
+      "nghia": "Vì sao cả Đế chế không dám để Hoàng đế chết?",
+      "y_chinh": "Câu hỏi mở đầu",
+      "goi_y_hinh": "Hoàng đế khô quắt trên Ngai Vàng khổng lồ, hàng nghìn ngọn nến, ánh vàng rọi từ trên xuống, không khí linh thiêng u tối.",
+      "phuong_an_khac": "Art chính thức Golden Throne / Emperor on the Golden Throne.",
+      "tu_khoa": "hoàng đế trên ngai vàng warhammer 40k, ngai vàng",
+      "tu_khoa_en": "Emperor on the Golden Throne, Golden Throne",
+      "chu_nhan": [
+        {
+          "tu_chu": "Imperium",
+          "chu": "das gesamte|*IMPERIUM*"
+        },
+        {
+          "tu_chu": "sterben",
+          "chu": "den Imperator|*STERBEN*|lassen?"
+        }
+      ],
+      "nhan_vat": [
+        {
+          "bieu_cam": "suy_nghi",
+          "tu_chu": "sterben",
+          "giay": 2.2,
+          "ben": "phai"
+        }
+      ]
+    },
+    {
+      "so": 2,
+      "loi": "In Warhammer 40K wurde der Imperator der Menschheit im Kampf gegen Horus tödlich verwundet",
+      "nghia": "Trong Warhammer 40K, Hoàng đế Nhân loại bị trọng thương chí mạng khi chiến đấu với Horus.",
+      "y_chinh": "Trận chiến với Horus",
+      "goi_y_hinh": "Hoàng đế giáp vàng đối đầu Horus giáp đen khổng lồ trên chiến hạm, vũ khí giao nhau, lửa và tia sét.",
+      "phuong_an_khac": "Art Emperor vs Horus (bìa Horus Heresy, Black Library).",
+      "tu_khoa": "hoàng đế đấu horus, horus heresy",
+      "tu_khoa_en": "Emperor vs Horus, Horus Heresy duel",
+      "chu_nhan": [
+        {
+          "tu_chu": "Horus",
+          "chu": "im Kampf gegen|*HORUS*"
+        },
+        {
+          "tu_chu": "tödlich",
+          "chu": "*TÖDLICH*|verwundet"
+        }
+      ],
+      "vao": "khoi"
+    },
+    {
+      "so": 3,
+      "loi": "und sitzt seit zehntausend Jahren in einem Zustand zwischen Leben und Tod",
+      "nghia": "và đã ngồi suốt mười nghìn năm trong trạng thái giữa sống và chết",
+      "y_chinh": "10.000 năm giữa sống và chết",
+      "goi_y_hinh": "Cận mặt Hoàng đế như xác ướp trên ngai: da khô, hốc mắt sâu, dây cáp cắm vào người, bụi phủ.",
+      "phuong_an_khac": "Art Corpse Emperor cận mặt.",
+      "tu_khoa": "hoàng đế xác chết, xác ướp ngai vàng",
+      "tu_khoa_en": "Corpse Emperor close up",
+      "chu_nhan": [
+        {
+          "tu_chu": "zehntausend",
+          "chu": "seit|*10.000*|Jahren"
+        },
+        {
+          "tu_chu": "zwischen",
+          "chu": "zwischen|*LEBEN*|*UND TOD*"
+        }
+      ]
+    },
+    {
+      "so": 4,
+      "loi": "auf einer Maschine namens Goldener Thron.",
+      "nghia": "trên một cỗ máy tên là Ngai Vàng.",
+      "y_chinh": "Cỗ máy Ngai Vàng",
+      "goi_y_hinh": "Toàn cảnh Ngai Vàng như cỗ máy khổng lồ: ống dẫn, dây cáp, tech-priest áo đỏ bé xíu bên dưới.",
+      "phuong_an_khac": "Art Golden Throne machine / schematic.",
+      "tu_khoa": "cỗ máy ngai vàng warhammer, tech priest",
+      "tu_khoa_en": "Golden Throne machine, Adeptus Mechanicus throne",
+      "chu_nhan": [
+        {
+          "tu_chu": "Goldener",
+          "chu": "eine Maschine namens|*GOLDENER THRON*"
+        }
+      ]
+    },
+    {
+      "so": 5,
+      "loi": "Um seine Kraft aufrechtzuerhalten, muss das Imperium jeden Tag eintausend Psioniker opfern –",
+      "nghia": "Để duy trì sức mạnh của Ngài, mỗi ngày Đế chế phải hiến tế một nghìn người có năng lực tâm linh (psyker).",
+      "y_chinh": "1.000 psyker bị hiến tế mỗi ngày",
+      "goi_y_hinh": "Hàng dài người bị trói, đầu cạo trọc, đi trong hành lang tối về phía Ngai Vàng; hoặc psyker gầy guộc bị rút cạn năng lượng, ánh sáng xanh tỏa ra.",
+      "phuong_an_khac": "Art 'psyker sacrifice Golden Throne' hoặc Black Ships.",
+      "tu_khoa": "hiến tế psyker warhammer, black ships",
+      "tu_khoa_en": "psyker sacrifice Golden Throne, Black Ships psykers",
+      "chu_nhan": [
+        {
+          "tu_chu": "eintausend",
+          "chu": "jeden Tag|*1.000*|Psioniker"
+        },
+        {
+          "tu_chu": "opfern",
+          "chu": "*OPFERN*"
+        }
+      ],
+      "nhan_vat": [
+        {
+          "bieu_cam": "so",
+          "tu_chu": "opfern",
+          "giay": 2.0,
+          "ben": "trai"
+        }
+      ],
+      "am": [
+        {
+          "loai": "boom",
+          "tu_chu": "opfern"
+        }
+      ]
+    },
+    {
+      "so": 6,
+      "loi": "doch dieses Opfer ist nichts im Vergleich zu dem, was passiert, wenn er tatsächlich stirbt.",
+      "nghia": "nhưng sự hy sinh đó chẳng là gì so với điều sẽ xảy ra nếu Ngài thật sự chết.",
+      "y_chinh": "Nếu Ngài thật sự chết",
+      "goi_y_hinh": "Ngai Vàng tối om, ánh sáng tắt dần, vết nứt chạy khắp ngai; không khí tận thế.",
+      "phuong_an_khac": "Hình Ngai Vàng tông tối, hoặc chữ to 'WENN ER STIRBT' trên nền đen.",
+      "tu_khoa": "ngai vàng tối, hoàng đế chết",
+      "tu_khoa_en": "Golden Throne dark, Emperor dying",
+      "chu_nhan": [
+        {
+          "tu_chu": "Opfer",
+          "chu": "dieses Opfer|ist *NICHTS*"
+        },
+        {
+          "tu_chu": "stirbt",
+          "chu": "wenn er|*STIRBT*"
+        }
+      ],
+      "vao": "nhoe",
+      "am": [
+        {
+          "loai": "riser",
+          "tu_chu": "stirbt"
+        }
+      ]
+    },
+    {
+      "so": 7,
+      "loi": "Denn wenn menschliche Raumschiffe weite Strecken zurücklegen wollen,",
+      "nghia": "Bởi khi tàu vũ trụ của loài người muốn đi những quãng đường xa,",
+      "y_chinh": "Tàu vũ trụ đi xa",
+      "goi_y_hinh": "Chiến hạm gothic khổng lồ của Đế chế (như nhà thờ bay) lướt giữa không gian đầy sao.",
+      "phuong_an_khac": "Art Imperial Navy battleship / Gloriana.",
+      "tu_khoa": "chiến hạm đế chế warhammer, tàu vũ trụ gothic",
+      "tu_khoa_en": "Imperial Navy battleship, Warhammer 40k spaceship",
+      "chu_nhan": [
+        {
+          "tu_chu": "Raumschiffe",
+          "chu": "menschliche|*RAUMSCHIFFE*"
+        }
+      ],
+      "vao": "khoi"
+    },
+    {
+      "so": 8,
+      "loi": "müssen sie durch die chaotische Dimension des Warp reisen,",
+      "nghia": "chúng phải đi xuyên qua chiều không gian hỗn loạn tên là Warp,",
+      "y_chinh": "Xuyên qua Warp",
+      "goi_y_hinh": "Con tàu lao vào vùng xoáy màu tím-đỏ của Warp, những khuôn mặt quỷ ẩn hiện trong xoáy.",
+      "phuong_an_khac": "Art warp travel / warp storm.",
+      "tu_khoa": "warp warhammer, bão warp",
+      "tu_khoa_en": "Warp travel, warp storm Warhammer",
+      "chu_nhan": [
+        {
+          "tu_chu": "Warp",
+          "chu": "die chaotische Dimension|*WARP*"
+        }
+      ]
+    },
+    {
+      "so": 9,
+      "loi": "und die Navigatoren können sich dort nur mithilfe des psionischen Leuchtfeuers Astronomican orientieren,",
+      "nghia": "và các Navigator chỉ có thể định hướng ở đó nhờ ngọn hải đăng tâm linh Astronomican,",
+      "y_chinh": "Navigator & Astronomican",
+      "goi_y_hinh": "Navigator (người có con mắt thứ ba trên trán) nhìn vào cột sáng vàng xa xăm xuyên qua Warp.",
+      "phuong_an_khac": "Art Navigator third eye / Navis Nobilite.",
+      "tu_khoa": "navigator warhammer mắt thứ ba",
+      "tu_khoa_en": "Navigator Warhammer 40k third eye",
+      "chu_nhan": [
+        {
+          "tu_chu": "Navigatoren",
+          "chu": "die|*NAVIGATOREN*"
+        },
+        {
+          "tu_chu": "Astronomican",
+          "chu": "das Leuchtfeuer|*ASTRONOMICAN*"
+        }
+      ]
+    },
+    {
+      "so": 10,
+      "loi": "das allein vom Imperator gelenkt wird.",
+      "nghia": "thứ chỉ một mình Hoàng đế điều khiển.",
+      "y_chinh": "Chỉ Hoàng đế điều khiển",
+      "goi_y_hinh": "Cột sáng vàng khổng lồ bắn lên từ Trái Đất (Terra) nhìn từ vũ trụ.",
+      "phuong_an_khac": "Art Astronomican beacon from Terra.",
+      "tu_khoa": "astronomican, terra từ vũ trụ",
+      "tu_khoa_en": "Astronomican beacon, Terra from space",
+      "chu_nhan": [
+        {
+          "tu_chu": "allein",
+          "chu": "*ALLEIN*|vom Imperator"
+        }
+      ]
+    },
+    {
+      "so": 11,
+      "loi": "Fällt er, erlischt das Licht,",
+      "nghia": "Ngài gục ngã thì ánh sáng tắt,",
+      "y_chinh": "Ánh sáng tắt",
+      "goi_y_hinh": "Cột sáng Astronomican vụt tắt, Terra chìm trong bóng tối; hoặc ngọn nến bị thổi tắt.",
+      "phuong_an_khac": "Hình nến tắt khói bay trên nền đen.",
+      "tu_khoa": "ánh sáng tắt, nến tắt",
+      "tu_khoa_en": "light goes out, candle extinguished dark",
+      "chu_nhan": [
+        {
+          "tu_chu": "erlischt",
+          "chu": "*ERLISCHT*|das Licht"
+        }
+      ],
+      "vao": "giat",
+      "nhan_vat": [
+        {
+          "bieu_cam": "ngac_nhien",
+          "tu_chu": "erlischt",
+          "giay": 1.8,
+          "ben": "phai"
+        }
+      ],
+      "am": [
+        {
+          "loai": "boom",
+          "tu_chu": "erlischt"
+        }
+      ]
+    },
+    {
+      "so": 12,
+      "loi": "die Raumfahrt in der gesamten Galaxis bricht ab und das Imperium stürzt sofort in sich zusammen.",
+      "nghia": "giao thông vũ trụ khắp thiên hà ngừng hẳn và Đế chế lập tức sụp đổ.",
+      "y_chinh": "Đế chế sụp đổ",
+      "goi_y_hinh": "Các chiến hạm trôi lạc, vỡ nát giữa bão Warp; thành phố gothic đổ sụp trong lửa.",
+      "phuong_an_khac": "Art Imperium collapse / fall of Cadia.",
+      "tu_khoa": "đế chế sụp đổ warhammer, thành phố đổ nát",
+      "tu_khoa_en": "Imperium collapse, fall of Cadia",
+      "chu_nhan": [
+        {
+          "tu_chu": "Raumfahrt",
+          "chu": "die Raumfahrt|bricht *AB*"
+        },
+        {
+          "tu_chu": "stürzt",
+          "chu": "das Imperium|*STÜRZT*|in sich zusammen"
+        }
+      ],
+      "am": [
+        {
+          "loai": "hit",
+          "tu_chu": "stürzt"
+        }
+      ]
+    },
+    {
+      "so": 13,
+      "loi": "Ironischerweise hatte der Imperator der Opferung von Psionikern einst nur äußerst widerwillig als vorübergehende Notlösung zugestimmt –",
+      "nghia": "Trớ trêu thay, Hoàng đế từng chỉ miễn cưỡng đồng ý việc hiến tế psyker như một giải pháp tạm thời –",
+      "y_chinh": "Miễn cưỡng đồng ý",
+      "goi_y_hinh": "Hoàng đế lúc còn sống, vẻ mặt nặng nề, cúi đầu suy tư; ánh sáng lạnh.",
+      "phuong_an_khac": "Art Emperor of Mankind portrait (Horus Heresy).",
+      "tu_khoa": "hoàng đế nhân loại chân dung",
+      "tu_khoa_en": "Emperor of Mankind portrait",
+      "chu_nhan": [
+        {
+          "tu_chu": "widerwillig",
+          "chu": "nur äußerst|*WIDERWILLIG*"
+        },
+        {
+          "tu_chu": "Notlösung",
+          "chu": "eine|*NOTLÖSUNG*"
+        }
+      ],
+      "vao": "khoi"
+    },
+    {
+      "so": 14,
+      "loi": "doch nach jener schicksalhaften Schlacht dauert dieses Provisorium nun schon zehntausend Jahre an,",
+      "nghia": "nhưng sau trận chiến định mệnh ấy, giải pháp tạm thời này đã kéo dài suốt mười nghìn năm,",
+      "y_chinh": "Tạm thời 10.000 năm",
+      "goi_y_hinh": "Cảnh Hoàng đế được đặt lên Ngai Vàng sau trận chiến, Custodes quỳ quanh, khói và đổ nát.",
+      "phuong_an_khac": "Art Emperor interred on Golden Throne after Horus Heresy.",
+      "tu_khoa": "hoàng đế được đặt lên ngai vàng",
+      "tu_khoa_en": "Emperor interred Golden Throne",
+      "chu_nhan": [
+        {
+          "tu_chu": "Provisorium",
+          "chu": "das|*PROVISORIUM*"
+        },
+        {
+          "tu_chu": "zehntausend",
+          "chu": "schon|*10.000*|Jahre"
+        }
+      ]
+    },
+    {
+      "so": 15,
+      "loi": "während der Goldene Thron selbst langsam verfällt und niemand ihn mehr reparieren kann.",
+      "nghia": "trong khi chính Ngai Vàng đang mục nát dần và không ai còn sửa được nó nữa.",
+      "y_chinh": "Ngai Vàng mục nát",
+      "goi_y_hinh": "Cận chi tiết Ngai Vàng: kim loại rỉ sét, dây cáp đứt, tia lửa điện, tech-priest bất lực.",
+      "phuong_an_khac": "Ảnh máy móc rỉ sét tông vàng nâu.",
+      "tu_khoa": "ngai vàng hư hỏng, máy móc rỉ sét",
+      "tu_khoa_en": "rusted machinery gothic, Golden Throne failing",
+      "chu_nhan": [
+        {
+          "tu_chu": "verfällt",
+          "chu": "der Goldene Thron|*VERFÄLLT*"
+        },
+        {
+          "tu_chu": "niemand",
+          "chu": "*NIEMAND*|kann ihn reparieren"
+        }
+      ],
+      "nhan_vat": [
+        {
+          "bieu_cam": "suy_nghi",
+          "tu_chu": "niemand",
+          "giay": 2.0,
+          "ben": "trai"
+        }
+      ]
+    },
+    {
+      "so": 16,
+      "loi": "Und als wäre das nicht genug, lockt genau dieses Licht des Astronomican einen Schwarm außergalaktischer Monster namens Tyraniden an,",
+      "nghia": "Và như thế vẫn chưa đủ, chính ánh sáng Astronomican lại thu hút một bầy quái vật từ ngoài thiên hà gọi là Tyranid,",
+      "y_chinh": "Ánh sáng hút bầy Tyranid",
+      "goi_y_hinh": "Bầy Tyranid khổng lồ (quái vật côn trùng, vuốt sắc) tràn tới, bầu trời đỏ, hàng nghìn sinh vật.",
+      "phuong_an_khac": "Art Tyranid swarm / Hive Fleet.",
+      "tu_khoa": "tyranid warhammer, bầy tyranid",
+      "tu_khoa_en": "Tyranid swarm, Hive Fleet",
+      "chu_nhan": [
+        {
+          "tu_chu": "Licht",
+          "chu": "genau dieses|*LICHT*|lockt sie an"
+        },
+        {
+          "tu_chu": "Tyraniden",
+          "chu": "*TYRANIDEN*"
+        }
+      ],
+      "vao": "khoi",
+      "am": [
+        {
+          "loai": "riser",
+          "tu_chu": "Tyraniden"
+        }
+      ]
+    },
+    {
+      "so": 17,
+      "loi": "die bereits mehrere Galaxien verschlungen haben",
+      "nghia": "bọn chúng đã nuốt chửng nhiều thiên hà",
+      "y_chinh": "Nuốt chửng thiên hà",
+      "goi_y_hinh": "Hạm đội sinh học Tyranid khổng lồ bao quanh và hút cạn một hành tinh, khí quyển bị rút lên.",
+      "phuong_an_khac": "Art Tyranid Hive Fleet consuming planet.",
+      "tu_khoa": "hạm đội tyranid ăn hành tinh",
+      "tu_khoa_en": "Tyranid hive fleet consuming planet",
+      "chu_nhan": [
+        {
+          "tu_chu": "Galaxien",
+          "chu": "mehrere|*GALAXIEN*|verschlungen"
+        }
+      ]
+    },
+    {
+      "so": 18,
+      "loi": "und nun wie Motten ins Licht direkt auf die Menschheit zusteuern.",
+      "nghia": "và giờ đang lao thẳng về phía loài người như thiêu thân lao vào ánh sáng.",
+      "y_chinh": "Như thiêu thân lao vào đèn",
+      "goi_y_hinh": "Bầy thiêu thân bay về phía ngọn đèn sáng; hoặc bầy Tyranid lao về phía cột sáng vàng.",
+      "phuong_an_khac": "Ảnh thật thiêu thân quanh bóng đèn ban đêm.",
+      "tu_khoa": "thiêu thân lao vào đèn, bướm đêm ánh sáng",
+      "tu_khoa_en": "moths flying to light",
+      "chu_nhan": [
+        {
+          "tu_chu": "Motten",
+          "chu": "wie|*MOTTEN*|ins Licht"
+        }
+      ],
+      "nhan_vat": [
+        {
+          "bieu_cam": "so",
+          "tu_chu": "Motten",
+          "giay": 2.2,
+          "ben": "phai"
+        }
+      ]
+    },
+    {
+      "so": 19,
+      "loi": "Was würdet ihr tun: das Licht ausschalten oder es weiter am Brennen halten?",
+      "nghia": "Các bạn sẽ làm gì: tắt ánh sáng đi hay tiếp tục giữ cho nó cháy?",
+      "y_chinh": "Câu hỏi cho người xem",
+      "goi_y_hinh": "Chia đôi khung: bên trái Astronomican sáng rực, bên phải bóng tối; hoặc Hoàng đế trên ngai nhìn thẳng.",
+      "phuong_an_khac": "Hai hình ghép: ánh sáng vàng | bóng tối.",
+      "tu_khoa": "ngai vàng phát sáng, astronomican",
+      "tu_khoa_en": "Golden Throne glowing, Astronomican light",
+      "chu_nhan": [
+        {
+          "tu_chu": "ausschalten",
+          "chu": "das Licht|*AUSSCHALTEN*"
+        },
+        {
+          "tu_chu": "Brennen",
+          "chu": "oder weiter|*BRENNEN*|lassen?"
+        }
+      ],
+      "vao": "nhoe"
+    },
+    {
+      "so": 20,
+      "loi": "(Schreibt es in die Kommentare!)",
+      "nghia": "(Viết vào bình luận nhé!)",
+      "y_chinh": "Kêu gọi bình luận",
+      "goi_y_hinh": "Otto chỉ tay, nền tối; hoặc biểu tượng bình luận.",
+      "phuong_an_khac": "Dùng lại hình ý trước.",
+      "tu_khoa": "biểu tượng bình luận",
+      "tu_khoa_en": "comment icon",
+      "chu_nhan": [
+        {
+          "tu_chu": "Kommentare",
+          "chu": "*KOMMENTARE*|👇"
+        }
+      ],
+      "nhan_vat": [
+        {
+          "bieu_cam": "chi_tay",
+          "tu_chu": "Kommentare",
+          "giay": 2.5,
+          "ben": "trai"
+        }
+      ]
+    }
+  ]
+}
