@@ -16,4 +16,4 @@
 
 **Tìm bằng tiếng Anh (nhiều kết quả hơn):** Voyager engineers 1977, old computer tape, Voyager Jupiter Great Red Spot, Voyager Saturn rings
 
-**Đã dán:** 01-Exploration of Saturn with Cassini Spacecraft.mp4
+**Đã dán:** 01-Exploration of Saturn with Cassini Spacecraft.mp4, 02-The Great red spot in Jupiter.mp4

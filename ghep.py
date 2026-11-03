@@ -283,6 +283,8 @@ def estimate_times(script_words, dur, sil):
     """Không có Whisper: chia thời gian theo số ký tự, phần nói = tổng trừ khoảng lặng đầu/cuối."""
     lead = sil[0][1] if sil and sil[0][0] < 0.05 else 0.0
     tail = sil[-1][0] if sil and sil[-1][1] > dur - 0.05 else dur
+    if lead > dur * 0.3 or tail < dur * 0.7 or tail <= lead:  # gần như toàn im lặng (giọng giả để xem trước) → bỏ qua
+        lead, tail = 0.0, dur
     weights = [len(norm(w)) + 1.5 + (2.5 if re.search(r'[.!?…]$', w) else 1.0 if re.search(r'[,;:]$', w) else 0)
                for w in script_words]
     total = sum(weights) or 1

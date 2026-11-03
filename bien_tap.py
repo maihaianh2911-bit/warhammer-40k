@@ -27,7 +27,8 @@ Kiểu dựng cả video (`kieu_edit` trong y.json, đè lên `canh`):
   tới đứng yên ~2–3 s) và `troi` (trôi ngang đều ~3.5% bề ngang/giây, zoom cố định 1.18). `y[].chuyen` đặt riêng kiểu,
   `y[].zoom_cuoi` giữ khung chặt hơn ở cuối (né chữ/watermark ở mép ảnh).
   Video dài: `y[].doan: [{"file": 1, "tu_giay": 12, "toc": 1.5}, {"file": 1, "tu_giay": 47}]` = cắt nhiều đoạn (cùng hoặc
-  khác clip), chia đều thời gian ý, `toc` = tốc độ (1.5 = nhanh 1,5 lần). Một đoạn: `y[].video_tu`, `y[].toc_video`.
+  khác clip), chia đều thời gian ý, `toc` = tốc độ (1.5 = nhanh 1,5 lần). `"y": 3` = lấy clip ở ô của ý 3 (dùng lại một clip
+  dài cho nhiều ý). Một đoạn: `y[].video_tu`, `y[].toc_video`.
   Chỉnh: `zoom_dau`, `zoom_troi`, `toc_do_troi`. Trong `canh` tự viết cũng dùng được `kieu: "zoom_ra" | "troi"`, `toc_do`.
 
 Không có `canh` → máy tự biên tập (ý dài chia 2 cảnh toàn → cận, ảnh ngang thì lia ngang, chuyển động đều).
@@ -369,6 +370,19 @@ def build_shots(d, beats, timing, W, H, fps, plan, images_for, open_image, place
             die(f'thoi-gian.json không có ý {b["so"]} — chạy lại: python3 ghep.py can <ten>')
         t0, t1 = t['bat_dau'], t['ket_thuc']
         media = images_for(d, b['so'])
+        if b.get('doan'):  # đoạn lấy từ clip ở ô của ý khác: {"y": 3, "file": 1, "tu_giay": 20}
+            ext, segs = list(media), []
+            for sg in b['doan']:
+                sg = dict(sg)
+                if sg.get('y') and int(sg['y']) != b['so']:
+                    other = images_for(d, int(sg['y']))
+                    fi = int(sg.get('file', 1))
+                    if 1 <= fi <= len(other):
+                        if other[fi - 1] not in ext:
+                            ext.append(other[fi - 1])
+                        sg['file'] = ext.index(other[fi - 1]) + 1
+                segs.append(sg)
+            media, b = ext, dict(b, doan=segs)
         if not media:
             missing.append(b['so'])
             if not allow_missing:

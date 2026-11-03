@@ -38,7 +38,7 @@ Khung hình: **9:16** · 9 ý · Mỗi ý có một **ô dán** (thư mục tron
 
 **Tìm bằng tiếng Anh (nhiều kết quả hơn):** Voyager engineers 1977, old computer tape, Voyager Jupiter Great Red Spot, Voyager Saturn rings
 
-**Đã dán:** 01-Exploration of Saturn with Cassini Spacecraft.mp4
+**Đã dán:** 01-Exploration of Saturn with Cassini Spacecraft.mp4, 02-The Great red spot in Jupiter.mp4
 
 ## Ý 03 — Quay lại chụp Trái Đất
 
@@ -56,7 +56,7 @@ Khung hình: **9:16** · 9 ý · Mỗi ý có một **ô dán** (thư mục tron
 
 **Tìm bằng tiếng Anh (nhiều kết quả hơn):** Voyager family portrait solar system, Pale Blue Dot Voyager 1990
 
-**Đã dán:** — chưa có
+**Đã dán:** 01-Airplanes fly about 600mph,.mp4
 
 ## Ý 04 — Chấm xanh nhạt – cả nhân loại trong 1 pixel
 
@@ -74,7 +74,7 @@ Khung hình: **9:16** · 9 ý · Mỗi ý có một **ô dán** (thư mục tron
 
 **Tìm bằng tiếng Anh (nhiều kết quả hơn):** Pale Blue Dot close up, Blue Marble Earth from space
 
-**Đã dán:** — chưa có
+**Đã dán:** 01-Jupiter with its moons,.mp4
 
 ## Ý 05 — Rời bong bóng Mặt Trời – vào không gian liên sao
 
@@ -164,4 +164,4 @@ Khung hình: **9:16** · 9 ý · Mỗi ý có một **ô dán** (thư mục tron
 
 **Tìm bằng tiếng Anh (nhiều kết quả hơn):** bright star Hubble, Golden Record dark space
 
-**Đã dán:** — chưa có
+**Đã dán:** 01-SpaceX Dragon departing the International Space Station. _space _ISS _tesla.mp4

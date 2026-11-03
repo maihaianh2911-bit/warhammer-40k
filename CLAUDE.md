@@ -170,7 +170,8 @@ kèm link tải ảnh gốc; người dùng tự làm nét bằng Gemini/ChatGPT
 - **Video dùng nhiều clip** (vd kênh vũ trụ — người dùng dán clip NASA/Pexels): chia ý **dài hơn, 6–10 s**, gom theo
   đoạn nội dung; mỗi ý gợi ý 2–3 clip ngắn nối nhau (nguồn: NASA SVS svs.gsfc.nasa.gov, images.nasa.gov, Pexels, Pixabay).
 - **Clip dài**: khi edit, xem khung clip (`ffmpeg -i clip -vf fps=1/2,scale=160:-1,tile=8x6 sheet.jpg`), chọn đoạn khớp lời,
-  bỏ intro/chữ/logo, đặt `y[].doan` (nhiều đoạn từ một clip, `tu_giay`, `toc`) — cú pháp ở đầu `bien_tap.py`.
+  bỏ intro/chữ/logo, đặt `y[].doan` (nhiều đoạn từ một clip, `tu_giay`, `toc`; `"y": N` lấy clip trong ô của ý khác —
+  dùng lại một clip dài cho nhiều ý) — cú pháp ở đầu `bien_tap.py`.
 
 ## Cách gợi ý hình
 

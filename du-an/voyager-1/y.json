@@ -36,6 +36,13 @@
           "tu_chu": "1977",
           "chu": "Start|*1977*"
         }
+      ],
+      "doan": [
+        {
+          "y": 1,
+          "file": 1,
+          "tu_giay": 0
+        }
       ]
     },
     {
@@ -60,6 +67,18 @@
           "tu_chu": "Saturn",
           "chu": "*SATURN*"
         }
+      ],
+      "doan": [
+        {
+          "y": 2,
+          "file": 2,
+          "tu_giay": 3
+        },
+        {
+          "y": 2,
+          "file": 1,
+          "tu_giay": 0
+        }
       ]
     },
     {
@@ -81,7 +100,14 @@
           "chu": "*6 MILLIARDEN*|Kilometer"
         }
       ],
-      "vao": "khoi"
+      "vao": "khoi",
+      "doan": [
+        {
+          "y": 9,
+          "file": 1,
+          "tu_giay": 8
+        }
+      ]
     },
     {
       "so": 4,
@@ -102,7 +128,19 @@
           "chu": "in *EIN PIXEL*"
         }
       ],
-      "vao": "nhoe"
+      "vao": "nhoe",
+      "doan": [
+        {
+          "y": 3,
+          "file": 1,
+          "tu_giay": 21
+        },
+        {
+          "y": 3,
+          "file": 1,
+          "tu_giay": 50
+        }
+      ]
     },
     {
       "so": 5,
@@ -123,7 +161,19 @@
           "chu": "*INTERSTELLAR*"
         }
       ],
-      "vao": "khoi"
+      "vao": "khoi",
+      "doan": [
+        {
+          "y": 3,
+          "file": 1,
+          "tu_giay": 0.5
+        },
+        {
+          "y": 2,
+          "file": 1,
+          "tu_giay": 10
+        }
+      ]
     },
     {
       "so": 6,
@@ -144,7 +194,14 @@
           "chu": "fast|*EIN GANZER TAG*"
         }
       ],
-      "vao": "nhoe"
+      "vao": "nhoe",
+      "doan": [
+        {
+          "y": 3,
+          "file": 1,
+          "tu_giay": 28
+        }
+      ]
     },
     {
       "so": 7,
@@ -168,6 +225,23 @@
           "tu_chu": "verstummen",
           "chu": "für immer|*VERSTUMMEN*"
         }
+      ],
+      "doan": [
+        {
+          "y": 3,
+          "file": 1,
+          "tu_giay": 36
+        },
+        {
+          "y": 9,
+          "file": 1,
+          "tu_giay": 15
+        },
+        {
+          "y": 1,
+          "file": 1,
+          "tu_giay": 9
+        }
       ]
     },
     {
@@ -189,7 +263,19 @@
           "chu": "Musik, Stimmen|*GRÜSSE*"
         }
       ],
-      "vao": "khoi"
+      "vao": "khoi",
+      "doan": [
+        {
+          "y": 2,
+          "file": 1,
+          "tu_giay": 1.5
+        },
+        {
+          "y": 2,
+          "file": 1,
+          "tu_giay": 5
+        }
+      ]
     },
     {
       "so": 9,
@@ -210,7 +296,20 @@
           "chu": "das|*LETZTE*|von uns"
         }
       ],
-      "vao": "nhoe"
+      "vao": "nhoe",
+      "doan": [
+        {
+          "y": 9,
+          "file": 1,
+          "tu_giay": 0
+        },
+        {
+          "y": 1,
+          "file": 1,
+          "tu_giay": 12,
+          "toc": 0.8
+        }
+      ]
     }
   ]
 }

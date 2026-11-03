@@ -16,4 +16,4 @@
 
 **Tìm bằng tiếng Anh (nhiều kết quả hơn):** bright star Hubble, Golden Record dark space
 
-**Đã dán:** — chưa có
+**Đã dán:** 01-SpaceX Dragon departing the International Space Station. _space _ISS _tesla.mp4
