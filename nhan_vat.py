@@ -34,12 +34,18 @@ IMG_EXT = ('.png', '.jpg', '.jpeg', '.webp')
 def key_out(im):
     """Nền một màu (lấy theo viền ảnh) → trong suốt. Ảnh đã có alpha thì giữ."""
     im = im.convert('RGBA')
-    a = np.asarray(im).astype(np.float32)
+    a = np.asarray(im).astype(np.float32).copy()
     if a[..., 3].min() < 250:  # đã trong suốt sẵn
         return im
     rgb = a[..., :3]
     border = np.concatenate([rgb[:4].reshape(-1, 3), rgb[-4:].reshape(-1, 3), rgb[:, :4].reshape(-1, 3), rgb[:, -4:].reshape(-1, 3)])
     bg = np.median(border, axis=0)
+    # dấu ✦ của Gemini (trắng mờ đè lên nền) ở góc dưới phải → trả về màu nền
+    h, w = rgb.shape[:2]
+    c = rgb[int(h * 0.86):, int(w * 0.9):]
+    if bg[1] > bg[0] + 80 and bg[1] > bg[2] + 80:
+        wm = (c[..., 1] > 225) & (c[..., 0] > 45) & (np.abs(c[..., 0] - c[..., 2]) < 50) & (c[..., 0] < 235)
+        c[wm] = bg
     dist = np.sqrt(((rgb - bg) ** 2).sum(axis=2))
     alpha = np.clip((dist - 40) / 50, 0, 1)
     m = Image.fromarray((alpha * 255).astype(np.uint8)).filter(ImageFilter.MedianFilter(5))
@@ -73,19 +79,69 @@ def _runs(profile, min_gap):
     return runs
 
 
-def split_sheet(im):
-    """Ảnh nhiều tư thế (nền đã trong suốt) → danh sách ảnh, trái→phải, trên→dưới."""
-    a = np.asarray(im.getchannel('A')) > 60
-    h, w = a.shape
-    rows = _runs(a.sum(axis=1) > w * 0.004, max(4, h // 60))
-    parts = []
-    for y0, y1 in rows:
-        band = a[y0:y1]
-        cols = _runs(band.sum(axis=0) > (y1 - y0) * 0.01, max(4, w // 60))
-        for x0, x1 in cols:
-            if (x1 - x0) * (y1 - y0) < w * h * 0.01:
+def _components(mask):
+    """Gán nhãn các khối liền (4 hướng) trên mảng bool nhỏ → [(số điểm, x0, y0, x1, y1)]."""
+    from collections import deque
+    h, w = mask.shape
+    seen = np.zeros_like(mask, dtype=bool)
+    out = []
+    for y in range(h):
+        row = mask[y]
+        for x in np.flatnonzero(row & ~seen[y]):
+            if seen[y, x]:
                 continue
-            parts.append(im.crop((x0, y0, x1, y1)))
+            q = deque([(y, x)])
+            seen[y, x] = True
+            n, x0, y0, x1, y1 = 0, x, y, x, y
+            while q:
+                cy, cx = q.popleft()
+                n += 1
+                x0, x1, y0, y1 = min(x0, cx), max(x1, cx), min(y0, cy), max(y1, cy)
+                for ny, nx in ((cy + 1, cx), (cy - 1, cx), (cy, cx + 1), (cy, cx - 1)):
+                    if 0 <= ny < h and 0 <= nx < w and mask[ny, nx] and not seen[ny, nx]:
+                        seen[ny, nx] = True
+                        q.append((ny, nx))
+            out.append((n, x0, y0, x1 + 1, y1 + 1))
+    return out
+
+
+def split_sheet(im):
+    """Ảnh nhiều tư thế (nền đã trong suốt) → danh sách ảnh, trái→phải, trên→dưới.
+    Mỗi tư thế = một khối lớn; nét rời nhỏ (vệt rung, giọt mồ hôi) gộp vào tư thế gần nhất."""
+    k = max(1, max(im.size) // 640)
+    small = im.getchannel('A').resize((im.width // k, im.height // k), Image.BILINEAR)
+    mask = np.asarray(small.filter(ImageFilter.MaxFilter(3))) > 60
+    comps = sorted(_components(mask), reverse=True)
+    if not comps:
+        return []
+    big = [c for c in comps if c[0] >= comps[0][0] * 0.25]
+    boxes = [list(c[1:]) for c in big]
+    for n, x0, y0, x1, y1 in comps[len(big):]:
+        if n < 4:
+            continue
+        cx, cy = (x0 + x1) / 2, (y0 + y1) / 2
+        def dist(b):
+            dx = max(b[0] - cx, 0, cx - b[2])
+            dy = max(b[1] - cy, 0, cy - b[3])
+            return dx * dx + dy * dy
+        b = min(boxes, key=dist)
+        if dist(b) < (mask.shape[1] * 0.06) ** 2:
+            b[0], b[1], b[2], b[3] = min(b[0], x0), min(b[1], y0), max(b[2], x1), max(b[3], y1)
+    # xếp theo hàng (tâm y gần nhau) rồi theo x
+    boxes.sort(key=lambda b: (b[1] + b[3]) / 2)
+    rows, cur = [], [boxes[0]]
+    for b in boxes[1:]:
+        ref = cur[0]
+        if (b[1] + b[3]) / 2 - (ref[1] + ref[3]) / 2 < (ref[3] - ref[1]) * 0.5:
+            cur.append(b)
+        else:
+            rows.append(cur)
+            cur = [b]
+    rows.append(cur)
+    parts = []
+    for r in rows:
+        for x0, y0, x1, y1 in sorted(r, key=lambda b: b[0]):
+            parts.append(im.crop((x0 * k, y0 * k, min(im.width, x1 * k + k), min(im.height, y1 * k + k))))
     return parts
 
 
@@ -209,7 +265,10 @@ def build(beats, timing, W, H, plan, cut_at, word_times):
                 st = c if c is not None else st
             name = a.get('bieu_cam', 'binh_thuong')
             img = scaled.get(name) or scaled.get('binh_thuong') or next(iter(scaled.values()))
-            out.append(Appearance(img, st, min(st + float(a.get('giay', 2.4)), timing['tong']), W, H, a.get('ben', 'phai')))
+            ben = a.get('ben', 'phai')
+            if name == 'chi_tay' and ben == 'trai':  # ảnh gốc chỉ sang trái → đứng bên trái thì lật để chỉ vào giữa
+                img = img.transpose(Image.FLIP_LEFT_RIGHT)
+            out.append(Appearance(img, st, min(st + float(a.get('giay', 2.4)), timing['tong']), W, H, ben))
     return out
 
 
