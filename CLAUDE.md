@@ -21,6 +21,11 @@ Tác vụ Claude Code tự chạy (workflow `bao-claude.yml` gọi qua secret `C
 cho mọi dự án `cho_chia_y`, đẩy thẳng lên `main`, rồi dừng; không có dự án nào chờ thì dừng ngay. Không hỏi lại người dùng:
 thiếu kịch bản/giọng → ghi `loi_nhan` giải thích trong `trang-thai.json` và trả về `nhap`.
 
+**Chia ý trước khi có giọng** (người dùng nhờ Claude viết kịch bản): tạo `du-an/<ten>/` với `kich-ban.txt`, `y.json`,
+`caption.txt`, `trang-thai.json` = `chia_y_xong` + `loi_nhan` nhắc tải giọng, chạy `python3 ghep.py bang <ten>` (tạo ô dán),
+push. Trang cho tải giọng ở phần 1 cả khi đã chia ý; tải giọng mới thì trang xóa `thoi-gian.json`, `ghep.py dung` tự
+chạy `can` lúc dựng. Giọng phải đọc đúng từng chữ kịch bản.
+
 **Dựng video (tự động)**: bấm “Dựng video” → workflow `tu-dung.yml` dựng (`ghep.py dung --cho-phep-thieu`), đăng MP4 vào
 bản phát hành `video-<ten>`, ghi `xong` + link. Người dùng muốn chỉnh (zoom, phụ đề, video lấy từ giây…) → Claude sửa
 `y.json`, commit, rồi `trang-thai … cho_dung` + push để workflow dựng lại. Workflow lỗi → `trang_thai: loi` + `loi_nhan`.

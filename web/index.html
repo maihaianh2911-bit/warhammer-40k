@@ -334,7 +334,8 @@ function render() {
   if (document.activeElement !== kb) kb.value = locked ? kbText.trim() : kbText;
   if (document.activeElement !== tn) tn.value = st?.ten || '';
   kb.readOnly = tn.readOnly = locked; kb.style.minHeight = locked ? '120px' : '';
-  $('voiceBtn').hidden = locked;
+  $('voiceBtn').hidden = !canWrite() || (locked && !!voiceFile);  // chia ý trước, giọng tải sau vẫn được
+  $('voiceBtn').textContent = voiceFile ? 'Đổi file giọng' : 'Chọn file giọng đọc';
   $('voiceInfo').innerHTML = uploading.voice ? 'Đang tải giọng lên…' : voiceFile ? `<b>✓ ${esc(voiceFile.name)}</b>` : 'Chưa có file giọng (mp3, wav, m4a…)';
   $('voiceInfo').className = voiceFile ? '' : 'ghost';
   $('send1').hidden = locked;
@@ -556,6 +557,12 @@ $('voiceIn').addEventListener('change', async (e) => {
     if (voiceFile && voiceFile.name !== 'voice' + ext) await del(voiceFile.path, `${ten}: bỏ giọng cũ`);
     const res = await put(`du-an/${ten}/voice${ext}`, await fileB64(f), `${ten}: giọng đọc`);
     voiceFile = { name: res.content.name, path: res.content.path };
+    // giọng mới → thời gian cũ không còn đúng; máy tự đo lại khi dựng
+    if (!['nhap', 'cho_chia_y'].includes(st?.trang_thai)) {
+      await del(`du-an/${ten}/thoi-gian.json`, `${ten}: giọng mới, đo lại thời gian khi dựng`).catch(() => {});
+      await saveStatus({ loi_nhan: '' });
+      showStatus('Đã có giọng đọc. Dán hình xong bấm “Dựng video” — máy tự đo thời gian từng ý theo giọng.', '');
+    }
   } catch (err) { showStatus('Không tải được giọng: ' + err.message, 'err'); }
   uploading.voice = false; render();
 });

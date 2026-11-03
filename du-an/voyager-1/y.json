@@ -1,0 +1,330 @@
+{
+  "tieu_de": "Voyager 1 – Das letzte Zeichen der Menschheit",
+  "tom_tat": "Kênh vũ trụ tiếng Đức: hành trình của Voyager 1 từ 1977 tới không gian liên sao, kết bằng Đĩa Vàng. Giọng trầm, cảm xúc. Ảnh NASA/ESA (tự do sử dụng), tông xanh tím vũ trụ.",
+  "ngon_ngu": "de",
+  "khung": "9:16",
+  "phu_de": false,
+  "kieu_edit": "theo_mau",
+  "nhac": "mystery",
+  "mau_khoi": [
+    90,
+    110,
+    255
+  ],
+  "nhan_vat": false,
+  "tieu_de_mo": {
+    "chu": "VOYAGER|1",
+    "phu": "DAS LETZTE ZEICHEN DER MENSCHHEIT?",
+    "den": 3.2
+  },
+  "y": [
+    {
+      "so": 1,
+      "loi": "Das am weitesten entfernte Ding, das Menschen je gebaut haben, funkt noch immer.",
+      "nghia": "Vật xa nhất con người từng làm ra vẫn còn phát sóng.",
+      "y_chinh": "Vật xa nhất của loài người",
+      "goi_y_hinh": "Voyager lơ lửng một mình giữa không gian đen, ăng-ten chảo hướng về phía người xem, Mặt Trời là một chấm nhỏ phía xa.",
+      "phuong_an_khac": "Ảnh minh họa Voyager của NASA (artist concept).",
+      "tu_khoa": "tàu voyager trong vũ trụ",
+      "tu_khoa_en": "Voyager spacecraft artist concept",
+      "chu_nhan": [
+        {
+          "tu_chu": "funkt",
+          "chu": "funkt|*NOCH IMMER*"
+        }
+      ]
+    },
+    {
+      "so": 2,
+      "loi": "Voyager 1 startete im Jahr 1977.",
+      "nghia": "Voyager 1 được phóng năm 1977.",
+      "y_chinh": "Phóng năm 1977",
+      "goi_y_hinh": "Tên lửa Titan-Centaur rời bệ phóng, lửa và khói trắng cuồn cuộn (ảnh tư liệu NASA 1977).",
+      "phuong_an_khac": "Video phóng tên lửa Voyager trên images.nasa.gov.",
+      "tu_khoa": "phóng tàu voyager 1977",
+      "tu_khoa_en": "Voyager 1 launch Titan Centaur 1977",
+      "chu_nhan": [
+        {
+          "tu_chu": "1977",
+          "chu": "Start|*1977*"
+        }
+      ],
+      "vao": "khoi"
+    },
+    {
+      "so": 3,
+      "loi": "Ihr Bordcomputer hat weniger Speicher als ein einziges Handyfoto.",
+      "nghia": "Máy tính trên tàu có ít bộ nhớ hơn một tấm ảnh điện thoại.",
+      "y_chinh": "Bộ nhớ nhỏ hơn 1 ảnh điện thoại",
+      "goi_y_hinh": "Kỹ sư NASA thập niên 70 bên máy tính và băng từ; hoặc điện thoại hiện đại đặt cạnh con chip cũ.",
+      "phuong_an_khac": "Ảnh JPL 'Voyager engineers 1977'; Pexels: old computer tape.",
+      "tu_khoa": "máy tính cũ thập niên 70, kỹ sư nasa",
+      "tu_khoa_en": "Voyager engineers 1977, old computer tape",
+      "chu_nhan": [
+        {
+          "tu_chu": "weniger",
+          "chu": "weniger Speicher als|*EIN HANDYFOTO*"
+        }
+      ]
+    },
+    {
+      "so": 4,
+      "loi": "Trotzdem flog die Sonde an Jupiter",
+      "nghia": "Vậy mà con tàu vẫn bay ngang Sao Mộc",
+      "y_chinh": "Bay ngang Sao Mộc",
+      "goi_y_hinh": "Sao Mộc cận cảnh với Vết Đỏ Lớn, các dải mây xoáy (ảnh Voyager chụp).",
+      "phuong_an_khac": "images.nasa.gov: Voyager Jupiter Great Red Spot.",
+      "tu_khoa": "sao mộc vết đỏ lớn",
+      "tu_khoa_en": "Voyager Jupiter Great Red Spot",
+      "chu_nhan": [
+        {
+          "tu_chu": "Jupiter",
+          "chu": "*JUPITER*"
+        }
+      ],
+      "vao": "nhoe"
+    },
+    {
+      "so": 5,
+      "loi": "und Saturn vorbei und schickte Bilder, die noch nie ein Mensch gesehen hatte.",
+      "nghia": "và Sao Thổ, gửi về những hình ảnh chưa ai từng thấy.",
+      "y_chinh": "Sao Thổ, hình chưa ai thấy",
+      "goi_y_hinh": "Sao Thổ với vành đai, chụp nghiêng từ phía sau (ảnh Voyager).",
+      "phuong_an_khac": "images.nasa.gov: Voyager Saturn rings.",
+      "tu_khoa": "sao thổ vành đai",
+      "tu_khoa_en": "Voyager Saturn rings",
+      "chu_nhan": [
+        {
+          "tu_chu": "Saturn",
+          "chu": "*SATURN*"
+        },
+        {
+          "tu_chu": "nie",
+          "chu": "noch nie|*GESEHEN*"
+        }
+      ]
+    },
+    {
+      "so": 6,
+      "loi": "1990 drehte sie sich ein letztes Mal um.",
+      "nghia": "Năm 1990, con tàu quay lại nhìn lần cuối.",
+      "y_chinh": "Quay lại lần cuối",
+      "goi_y_hinh": "Hình minh họa Voyager quay camera về phía Mặt Trời ở rất xa; hoặc ảnh 'Family Portrait' ghép các hành tinh.",
+      "phuong_an_khac": "images.nasa.gov: Voyager family portrait.",
+      "tu_khoa": "voyager quay camera, chân dung gia đình hệ mặt trời",
+      "tu_khoa_en": "Voyager family portrait solar system",
+      "chu_nhan": [
+        {
+          "tu_chu": "1990",
+          "chu": "*1990*|ein letztes Mal"
+        }
+      ],
+      "vao": "khoi"
+    },
+    {
+      "so": 7,
+      "loi": "Aus sechs Milliarden Kilometern Entfernung fotografierte sie die Erde:",
+      "nghia": "Từ khoảng cách 6 tỷ km, con tàu chụp Trái Đất:",
+      "y_chinh": "Chụp Trái Đất từ 6 tỷ km",
+      "goi_y_hinh": "Ảnh 'Pale Blue Dot' gốc: dải sáng xiên và một chấm xanh bé xíu (NASA có bản xử lý lại năm 2020, rất nét).",
+      "phuong_an_khac": "images.nasa.gov: Pale Blue Dot.",
+      "tu_khoa": "chấm xanh nhạt pale blue dot",
+      "tu_khoa_en": "Pale Blue Dot Voyager 1990",
+      "chu_nhan": [
+        {
+          "tu_chu": "sechs",
+          "chu": "*6 MILLIARDEN*|Kilometer"
+        }
+      ]
+    },
+    {
+      "so": 8,
+      "loi": "einen winzigen, blassblauen Punkt.",
+      "nghia": "một chấm xanh nhạt bé xíu.",
+      "y_chinh": "Chấm xanh nhạt",
+      "goi_y_hinh": "Cận chấm xanh trong ảnh Pale Blue Dot (zoom sát vào chấm).",
+      "phuong_an_khac": "Dùng lại ảnh Pale Blue Dot, zoom vào chấm.",
+      "tu_khoa": "chấm xanh nhạt",
+      "tu_khoa_en": "Pale Blue Dot close up",
+      "chu_nhan": [
+        {
+          "tu_chu": "blassblauen",
+          "chu": "ein|*BLASSBLAUER*|*PUNKT*"
+        }
+      ],
+      "vao": "nhoe"
+    },
+    {
+      "so": 9,
+      "loi": "Alles, was je ein Mensch erlebt hat, passt in dieses eine Pixel.",
+      "nghia": "Mọi điều mà con người từng trải qua đều nằm trong một điểm ảnh này.",
+      "y_chinh": "Cả nhân loại trong 1 pixel",
+      "goi_y_hinh": "Trái Đất nhìn từ không gian (ảnh Blue Marble), hoặc thành phố về đêm từ quỹ đạo.",
+      "phuong_an_khac": "images.nasa.gov: Blue Marble / Earth at night.",
+      "tu_khoa": "trái đất từ không gian",
+      "tu_khoa_en": "Blue Marble Earth from space",
+      "chu_nhan": [
+        {
+          "tu_chu": "Pixel",
+          "chu": "in *EIN PIXEL*"
+        }
+      ]
+    },
+    {
+      "so": 10,
+      "loi": "2012 verließ Voyager 1 als erstes menschliches Objekt die Blase unserer Sonne",
+      "nghia": "Năm 2012, Voyager 1 là vật đầu tiên của con người rời khỏi 'bong bóng' Mặt Trời",
+      "y_chinh": "Rời bong bóng Mặt Trời",
+      "goi_y_hinh": "Hình minh họa nhật quyển (bong bóng quanh Mặt Trời), Voyager đang vượt ra ngoài rìa.",
+      "phuong_an_khac": "images.nasa.gov: heliosphere Voyager interstellar illustration.",
+      "tu_khoa": "nhật quyển, rìa hệ mặt trời",
+      "tu_khoa_en": "heliosphere Voyager illustration",
+      "chu_nhan": [
+        {
+          "tu_chu": "Blase",
+          "chu": "die|*BLASE*|unserer Sonne"
+        }
+      ],
+      "vao": "khoi"
+    },
+    {
+      "so": 11,
+      "loi": "und flog in den interstellaren Raum.",
+      "nghia": "và bay vào không gian giữa các vì sao.",
+      "y_chinh": "Vào không gian liên sao",
+      "goi_y_hinh": "Biển sao dày đặc, Dải Ngân Hà rực rỡ (ảnh Hubble/Webb).",
+      "phuong_an_khac": "esahubble.org / esawebb.org: star field, Milky Way.",
+      "tu_khoa": "dải ngân hà, biển sao",
+      "tu_khoa_en": "Milky Way star field Hubble",
+      "chu_nhan": [
+        {
+          "tu_chu": "interstellaren",
+          "chu": "*INTERSTELLAR*"
+        }
+      ]
+    },
+    {
+      "so": 12,
+      "loi": "Heute ist sie über 24 Milliarden Kilometer entfernt, und ein Funksignal braucht fast einen ganzen Tag, um sie zu erreichen.",
+      "nghia": "Ngày nay tàu cách hơn 24 tỷ km, tín hiệu radio mất gần một ngày mới tới được.",
+      "y_chinh": "Tín hiệu mất gần 1 ngày",
+      "goi_y_hinh": "Ăng-ten khổng lồ của mạng Deep Space Network hướng lên trời đêm đầy sao.",
+      "phuong_an_khac": "images.nasa.gov: Deep Space Network antenna (Goldstone/Canberra/Madrid).",
+      "tu_khoa": "ăng ten deep space network",
+      "tu_khoa_en": "Deep Space Network antenna night",
+      "chu_nhan": [
+        {
+          "tu_chu": "24",
+          "chu": "*24 MILLIARDEN KM*"
+        },
+        {
+          "tu_chu": "Tag",
+          "chu": "fast|*EIN GANZER TAG*"
+        }
+      ],
+      "vao": "nhoe"
+    },
+    {
+      "so": 13,
+      "loi": "Ihr Strom wird jedes Jahr schwächer.",
+      "nghia": "Điện năng của tàu yếu đi mỗi năm.",
+      "y_chinh": "Điện yếu dần",
+      "goi_y_hinh": "Bóng đèn sợi đốt mờ dần trong bóng tối; hoặc pin RTG của Voyager.",
+      "phuong_an_khac": "Pexels: light bulb fading dark.",
+      "tu_khoa": "bóng đèn mờ dần",
+      "tu_khoa_en": "light bulb fading dark",
+      "chu_nhan": [
+        {
+          "tu_chu": "schwächer",
+          "chu": "Strom wird|*SCHWÄCHER*"
+        }
+      ]
+    },
+    {
+      "so": 14,
+      "loi": "Ingenieure schalten ein Instrument nach dem anderen ab, damit sie noch ein bisschen länger sprechen kann.",
+      "nghia": "Các kỹ sư tắt từng thiết bị một để tàu có thể 'nói' thêm một chút nữa.",
+      "y_chinh": "Tắt từng thiết bị",
+      "goi_y_hinh": "Phòng điều khiển JPL, kỹ sư nhìn màn hình tín hiệu Voyager.",
+      "phuong_an_khac": "images.nasa.gov: JPL mission control Voyager team.",
+      "tu_khoa": "phòng điều khiển nasa jpl",
+      "tu_khoa_en": "JPL mission control Voyager team",
+      "chu_nhan": [
+        {
+          "tu_chu": "Instrument",
+          "chu": "ein Instrument|nach dem *ANDEREN*"
+        }
+      ]
+    },
+    {
+      "so": 15,
+      "loi": "Irgendwann in den nächsten Jahren wird sie für immer verstummen.",
+      "nghia": "Một lúc nào đó trong vài năm tới, tàu sẽ im lặng mãi mãi.",
+      "y_chinh": "Sẽ im lặng mãi mãi",
+      "goi_y_hinh": "Voyager bé dần giữa bóng tối mênh mông, ánh sáng tắt dần.",
+      "phuong_an_khac": "Dùng lại ảnh ý 1, zoom ra (lặp có chủ đích).",
+      "tu_khoa": "voyager cô độc giữa vũ trụ",
+      "tu_khoa_en": "Voyager alone in space",
+      "chu_nhan": [
+        {
+          "tu_chu": "verstummen",
+          "chu": "für immer|*VERSTUMMEN*"
+        }
+      ]
+    },
+    {
+      "so": 16,
+      "loi": "Doch sie fliegt weiter, mit einer goldenen Schallplatte an Bord, voller Musik, Stimmen und Grüße von der Erde.",
+      "nghia": "Nhưng tàu vẫn bay tiếp, mang theo một chiếc đĩa vàng chứa âm nhạc, giọng nói và lời chào từ Trái Đất.",
+      "y_chinh": "Chiếc Đĩa Vàng",
+      "goi_y_hinh": "Đĩa Vàng Voyager (Golden Record) cận cảnh, ánh vàng lấp lánh.",
+      "phuong_an_khac": "images.nasa.gov: Voyager Golden Record.",
+      "tu_khoa": "đĩa vàng voyager",
+      "tu_khoa_en": "Voyager Golden Record",
+      "chu_nhan": [
+        {
+          "tu_chu": "goldenen",
+          "chu": "eine|*GOLDENE*|*SCHALLPLATTE*"
+        },
+        {
+          "tu_chu": "Musik",
+          "chu": "Musik, Stimmen|*GRÜSSE*"
+        }
+      ],
+      "vao": "khoi"
+    },
+    {
+      "so": 17,
+      "loi": "In etwa 40.000 Jahren wird sie an einem anderen Stern vorbeiziehen.",
+      "nghia": "Khoảng 40.000 năm nữa, tàu sẽ bay ngang một ngôi sao khác.",
+      "y_chinh": "40.000 năm nữa",
+      "goi_y_hinh": "Một ngôi sao sáng chói giữa không gian, có tia sáng lóe (ảnh Hubble/Webb).",
+      "phuong_an_khac": "esahubble.org: bright star close up.",
+      "tu_khoa": "ngôi sao sáng trong vũ trụ",
+      "tu_khoa_en": "bright star Hubble",
+      "chu_nhan": [
+        {
+          "tu_chu": "40.000",
+          "chu": "in *40.000*|Jahren"
+        }
+      ],
+      "vao": "nhoe"
+    },
+    {
+      "so": 18,
+      "loi": "Vielleicht ist diese Platte eines Tages das Letzte, was von uns übrig bleibt.",
+      "nghia": "Có lẽ một ngày nào đó, chiếc đĩa này là thứ cuối cùng còn lại của chúng ta.",
+      "y_chinh": "Thứ cuối cùng còn lại",
+      "goi_y_hinh": "Đĩa vàng lơ lửng trong bóng tối, kết thúc u buồn.",
+      "phuong_an_khac": "Dùng lại ảnh Đĩa Vàng, zoom ra rồi tối dần.",
+      "tu_khoa": "đĩa vàng trong bóng tối",
+      "tu_khoa_en": "Golden Record dark space",
+      "chu_nhan": [
+        {
+          "tu_chu": "Letzte",
+          "chu": "das|*LETZTE*|von uns"
+        }
+      ]
+    }
+  ]
+}
