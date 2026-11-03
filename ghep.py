@@ -529,6 +529,17 @@ def cmd_dung(a):
         ev.sort()
     info = am_thanh.tron(d, voice, total, ev, plan, mix)
     print(f'Âm thanh: nhạc {info["nhac"] or "không"} · {info["hieu_ung"]} hiệu ứng')
+    if getattr(a, 'chi_am', False):  # giữ hình cũ, chỉ thay tiếng
+        if not out.exists():
+            die(f'chưa có {out.name} để thay tiếng — dựng đầy đủ trước')
+        tmp = out.with_suffix('.tmp.mp4')
+        subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', str(out), '-i', str(mix), '-map', '0:v', '-map', '1:a',
+                        '-c:v', 'copy', '-c:a', 'aac', '-b:a', '192k', '-shortest', '-movflags', '+faststart', str(tmp)], check=True)
+        tmp.replace(out)
+        for c in clips:
+            c.close()
+        print(f'Đã thay tiếng: {out.relative_to(ROOT)}')
+        return
     cmd = ['ffmpeg', '-y', '-loglevel', 'error', '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-s', f'{W}x{H}',
            '-r', str(fps), '-i', '-', '-i', str(mix), '-map', '0:v', '-map', '1:a']
     cap = ['-maxrate', '8M', '-bufsize', '16M']
@@ -664,6 +675,7 @@ def main():
     p = sub.add_parser('dung')
     p.add_argument('ten')
     p.add_argument('--nhap', action='store_true', help='bản nháp 540p, ý thiếu hình hiện ô trống')
+    p.add_argument('--chi-am', action='store_true', help='chỉ trộn lại âm thanh, giữ hình của video đã dựng')
     p.add_argument('--cho-phep-thieu', action='store_true', help='ý thiếu hình hiện ô gợi ý thay vì báo lỗi')
     p.add_argument('--toi-da-mb', type=float, default=0, help='giới hạn dung lượng MP4 (vd 19 để tải lên trang)')
     p.add_argument('--model', default='small')
