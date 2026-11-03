@@ -1,4 +1,4 @@
-# Ý 16 — Chiếc Đĩa Vàng
+# Ý 08 — Chiếc Đĩa Vàng
 
 **Dán ảnh / video cho ý này vào đây:** bấm **Add file → Upload files** (góc phải, ngay trong thư mục này) → kéo file vào → **Commit changes**.
 
@@ -8,9 +8,9 @@
 
 **Nghĩa:** Nhưng tàu vẫn bay tiếp, mang theo một chiếc đĩa vàng chứa âm nhạc, giọng nói và lời chào từ Trái Đất.
 
-**Gợi ý hình:** Đĩa Vàng Voyager (Golden Record) cận cảnh, ánh vàng lấp lánh.
+**Gợi ý hình:** Đĩa Vàng Voyager xoay chậm, ánh vàng lấp lánh; cận cảnh mặt khắc hướng dẫn. Nên dùng 2–3 đoạn video ngắn cho ý này (mỗi đoạn chạy lần lượt).
 
-**Phương án khác:** images.nasa.gov: Voyager Golden Record.
+**Phương án khác:** images.nasa.gov: 'Voyager Golden Record' (có video); Pixabay: 'vinyl record gold spinning'.
 
 **Từ khóa tìm:** đĩa vàng voyager
 

@@ -1,4 +1,4 @@
-# Ý 12 — Tín hiệu mất gần 1 ngày
+# Ý 06 — 24 tỷ km – tín hiệu mất gần 1 ngày
 
 **Dán ảnh / video cho ý này vào đây:** bấm **Add file → Upload files** (góc phải, ngay trong thư mục này) → kéo file vào → **Commit changes**.
 
@@ -8,9 +8,9 @@
 
 **Nghĩa:** Ngày nay tàu cách hơn 24 tỷ km, tín hiệu radio mất gần một ngày mới tới được.
 
-**Gợi ý hình:** Ăng-ten khổng lồ của mạng Deep Space Network hướng lên trời đêm đầy sao.
+**Gợi ý hình:** Video ăng-ten khổng lồ Deep Space Network quay hướng lên trời đêm; sóng tín hiệu bay đi. Nên dùng 2–3 đoạn video ngắn cho ý này (mỗi đoạn chạy lần lượt).
 
-**Phương án khác:** images.nasa.gov: Deep Space Network antenna (Goldstone/Canberra/Madrid).
+**Phương án khác:** images.nasa.gov (video): 'Deep Space Network antenna'; Pixabay: 'radio telescope night'.
 
 **Từ khóa tìm:** ăng ten deep space network
 

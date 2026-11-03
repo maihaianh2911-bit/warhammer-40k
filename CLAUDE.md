@@ -167,6 +167,8 @@ kèm link tải ảnh gốc; người dùng tự làm nét bằng Gemini/ChatGPT
 - `loi` của các ý ghép lại phải **đúng nguyên văn toàn bộ kịch bản, đúng thứ tự, không thiếu không thừa**
   (máy dùng nó để khớp với giọng đọc). Được tách giữa câu tại dấu phẩy nếu cần.
 - Không có tiêu đề/ghi chú trong `loi` — chỉ những gì giọng đọc nói.
+- **Video dùng nhiều clip** (vd kênh vũ trụ — người dùng dán clip NASA/Pexels): chia ý **dài hơn, 6–10 s**, gom theo
+  đoạn nội dung; mỗi ý gợi ý 2–3 clip ngắn nối nhau (nguồn: NASA SVS svs.gsfc.nasa.gov, images.nasa.gov, Pexels, Pixabay).
 
 ## Cách gợi ý hình
 
