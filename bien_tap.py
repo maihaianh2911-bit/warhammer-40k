@@ -29,6 +29,7 @@ Kiểu dựng cả video (`kieu_edit` trong y.json, đè lên `canh`):
   Video dài: `y[].doan: [{"file": 1, "tu_giay": 12, "toc": 1.5}, {"file": 1, "tu_giay": 47}]` = cắt nhiều đoạn (cùng hoặc
   khác clip), chia đều thời gian ý, `toc` = tốc độ (1.5 = nhanh 1,5 lần). `"y": 3` = lấy clip ở ô của ý 3 (dùng lại một clip
   dài cho nhiều ý). Một đoạn: `y[].video_tu`, `y[].toc_video`.
+  Mỗi đoạn thêm được `"zoom": 1.12, "tam": [0.5, 0.46]` = phóng nhẹ cố định để cắt watermark/chữ ở mép clip.
   Chỉnh: `zoom_dau`, `zoom_troi`, `toc_do_troi`. Trong `canh` tự viết cũng dùng được `kieu: "zoom_ra" | "troi"`, `toc_do`.
 
 Không có `canh` → máy tự biên tập (ý dài chia 2 cảnh toàn → cận, ảnh ngang thì lia ngang, chuyển động đều).
@@ -316,7 +317,9 @@ def theo_mau(b, media, words, t0, t1, plan, counter):
             m = media[min(fi, len(media)) - 1]
             vao = (b.get('vao') or 'cat') if j == 0 else sg.get('vao', 'cat')
             if isinstance(m, Path) and _is_video(m):
-                out.append(dict(luc=bounds[j] - t0, file=fi, vua='cover', vao=vao, tu=[0.5, 0.5, 1.0], den=[0.5, 0.5, 1.0],
+                z = float(sg.get('zoom', 1.0))  # phóng nhẹ để cắt watermark/chữ ở mép clip, `tam` = điểm giữa giữ lại
+                cx, cy = sg.get('tam') or [0.5, 0.5]
+                out.append(dict(luc=bounds[j] - t0, file=fi, vua='cover', vao=vao, tu=[cx, cy, z], den=[cx, cy, z],
                                 tu_giay=float(sg.get('tu_giay', 0)), toc=float(sg.get('toc', 1.0))))
             else:
                 sx, sy = sg.get('chu_the') or b.get('chu_the') or [0.5, 0.42]

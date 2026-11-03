@@ -2,7 +2,7 @@
 
 **Dán ảnh / video cho ý này vào đây:** bấm **Add file → Upload files** (góc phải, ngay trong thư mục này) → kéo file vào → **Commit changes**.
 
-Ý dài ****. Nhiều file → chạy lần lượt theo tên file (chia đều thời gian). Video: lấy từ đầu clip, tắt tiếng; clip ngắn hơn ý thì lặp lại.
+Ý dài **10.9 giây** (từ giây 7.7 đến 18.6). Nhiều file → chạy lần lượt theo tên file (chia đều thời gian). Video: lấy từ đầu clip, tắt tiếng; clip ngắn hơn ý thì lặp lại.
 
 > Ihr Bordcomputer hat weniger Speicher als ein einziges Handyfoto. Trotzdem flog die Sonde an Jupiter und Saturn vorbei und schickte Bilder, die noch nie ein Mensch gesehen hatte.
 

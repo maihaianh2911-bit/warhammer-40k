@@ -2,7 +2,7 @@
 
 **Dán ảnh / video cho ý này vào đây:** bấm **Add file → Upload files** (góc phải, ngay trong thư mục này) → kéo file vào → **Commit changes**.
 
-Ý dài ****. Nhiều file → chạy lần lượt theo tên file (chia đều thời gian). Video: lấy từ đầu clip, tắt tiếng; clip ngắn hơn ý thì lặp lại.
+Ý dài **6.2 giây** (từ giây 25.9 đến 32.1). Nhiều file → chạy lần lượt theo tên file (chia đều thời gian). Video: lấy từ đầu clip, tắt tiếng; clip ngắn hơn ý thì lặp lại.
 
 > einen winzigen, blassblauen Punkt. Alles, was je ein Mensch erlebt hat, passt in dieses eine Pixel.
 

@@ -2,7 +2,7 @@
 
 **Dán ảnh / video cho ý này vào đây:** bấm **Add file → Upload files** (góc phải, ngay trong thư mục này) → kéo file vào → **Commit changes**.
 
-Ý dài ****. Nhiều file → chạy lần lượt theo tên file (chia đều thời gian). Video: lấy từ đầu clip, tắt tiếng; clip ngắn hơn ý thì lặp lại.
+Ý dài **7.3 giây** (từ giây 18.6 đến 25.9). Nhiều file → chạy lần lượt theo tên file (chia đều thời gian). Video: lấy từ đầu clip, tắt tiếng; clip ngắn hơn ý thì lặp lại.
 
 > 1990 drehte sie sich ein letztes Mal um. Aus sechs Milliarden Kilometern Entfernung fotografierte sie die Erde:
 

@@ -2,7 +2,7 @@
 
 **Dán ảnh / video cho ý này vào đây:** bấm **Add file → Upload files** (góc phải, ngay trong thư mục này) → kéo file vào → **Commit changes**.
 
-Ý dài ****. Nhiều file → chạy lần lượt theo tên file (chia đều thời gian). Video: lấy từ đầu clip, tắt tiếng; clip ngắn hơn ý thì lặp lại.
+Ý dài **12.1 giây** (từ giây 48.3 đến 60.4). Nhiều file → chạy lần lượt theo tên file (chia đều thời gian). Video: lấy từ đầu clip, tắt tiếng; clip ngắn hơn ý thì lặp lại.
 
 > Ihr Strom wird jedes Jahr schwächer. Ingenieure schalten ein Instrument nach dem anderen ab, damit sie noch ein bisschen länger sprechen kann. Irgendwann in den nächsten Jahren wird sie für immer verstummen.
 

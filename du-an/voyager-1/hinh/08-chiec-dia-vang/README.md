@@ -2,7 +2,7 @@
 
 **Dán ảnh / video cho ý này vào đây:** bấm **Add file → Upload files** (góc phải, ngay trong thư mục này) → kéo file vào → **Commit changes**.
 
-Ý dài ****. Nhiều file → chạy lần lượt theo tên file (chia đều thời gian). Video: lấy từ đầu clip, tắt tiếng; clip ngắn hơn ý thì lặp lại.
+Ý dài **7.2 giây** (từ giây 60.4 đến 67.6). Nhiều file → chạy lần lượt theo tên file (chia đều thời gian). Video: lấy từ đầu clip, tắt tiếng; clip ngắn hơn ý thì lặp lại.
 
 > Doch sie fliegt weiter, mit einer goldenen Schallplatte an Bord, voller Musik, Stimmen und Grüße von der Erde.
 

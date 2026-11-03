@@ -6,7 +6,7 @@ Khung hình: **9:16** · 9 ý · Mỗi ý có một **ô dán** (thư mục tron
 
 ## Ý 01 — Vật xa nhất – phóng năm 1977
 
- · [**→ Ô dán ý 01**](hinh/01-vat-xa-nhat-phong-nam-1977/)
+0.0s → 7.7s (7.7 giây) · [**→ Ô dán ý 01**](hinh/01-vat-xa-nhat-phong-nam-1977/)
 
 > Das am weitesten entfernte Ding, das Menschen je gebaut haben, funkt noch immer. Voyager 1 startete im Jahr 1977.
 
@@ -24,7 +24,7 @@ Khung hình: **9:16** · 9 ý · Mỗi ý có một **ô dán** (thư mục tron
 
 ## Ý 02 — Máy tính tí hon – bay ngang Sao Mộc, Sao Thổ
 
- · [**→ Ô dán ý 02**](hinh/02-may-tinh-ti-hon-bay-ngang-sao-moc-sao-th/)
+7.7s → 18.6s (10.9 giây) · [**→ Ô dán ý 02**](hinh/02-may-tinh-ti-hon-bay-ngang-sao-moc-sao-th/)
 
 > Ihr Bordcomputer hat weniger Speicher als ein einziges Handyfoto. Trotzdem flog die Sonde an Jupiter und Saturn vorbei und schickte Bilder, die noch nie ein Mensch gesehen hatte.
 
@@ -42,7 +42,7 @@ Khung hình: **9:16** · 9 ý · Mỗi ý có một **ô dán** (thư mục tron
 
 ## Ý 03 — Quay lại chụp Trái Đất
 
- · [**→ Ô dán ý 03**](hinh/03-quay-lai-chup-trai-dat/)
+18.6s → 25.9s (7.3 giây) · [**→ Ô dán ý 03**](hinh/03-quay-lai-chup-trai-dat/)
 
 > 1990 drehte sie sich ein letztes Mal um. Aus sechs Milliarden Kilometern Entfernung fotografierte sie die Erde:
 
@@ -60,7 +60,7 @@ Khung hình: **9:16** · 9 ý · Mỗi ý có một **ô dán** (thư mục tron
 
 ## Ý 04 — Chấm xanh nhạt – cả nhân loại trong 1 pixel
 
- · [**→ Ô dán ý 04**](hinh/04-cham-xanh-nhat-ca-nhan-loai-trong-1-pixe/)
+25.9s → 32.1s (6.2 giây) · [**→ Ô dán ý 04**](hinh/04-cham-xanh-nhat-ca-nhan-loai-trong-1-pixe/)
 
 > einen winzigen, blassblauen Punkt. Alles, was je ein Mensch erlebt hat, passt in dieses eine Pixel.
 
@@ -78,7 +78,7 @@ Khung hình: **9:16** · 9 ý · Mỗi ý có một **ô dán** (thư mục tron
 
 ## Ý 05 — Rời bong bóng Mặt Trời – vào không gian liên sao
 
- · [**→ Ô dán ý 05**](hinh/05-roi-bong-bong-mat-troi-vao-khong-gian-li/)
+32.1s → 40.0s (7.9 giây) · [**→ Ô dán ý 05**](hinh/05-roi-bong-bong-mat-troi-vao-khong-gian-li/)
 
 > 2012 verließ Voyager 1 als erstes menschliches Objekt die Blase unserer Sonne und flog in den interstellaren Raum.
 
@@ -96,7 +96,7 @@ Khung hình: **9:16** · 9 ý · Mỗi ý có một **ô dán** (thư mục tron
 
 ## Ý 06 — 24 tỷ km – tín hiệu mất gần 1 ngày
 
- · [**→ Ô dán ý 06**](hinh/06-24-ty-km-tin-hieu-mat-gan-1-ngay/)
+40.0s → 48.3s (8.2 giây) · [**→ Ô dán ý 06**](hinh/06-24-ty-km-tin-hieu-mat-gan-1-ngay/)
 
 > Heute ist sie über 24 Milliarden Kilometer entfernt, und ein Funksignal braucht fast einen ganzen Tag, um sie zu erreichen.
 
@@ -114,7 +114,7 @@ Khung hình: **9:16** · 9 ý · Mỗi ý có một **ô dán** (thư mục tron
 
 ## Ý 07 — Điện yếu dần – tắt từng thiết bị – sẽ im lặng
 
- · [**→ Ô dán ý 07**](hinh/07-dien-yeu-dan-tat-tung-thiet-bi-se-im-lan/)
+48.3s → 60.4s (12.1 giây) · [**→ Ô dán ý 07**](hinh/07-dien-yeu-dan-tat-tung-thiet-bi-se-im-lan/)
 
 > Ihr Strom wird jedes Jahr schwächer. Ingenieure schalten ein Instrument nach dem anderen ab, damit sie noch ein bisschen länger sprechen kann. Irgendwann in den nächsten Jahren wird sie für immer verstummen.
 
@@ -132,7 +132,7 @@ Khung hình: **9:16** · 9 ý · Mỗi ý có một **ô dán** (thư mục tron
 
 ## Ý 08 — Chiếc Đĩa Vàng
 
- · [**→ Ô dán ý 08**](hinh/08-chiec-dia-vang/)
+60.4s → 67.6s (7.2 giây) · [**→ Ô dán ý 08**](hinh/08-chiec-dia-vang/)
 
 > Doch sie fliegt weiter, mit einer goldenen Schallplatte an Bord, voller Musik, Stimmen und Grüße von der Erde.
 
@@ -150,7 +150,7 @@ Khung hình: **9:16** · 9 ý · Mỗi ý có một **ô dán** (thư mục tron
 
 ## Ý 09 — 40.000 năm – thứ cuối cùng còn lại
 
- · [**→ Ô dán ý 09**](hinh/09-40-000-nam-thu-cuoi-cung-con-lai/)
+67.6s → 77.6s (10.1 giây) · [**→ Ô dán ý 09**](hinh/09-40-000-nam-thu-cuoi-cung-con-lai/)
 
 > In etwa 40.000 Jahren wird sie an einem anderen Stern vorbeiziehen. Vielleicht ist diese Platte eines Tages das Letzte, was von uns übrig bleibt.
 
