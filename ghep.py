@@ -152,6 +152,9 @@ def font(size):
 
 
 def open_image(path):
+    net = Path(path).parent / '.net' / (Path(path).stem + '.jpg')  # bản làm nét bằng AI (lam_net.py)
+    if net.exists():
+        path = net
     if str(path).lower().endswith(('.heic', '.heif')):
         try:
             import pillow_heif

@@ -99,6 +99,13 @@ Kiểu `kieu_edit: "lia_xen_ke"` (người dùng chọn cho imperator-tot): mỗ
 phải→trái, zoom dần vào `chu_the` của ý; video giữ nguyên. Claude chỉ cần đặt `chu_the` đúng chủ thể của từng ảnh.
 Toàn video: `vien_toi` (0.32), `hat_phim` (0 — bật 0.03 sẽ làm file nặng gấp nhiều lần), `tuong_phan` (1.07), `mo_cuoi` (0.7 s tối dần cuối video).
 
+## Làm nét ảnh nhỏ (AI)
+
+`python3 lam_net.py <ten>` (Real-ESRGAN ×4, cần `pip install torch`): ảnh có cạnh dài < 1400 px → `hinh/NN-…/.net/<tên>.jpg`,
+`ghep.py` tự dùng bản đó. Workflow `tu-dung.yml` tự chạy trước khi dựng và commit `.net/` (chỉ làm một lần mỗi ảnh).
+Model `x4plus` (mặc định, giữ nét vẽ, ~20–60 s/ảnh trên CPU) hoặc `--model general` (nhanh ~10 lần, mịn hơn).
+Ảnh gốc to vẫn đẹp hơn mọi cách phóng — trang web gắn nhãn “ảnh nhỏ” cho ảnh < 900 px.
+
 ## Cách chia ý
 
 - Một ý = một hình ảnh trên màn hình = một khoảnh khắc người xem *thấy* một điều mới.

@@ -83,6 +83,8 @@ audio { max-width: 100%; height: 36px; }
 .th img, .th video { width: 100%; height: 100%; object-fit: cover; display: block; }
 .th .lbl { position: absolute; inset: auto 0 0 0; font-size: 10.5px; padding: 2px 5px; background: rgba(0,0,0,.6); color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .th .file { display: grid; place-items: center; height: 100%; font: 500 12px var(--f-mono); color: var(--muted); text-align: center; padding: 4px; }
+.th .warn { display: none; position: absolute; top: 4px; left: 4px; font-size: 10px; font-weight: 600; padding: 1px 6px; border-radius: 999px; background: #f0a640; color: #1a1203; }
+.th.small .warn { display: block; }
 .th .x { position: absolute; top: 4px; right: 4px; width: 24px; height: 24px; padding: 0; border-radius: 50%; border: 0; background: rgba(0,0,0,.65); color: #fff; font-size: 14px; line-height: 24px; }
 .th.up { display: grid; place-items: center; color: var(--muted); font-size: 12px; text-align: center; padding: 4px; }
 .final video { width: 100%; max-height: 70vh; border-radius: 10px; background: #000; }
@@ -309,9 +311,9 @@ function thumb(f, so, i) {
   let inner;
   if (!SHOWABLE.test(f.name)) inner = `<div class="file">${esc(f.name.split('.').pop().toUpperCase())}</div>`;
   else if (VID.test(f.name)) inner = `<video src="${esc(url)}#t=0.5" muted preload="metadata"></video>`;
-  else inner = `<img src="${esc(url)}" alt="" loading="lazy">`;
+  else inner = `<img src="${esc(url)}" alt="" loading="lazy" onload="if(Math.max(this.naturalWidth,this.naturalHeight)<900)this.parentNode.classList.add('small')" data-px="">`;
   const rm = editIdeas() ? `<button class="x" type="button" data-rm="${so}:${i}" aria-label="Bỏ file này">×</button>` : '';
-  return `<div class="th">${inner}<span class="lbl">${VID.test(f.name) ? '▶ ' : ''}${esc(f.name.replace(/^\d+-/, ''))}</span>${rm}</div>`;
+  return `<div class="th">${inner}<span class="warn" title="Ảnh nhỏ: máy sẽ làm nét bằng AI, nhưng ảnh to (từ 1000 px) vẫn đẹp hơn">ảnh nhỏ</span><span class="lbl">${VID.test(f.name) ? '▶ ' : ''}${esc(f.name.replace(/^\d+-/, ''))}</span>${rm}</div>`;
 }
 function chips(y) {
   const out = [];
@@ -332,7 +334,7 @@ function renderIdeas() {
     const pick = `<div class="more"><button type="button" data-pick="${y.so}">${files.length ? '+ Thêm file' : 'Chọn file'}</button><span>hoặc Ctrl+V</span></div>`;
     const inner = files.length || up
       ? `<div class="thumbs">${files.map((f, i) => thumb(f, y.so, i)).join('')}${up ? `<div class="th up">Đang tải ${up} file…</div>` : ''}</div>${edit ? pick : ''}`
-      : edit ? `<div class="empty"><b>Thả ảnh/video vào đây</b>hoặc bấm vào khung rồi Ctrl+V để dán ảnh đã copy</div>${pick}` : '<div class="empty">Chưa có hình</div>';
+      : edit ? `<div class="empty"><b>Thả ảnh/video vào đây</b>hoặc bấm vào khung rồi Ctrl+V để dán ảnh đã copy<br><small>Nên dùng ảnh to (từ 1000 px): trên Google Ảnh bấm mở ảnh lớn rồi mới copy.</small></div>${pick}` : '<div class="empty">Chưa có hình</div>';
     return `<article class="idea${files.length ? ' has' : ''}">
       <div style="min-width:0">
         <div class="idea-h"><span class="no">Ý ${String(y.so).padStart(2, '0')}</span><h3>${esc(y.y_chinh || '')}</h3>
