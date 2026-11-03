@@ -399,131 +399,6 @@ def cmd_can(a):
 
 # ───────────────────────── dựng hình ─────────────────────────
 
-def ease(x):
-    return 0.5 - 0.5 * math.cos(math.pi * min(1.0, max(0.0, x)))
-
-
-class Clip:
-    """Một hình trên màn trong [t0, t1), có chuyển động Ken Burns mượt (dưới điểm ảnh)."""
-
-    def __init__(self, src, t0, t1, W, H, motion, fit, strength):
-        self.t0, self.t1, self.W, self.H = t0, t1, W, H
-        self.motion, self.strength = motion, strength
-        im = open_image(src) if isinstance(src, (str, Path)) else src
-        iw, ih = im.size
-        ratio = (iw / ih) / (W / H)
-        if fit == 'auto':
-            fit = 'contain' if (ratio > 1.45 or ratio < 1 / 1.45) else 'cover'
-        if fit == 'contain':
-            im = self._contain(im)
-            iw, ih = im.size
-        zmax = 1 + strength
-        scale = max(W / iw, H / ih) * zmax
-        self.img = im.resize((max(W, round(iw * scale)), max(H, round(ih * scale))), Image.LANCZOS)
-        self.base = max(W / iw, H / ih) / scale  # nguồn px / khung px tại zoom 1
-
-    def _contain(self, im):
-        W, H = self.W, self.H
-        bg = ImageOps.fit(im, (W // 4, H // 4), Image.BILINEAR).filter(ImageFilter.GaussianBlur(14))
-        bg = bg.resize((W, H), Image.BILINEAR).point(lambda v: int(v * 0.55))
-        s = min(W / im.width, H / im.height) * 0.94
-        fg = im.resize((round(im.width * s), round(im.height * s)), Image.LANCZOS)
-        bg.paste(fg, ((W - fg.width) // 2, (H - fg.height) // 2))
-        return bg
-
-    def frame(self, t):
-        span = max(0.001, self.t1 - self.t0)
-        p = ease((t - self.t0) / span) if self.motion != 'none' else 0.0
-        s = self.strength
-        m = self.motion
-        zoom, px, py = 1.0, 0.0, 0.0
-        if m == 'zoom-in':
-            zoom = 1 + s * p
-        elif m == 'zoom-out':
-            zoom = 1 + s * (1 - p)
-        elif m in ('pan-left', 'pan-right', 'pan-up', 'pan-down'):
-            zoom = 1 + s * 0.85
-            k = (p - 0.5) * 2  # -1 → 1
-            if m == 'pan-right':
-                px = k
-            elif m == 'pan-left':
-                px = -k
-            elif m == 'pan-down':
-                py = k
-            else:
-                py = -k
-        iw, ih = self.img.size
-        sc = self.base / zoom  # nguồn px cho mỗi px khung
-        vw, vh = self.W * sc, self.H * sc
-        cx = iw / 2 + px * (iw - vw) / 2 * 0.95
-        cy = ih / 2 + py * (ih - vh) / 2 * 0.95
-        x0, y0 = cx - vw / 2, cy - vh / 2
-        return self.img.transform((self.W, self.H), Image.AFFINE, (sc, 0, x0, 0, sc, y0), resample=Image.BILINEAR)
-
-
-def video_info(path):
-    """(rộng, cao, thời lượng) sau khi xoay theo metadata điện thoại."""
-    out = subprocess.run(['ffprobe', '-v', 'error', '-select_streams', 'v:0', '-show_entries',
-                          'stream=width,height:stream_side_data=rotation:stream_tags=rotate:format=duration',
-                          '-of', 'json', str(path)], capture_output=True, text=True)
-    j = json.loads(out.stdout or '{}')
-    st = (j.get('streams') or [{}])[0]
-    w, h = int(st.get('width', 0)), int(st.get('height', 0))
-    rot = 0
-    for sd in st.get('side_data_list', []) or []:
-        rot = int(float(sd.get('rotation', 0) or 0))
-    rot = rot or int(float((st.get('tags') or {}).get('rotate', 0) or 0))
-    if abs(rot) % 180 == 90:
-        w, h = h, w
-    return w, h, float((j.get('format') or {}).get('duration', 0) or 0)
-
-
-class VideoClip:
-    """Một đoạn video trên màn trong [t0, t1): tắt tiếng, lấy từ giây `tu` của clip, ngắn hơn thì lặp lại."""
-
-    def __init__(self, src, t0, t1, W, H, fps, fit, tu, extra):
-        self.t0, self.t1, self.W, self.H, self.fps = t0, t1, W, H, fps
-        iw, ih, _ = video_info(src)
-        if not iw or not ih:
-            die(f'không đọc được video {src}')
-        ratio = (iw / ih) / (W / H)
-        if fit == 'auto':
-            fit = 'contain' if (ratio > 1.45 or ratio < 1 / 1.45) else 'cover'
-        if fit == 'contain':
-            bw, bh = W // 4 // 2 * 2, H // 4 // 2 * 2
-            vf = (f'split[a][b];[a]scale={bw}:{bh}:force_original_aspect_ratio=increase,crop={bw}:{bh},'
-                  f'boxblur=10:2,scale={W}:{H},eq=brightness=-0.18[bg];'
-                  f'[b]scale={int(W * 0.94)}:{int(H * 0.94)}:force_original_aspect_ratio=decrease[fg];'
-                  f'[bg][fg]overlay=(W-w)/2:(H-h)/2,fps={fps},format=rgb24')
-        else:
-            vf = f'scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},fps={fps},format=rgb24'
-        dur = (t1 - t0) + extra + 0.2
-        self.proc = subprocess.Popen(['ffmpeg', '-v', 'error', '-stream_loop', '-1', '-ss', f'{tu:.3f}', '-i', str(src),
-                                      '-t', f'{dur:.3f}', '-an', '-filter_complex', vf, '-f', 'rawvideo', '-'],
-                                     stdout=subprocess.PIPE)
-        self.size = W * H * 3
-        self.n = -1
-        self.last = Image.new('RGB', (W, H))
-
-    def frame(self, t):
-        want = int(round((t - self.t0) * self.fps))
-        while self.n < want and self.proc:
-            buf = self.proc.stdout.read(self.size)
-            if len(buf) < self.size:
-                self.close()
-                break
-            self.last = Image.frombytes('RGB', (self.W, self.H), buf)
-            self.n += 1
-        return self.last.copy()
-
-    def close(self):
-        if self.proc:
-            self.proc.stdout.close()
-            self.proc.kill()
-            self.proc.wait()
-            self.proc = None
-
-
 def placeholder(beat, W, H):
     im = Image.new('RGB', (W, H), (24, 26, 32))
     dr = ImageDraw.Draw(im)
@@ -594,45 +469,6 @@ def render_sub(text, W, H, style):
     return img
 
 
-def build_clips(d, beats, timing, W, H, fps, xfade, plan, allow_missing):
-    tmap = {t['so']: t for t in timing['y']}
-    strength = float(plan.get('do_chuyen_dong', 0.10))
-    default_fit = plan.get('vua_khung', 'auto')
-    clips, missing = [], []
-    k = 0
-    for b in beats:
-        t = tmap.get(b['so'])
-        if not t:
-            die(f'thoi-gian.json không có ý {b["so"]} — chạy lại: python3 ghep.py can <ten>')
-        imgs = images_for(d, b['so'])
-        if not imgs:
-            missing.append(b['so'])
-            if not allow_missing:
-                continue
-            imgs = [placeholder(b, W, H)]
-        n = len(imgs)
-        seg = (t['ket_thuc'] - t['bat_dau']) / n
-        mot = b.get('chuyen_dong')
-        mots = mot if isinstance(mot, list) else [mot] * n
-        for j, src in enumerate(imgs):
-            motion = mots[j] if j < len(mots) and mots[j] else MOTIONS[k % len(MOTIONS)]
-            t0, t1 = t['bat_dau'] + j * seg, t['bat_dau'] + (j + 1) * seg
-            fit = b.get('vua_khung', default_fit)
-            if is_video(src):
-                tu = b.get('video_tu', 0)
-                tu = tu[j] if isinstance(tu, list) and j < len(tu) else (tu if not isinstance(tu, list) else 0)
-                clips.append(VideoClip(src, t0, t1, W, H, fps, fit, float(tu or 0), xfade))
-                k += 1
-                continue
-            if not isinstance(src, (str, Path)):
-                motion = 'none'
-            clips.append(Clip(src, t0, t1, W, H, motion, fit, strength))
-            k += 1
-    if missing and not allow_missing:
-        die(f'còn thiếu hình cho ý: {", ".join(map(str, missing))} (dựng thử với ô trống: thêm --nhap)')
-    return clips, missing
-
-
 def cmd_dung(a):
     d = proj_dir(a.ten)
     plan, beats = load_plan(d)
@@ -645,8 +481,11 @@ def cmd_dung(a):
     fps = int(plan.get('fps', 30))
     if a.nhap:
         W, H, fps = W // 2, H // 2, 24
-    xfade = float(plan.get('chuyen_canh', 0.3))
-    clips, missing = build_clips(d, beats, timing, W, H, fps, xfade, plan, allow_missing=a.nhap or a.cho_phep_thieu)
+    import bien_tap
+    clips, missing = bien_tap.build_shots(d, beats, timing, W, H, fps, plan, images_for, open_image, placeholder,
+                                          a.nhap or a.cho_phep_thieu, die)
+    look = bien_tap.Look(W, H, plan)
+    fade_out = float(plan.get('mo_cuoi', 0.7))
     subs_on = plan.get('phu_de', True)
     subs = []
     if subs_on:
@@ -682,17 +521,11 @@ def cmd_dung(a):
     for fi in range(nframes):
         t = fi / fps
         while ci + 1 < len(clips) and t >= clips[ci + 1].t0:
-            if ci > 0 and isinstance(clips[ci - 1], VideoClip):
+            if ci > 0:
                 clips[ci - 1].close()
             ci += 1
-        if not clips:
-            frame = Image.new('RGB', (W, H))
-        else:
-            c = clips[ci]
-            frame = c.frame(t)
-            if ci > 0 and xfade > 0 and t < c.t0 + xfade:
-                prev = clips[ci - 1].frame(t)
-                frame = Image.blend(prev, frame, ease((t - c.t0) / xfade))
+        frame = bien_tap.compose(clips, ci, t, W, H, total, fade_out) if clips else Image.new('RGB', (W, H))
+        frame = Image.fromarray(look.apply(frame))
         for s, e, img in subs:
             if s <= t < e:
                 frame.paste(img, (0, int(H * sub_y - img.height / 2)), img)
@@ -702,8 +535,7 @@ def cmd_dung(a):
             print(f'  {t:5.1f}s / {total:.1f}s', flush=True)
     ff.stdin.close()
     for c in clips:
-        if isinstance(c, VideoClip):
-            c.close()
+        c.close()
     if ff.wait() != 0:
         die('ffmpeg dựng video lỗi')
     print(f'Xong: {out.relative_to(ROOT)}  ({W}x{H}, {total:.1f}s)')

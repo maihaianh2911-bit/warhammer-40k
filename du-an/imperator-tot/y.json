@@ -14,7 +14,20 @@
       "phuong_an_khac": "Ảnh Golden Throne chính thức (artbook / Codex Adeptus Custodes), hoặc cảnh phòng ngai trong trailer game Warhammer 40k.",
       "tu_khoa": "ngai vàng hoàng đế nhân loại warhammer 40k, phòng ngai cung điện hoàng gia",
       "tu_khoa_en": "Golden Throne, Emperor of Mankind, throne room",
-      "chuyen_dong": "zoom-in"
+      "canh": [
+        {
+          "tu": [
+            0.5,
+            0.42,
+            1.0
+          ],
+          "den": [
+            0.5,
+            0.38,
+            1.14
+          ]
+        }
+      ]
     },
     {
       "so": 2,
@@ -25,7 +38,34 @@
       "phuong_an_khac": "Artwork “Corpse Emperor” cận mặt (fan art nổi tiếng), hoặc ảnh mặt xác ướp khô có chỉnh tông vàng.",
       "tu_khoa": "hoàng đế xác chết warhammer, mặt hoàng đế trên ngai vàng",
       "tu_khoa_en": "Corpse Emperor face, mummified, Golden Throne close up",
-      "chuyen_dong": "zoom-in"
+      "canh": [
+        {
+          "tu": [
+            0.5,
+            0.55,
+            1.0
+          ],
+          "den": [
+            0.5,
+            0.5,
+            1.06
+          ],
+          "vao": "lia"
+        },
+        {
+          "tu_chu": "regungslos",
+          "tu": [
+            0.5,
+            0.3,
+            1.3
+          ],
+          "den": [
+            0.5,
+            0.27,
+            1.38
+          ]
+        }
+      ]
     },
     {
       "so": 3,
@@ -36,7 +76,35 @@
       "phuong_an_khac": "Artwork Black Legion / Abaddon cười, hoặc Chaos Marine trong Space Marine 2.",
       "tu_khoa": "chaos space marine, binh đoàn đen black legion, lính phản bội warhammer",
       "tu_khoa_en": "Chaos Space Marine, Black Legion, traitor marine",
-      "chuyen_dong": "pan-right"
+      "canh": [
+        {
+          "tu": [
+            0.5,
+            0.25,
+            1.15
+          ],
+          "den": [
+            0.5,
+            0.45,
+            1.15
+          ]
+        },
+        {
+          "tu_chu": "Leichen-Imperator",
+          "tu": [
+            0.32,
+            0.72,
+            1.45
+          ],
+          "den": [
+            0.32,
+            0.7,
+            1.5
+          ],
+          "vao": "giat",
+          "rung": 0.5
+        }
+      ]
     },
     {
       "so": 4,
@@ -47,7 +115,47 @@
       "phuong_an_khac": "Ảnh tĩnh cận tay xác ướp + giáp vàng; hoặc chuỗi 2 hình: tay bất động (04.jpg) và môi khô khép chặt (04b.jpg).",
       "tu_khoa": "bàn tay xác ướp, găng tay giáp vàng, tay vịn ngai vàng",
       "tu_khoa_en": "mummified hand, golden gauntlet, throne armrest",
-      "chuyen_dong": "pan-up"
+      "canh": [
+        {
+          "tu": [
+            0.5,
+            0.5,
+            1.0
+          ],
+          "den": [
+            0.5,
+            0.47,
+            1.05
+          ],
+          "vao": "mo"
+        },
+        {
+          "tu_chu": "spricht",
+          "tu": [
+            0.5,
+            0.45,
+            1.32
+          ],
+          "den": [
+            0.5,
+            0.44,
+            1.36
+          ]
+        },
+        {
+          "tu_chu": "nimmt",
+          "tu": [
+            0.5,
+            0.33,
+            1.5
+          ],
+          "den": [
+            0.5,
+            0.32,
+            1.62
+          ]
+        }
+      ]
     },
     {
       "so": 5,
@@ -58,7 +166,35 @@
       "phuong_an_khac": "Nền đen + chữ lớn “TOT” / đường điện tim thẳng màu vàng.",
       "tu_khoa": "màn hình điện tim đường thẳng, máy theo dõi nhịp tim ngừng đập",
       "tu_khoa_en": "flatline monitor, cogitator, Adeptus Mechanicus screen",
-      "chuyen_dong": "zoom-in"
+      "canh": [
+        {
+          "tu": [
+            0.5,
+            0.55,
+            1.0
+          ],
+          "den": [
+            0.5,
+            0.45,
+            1.08
+          ]
+        },
+        {
+          "tu_chu": "Tod",
+          "tu": [
+            0.5,
+            0.12,
+            1.55
+          ],
+          "den": [
+            0.5,
+            0.12,
+            1.6
+          ],
+          "vao": "giat",
+          "rung": 0.7
+        }
+      ]
     },
     {
       "so": 6,
@@ -69,7 +205,34 @@
       "phuong_an_khac": "Artwork Emperor of Mankind thời Horus Heresy (bìa sách Black Library).",
       "tu_khoa": "hoàng đế nhân loại thời horus heresy, hoàng đế giáp vàng kiếm lửa",
       "tu_khoa_en": "Emperor of Mankind Horus Heresy art, golden armor",
-      "chuyen_dong": "zoom-out"
+      "canh": [
+        {
+          "tu": [
+            0.5,
+            0.62,
+            1.0
+          ],
+          "den": [
+            0.5,
+            0.55,
+            1.07
+          ],
+          "vao": "flash"
+        },
+        {
+          "tu_chu": "Er",
+          "tu": [
+            0.48,
+            0.17,
+            2.1
+          ],
+          "den": [
+            0.48,
+            0.19,
+            2.25
+          ]
+        }
+      ]
     },
     {
       "so": 7,
@@ -80,7 +243,34 @@
       "phuong_an_khac": "Hình tượng phượng hoàng tái sinh từ tro, tông vàng-đỏ.",
       "tu_khoa": "bất tử hồi sinh, cơ thể tái tạo, phượng hoàng tái sinh",
       "tu_khoa_en": "regeneration, resurrection, immortal rebirth",
-      "chuyen_dong": "pan-left"
+      "canh": [
+        {
+          "tu": [
+            0.5,
+            0.78,
+            1.3
+          ],
+          "den": [
+            0.5,
+            0.5,
+            1.3
+          ]
+        },
+        {
+          "tu_chu": "bis",
+          "tu": [
+            0.5,
+            0.5,
+            1.0
+          ],
+          "den": [
+            0.5,
+            0.46,
+            1.06
+          ],
+          "vao": "flash"
+        }
+      ]
     },
     {
       "so": 8,
@@ -91,7 +281,22 @@
       "phuong_an_khac": "Nền đen + chữ lớn “NIEMALS”.",
       "tu_khoa": "rắn tự cắn đuôi ouroboros, biểu tượng vĩnh cửu vàng",
       "tu_khoa_en": "ouroboros gold, eternity symbol",
-      "chuyen_dong": "zoom-in"
+      "canh": [
+        {
+          "tu": [
+            0.5,
+            0.45,
+            1.0
+          ],
+          "den": [
+            0.5,
+            0.42,
+            1.18
+          ],
+          "vao": "mo",
+          "muot": true
+        }
+      ]
     },
     {
       "so": 9,
@@ -102,7 +307,47 @@
       "phuong_an_khac": "Ảnh mặt cắt / sơ đồ Golden Throne với dây cáp (artbook Adeptus Mechanicus).",
       "tu_khoa": "cỗ máy ngai vàng warhammer, dây cáp ngai vàng, tech priest cơ khí",
       "tu_khoa_en": "Golden Throne machine, cables, tech-priests",
-      "chuyen_dong": "pan-down"
+      "canh": [
+        {
+          "tu": [
+            0.5,
+            0.2,
+            1.25
+          ],
+          "den": [
+            0.5,
+            0.55,
+            1.25
+          ],
+          "vao": "toi"
+        },
+        {
+          "tu_chu": "Lebenskraft",
+          "tu": [
+            0.5,
+            0.4,
+            1.6
+          ],
+          "den": [
+            0.5,
+            0.38,
+            1.7
+          ]
+        },
+        {
+          "tu_chu": "wie",
+          "tu": [
+            0.5,
+            0.5,
+            1.0
+          ],
+          "den": [
+            0.5,
+            0.5,
+            1.04
+          ]
+        }
+      ]
     },
     {
       "so": 10,
@@ -113,7 +358,21 @@
       "phuong_an_khac": "Hai hình ghép: Hoàng đế sống (giáp vàng) | xác chết trên ngai.",
       "tu_khoa": "chân dung chia đôi sống và chết, nửa sáng nửa tối",
       "tu_khoa_en": "life and death split, Emperor portrait",
-      "chuyen_dong": "zoom-out"
+      "canh": [
+        {
+          "tu": [
+            0.3,
+            0.45,
+            1.0
+          ],
+          "den": [
+            0.72,
+            0.45,
+            1.0
+          ],
+          "vao": "mo"
+        }
+      ]
     },
     {
       "so": 11,
@@ -124,7 +383,36 @@
       "phuong_an_khac": "Artwork “Emperor's spirit / psychic ghost” trên Ngai Vàng.",
       "tu_khoa": "linh hồn hoàng đế warhammer, bóng ma vàng psychic",
       "tu_khoa_en": "Emperor spirit, psychic ghost, Golden Throne",
-      "chuyen_dong": "zoom-in"
+      "canh": [
+        {
+          "tu": [
+            0.4,
+            0.5,
+            1.5
+          ],
+          "den": [
+            0.5,
+            0.5,
+            1.6
+          ],
+          "vua": "contain",
+          "vao": "cat"
+        },
+        {
+          "tu_chu": "doch",
+          "tu": [
+            0.45,
+            0.45,
+            2.0
+          ],
+          "den": [
+            0.45,
+            0.43,
+            2.1
+          ],
+          "vua": "contain"
+        }
+      ]
     },
     {
       "so": 12,
@@ -135,7 +423,37 @@
       "phuong_an_khac": "Cảnh “miracle” trong game (Dawn of War / Space Marine 2) hoặc art Saint xuất hiện trên chiến trường.",
       "tu_khoa": "lính vệ binh đế chế imperial guard, phép màu trên chiến trường",
       "tu_khoa_en": "Imperial Guard last stand, divine intervention",
-      "chuyen_dong": "pan-up"
+      "canh": [
+        {
+          "tu": [
+            0.35,
+            0.5,
+            1.6
+          ],
+          "den": [
+            0.6,
+            0.5,
+            1.6
+          ],
+          "vua": "contain"
+        },
+        {
+          "tu_chu": "sogar",
+          "tu": [
+            0.62,
+            0.5,
+            2.0
+          ],
+          "den": [
+            0.66,
+            0.5,
+            2.05
+          ],
+          "vua": "contain",
+          "vao": "flash",
+          "rung": 0.6
+        }
+      ]
     },
     {
       "so": 13,
@@ -146,7 +464,21 @@
       "phuong_an_khac": "Ảnh Astronomican beacon / Terra từ quỹ đạo (art chính thức).",
       "tu_khoa": "astronomican ngọn hải đăng thiên hà, trái đất terra từ vũ trụ",
       "tu_khoa_en": "Astronomican, Terra from space, beacon",
-      "chuyen_dong": "zoom-out"
+      "canh": [
+        {
+          "tu": [
+            0.5,
+            0.78,
+            1.2
+          ],
+          "den": [
+            0.5,
+            0.32,
+            1.2
+          ],
+          "vao": "flash"
+        }
+      ]
     },
     {
       "so": 14,
@@ -157,7 +489,21 @@
       "phuong_an_khac": "Artwork Saint Celestine (Adepta Sororitas).",
       "tu_khoa": "thánh celestine, thánh sống warhammer, nữ chiến binh có cánh",
       "tu_khoa_en": "Saint Celestine, Living Saint, Adepta Sororitas",
-      "chuyen_dong": "pan-up"
+      "canh": [
+        {
+          "tu": [
+            0.5,
+            0.32,
+            1.0
+          ],
+          "den": [
+            0.5,
+            0.26,
+            1.22
+          ],
+          "vao": "lia"
+        }
+      ]
     },
     {
       "so": 15,
@@ -168,7 +514,35 @@
       "phuong_an_khac": "Artwork Guilliman hồi sinh (bìa Dark Imperium / Gathering Storm).",
       "tu_khoa": "roboute guilliman hồi sinh, primarch guilliman",
       "tu_khoa_en": "Roboute Guilliman resurrection, Gathering Storm",
-      "chuyen_dong": "zoom-in"
+      "canh": [
+        {
+          "tu": [
+            0.5,
+            0.5,
+            1.0
+          ],
+          "den": [
+            0.5,
+            0.55,
+            1.1
+          ],
+          "vao": "lia"
+        },
+        {
+          "tu_chu": "Guilliman",
+          "tu": [
+            0.5,
+            0.62,
+            1.5
+          ],
+          "den": [
+            0.5,
+            0.62,
+            1.58
+          ],
+          "vao": "giat"
+        }
+      ]
     },
     {
       "so": 16,
@@ -179,7 +553,22 @@
       "phuong_an_khac": "Artwork Garden of Nurgle burning (Warhammer 40k 8th edition).",
       "tu_khoa": "khu vườn nurgle bốc cháy, vườn của nurgle",
       "tu_khoa_en": "Garden of Nurgle burning, Nurgle",
-      "chuyen_dong": "pan-right"
+      "canh": [
+        {
+          "tu": [
+            0.5,
+            0.35,
+            1.05
+          ],
+          "den": [
+            0.5,
+            0.6,
+            1.05
+          ],
+          "vao": "lia",
+          "rung": 0.8
+        }
+      ]
     },
     {
       "so": 17,
@@ -190,7 +579,34 @@
       "phuong_an_khac": "Dùng lại ảnh Golden Throne ở ý 1 với bộ lọc tối hơn.",
       "tu_khoa": "ngai vàng hoàng đế góc thấp, hoàng đế warhammer hùng vĩ",
       "tu_khoa_en": "Golden Throne, Emperor, epic low angle",
-      "chuyen_dong": "zoom-out"
+      "canh": [
+        {
+          "tu": [
+            0.5,
+            0.42,
+            1.0
+          ],
+          "den": [
+            0.5,
+            0.38,
+            1.08
+          ],
+          "vao": "flash"
+        },
+        {
+          "tu_chu": "wenn",
+          "tu": [
+            0.5,
+            0.22,
+            1.45
+          ],
+          "den": [
+            0.5,
+            0.21,
+            1.52
+          ]
+        }
+      ]
     },
     {
       "so": 18,
@@ -201,7 +617,49 @@
       "phuong_an_khac": "Ảnh thật xác ướp Ai Cập (bảo tàng) + ảnh Corpse Emperor đặt cạnh nhau.",
       "tu_khoa": "xác ướp ai cập trong quan tài vàng, xác ướp bảo tàng",
       "tu_khoa_en": "Egyptian mummy sarcophagus, museum mummy",
-      "chuyen_dong": "zoom-in"
+      "canh": [
+        {
+          "tu": [
+            0.5,
+            0.55,
+            1.0
+          ],
+          "den": [
+            0.5,
+            0.5,
+            1.06
+          ],
+          "vao": "mo"
+        },
+        {
+          "tu_chu": "schließlich",
+          "tu": [
+            0.55,
+            0.24,
+            1.4
+          ],
+          "den": [
+            0.55,
+            0.23,
+            1.48
+          ]
+        },
+        {
+          "tu_chu": "noch",
+          "tu": [
+            0.55,
+            0.22,
+            1.62
+          ],
+          "den": [
+            0.55,
+            0.22,
+            1.8
+          ],
+          "muot": true
+        }
+      ]
     }
-  ]
+  ],
+  "vi_tri_phu_de": 0.8
 }

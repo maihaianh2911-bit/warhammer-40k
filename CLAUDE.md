@@ -84,6 +84,19 @@ Cách cũ (dán qua thư mục GitHub) vẫn dùng được, xem bên dưới.
 Người dùng góp ý sau khi xem ("ý 4 đổi hình", "phụ đề lên cao", "ý 7 zoom ra") → sửa `y.json` / thay hình → dựng lại.
 Đổi lời trong `y.json` hoặc thay giọng → chạy lại `can` trước khi dựng.
 
+## Biên tập (Claude edit) — làm sau khi người dùng đã dán hình
+
+Máy tự biên tập được (không có `canh`) nhưng chỉ ở mức khá. Khi người dùng nhờ “edit”, Claude **xem từng hình**
+(`tobia`, hoặc mở ảnh gốc) rồi viết `y[].canh` cho từng ý (cú pháp đầy đủ ở đầu `bien_tap.py`):
+- Ý dài > 4 s: 2–3 cảnh, cắt bằng `tu_chu` đúng từ quan trọng (toàn cảnh → cận mặt/chi tiết được nhắc tới).
+- `tu`/`den` nhắm vào chủ thể thật trong ảnh (mặt, mắt, vũ khí…), không mặc định giữa khung. Ảnh nhỏ (< 700 px)
+  zoom tối đa ~1.4; ảnh lớn được tới 2–2.5. Ảnh ngang lớn: lia ngang (`tu` x 0.3 → `den` x 0.7). Ảnh ngang nhỏ: `vua: contain`.
+- `vao`: phần lớn `cat`; `flash` cho khoảnh khắc đảo chiều/ánh sáng; `giat` cho từ nhấn (chết, không bao giờ…);
+  `lia` cho chuỗi liệt kê nhanh; `mo` cho câu chậm/suy tư; `toi` khi sang đoạn mới. Không lặp một kiểu liên tục.
+- `rung` 0.4–0.8 ở chỗ kịch tính/chiến trận. Chuyển động mặc định đều (tuyến tính); `muot: true` chỉ cho cảnh chậm.
+- Dựng nháp (`--nhap`), trích khung ở mỗi lần cắt để soát, rồi `trang-thai … cho_dung` + push để GitHub dựng bản thật.
+Toàn video: `vien_toi` (0.32), `hat_phim` (0.045), `tuong_phan` (1.07), `mo_cuoi` (0.7 s tối dần cuối video).
+
 ## Cách chia ý
 
 - Một ý = một hình ảnh trên màn hình = một khoảnh khắc người xem *thấy* một điều mới.
