@@ -125,6 +125,7 @@ xích). Câu lệnh vẽ cho Gemini/ChatGPT: `kenh/nhan-vat/README.md`. Người
 Khi edit, Claude đặt `y[].nhan_vat` ở 4–7 chỗ có cảm xúc rõ (ngạc nhiên ở chi tiết bất ngờ, sợ ở chỗ chết chóc,
 cười ở câu đùa, suy nghĩ ở câu hỏi, chỉ tay khi giới thiệu), xen kẽ `ben` trái/phải, không đặt ở ý có chủ thể nằm sát
 đáy khung. Cú pháp ở đầu `nhan_vat.py`. Chưa có ảnh nhân vật thì máy bỏ qua.
+Đoạn mở luôn có Otto (người dùng muốn): đứng giữa dưới tiêu đề suốt lúc tiêu đề hiện (`nhan_vat_mo`). Các lần sau do Claude chọn.
 
 ## Âm thanh
 

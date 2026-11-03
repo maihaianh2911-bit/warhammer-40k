@@ -491,11 +491,11 @@ def cmd_dung(a):
     bien_tap.SMOKE_COLOR = list(plan.get('mau_khoi', [255, 110, 25]))
     import chu
     chu_blocks = chu.build(beats, timing, W, H, plan, bien_tap.cut_at, bien_tap.word_times)
-    import nhan_vat
-    apps = nhan_vat.build(beats, timing, W, H, plan, bien_tap.cut_at, bien_tap.word_times)
-    env = nhan_vat.voice_env(voice, fps, timing['tong'] + 1) if apps else None
     import tieu_de
     title = tieu_de.build(d, plan, timing, W, H)
+    import nhan_vat
+    apps = nhan_vat.build(beats, timing, W, H, plan, bien_tap.cut_at, bien_tap.word_times, title.t_end if title else None)
+    env = nhan_vat.voice_env(voice, fps, timing['tong'] + 1) if apps else None
     if title:  # chữ nhấn bắt đầu trong lúc tiêu đề hiện thì dời ra sau tiêu đề
         for blk in chu_blocks:
             if blk.t0 < title.t_end:
@@ -519,7 +519,10 @@ def cmd_dung(a):
     mix = out_dir / 'am-thanh.wav'
     ev = am_thanh.su_kien(clips, beats, timing, plan, bien_tap.cut_at, bien_tap.word_times)
     for ap in apps:
-        ev += [(ap.t0 + 0.12, 'pop', -4), (ap.t1 - 0.15, 'whoosh', -10)]
+        if ap.ben == 'giua':  # Otto đoạn mở: tiếng va của tiêu đề đã đủ, chỉ thêm pop nhẹ
+            ev.append((ap.t0 + 0.12, 'pop', -8))
+        else:
+            ev += [(ap.t0 + 0.12, 'pop', -4), (ap.t1 - 0.15, 'whoosh', -10)]
     if title:
         ev = [e for e in ev if e[0] > 0.05] + [(tieu_de.LAND, 'hit', 1), (tieu_de.LAND, 'boom', 0),
                                               (title.t_end - tieu_de.OUT * 0.6, 'whoosh', 0)]

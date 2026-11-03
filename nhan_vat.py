@@ -10,7 +10,9 @@ Biểu cảm: binh_thuong · ngac_nhien · cuoi · so · suy_nghi · chi_tay
 
 Trong y.json, mỗi ý (không bắt buộc):
     "nhan_vat": [{"bieu_cam": "ngac_nhien", "tu_chu": "Tod", "giay": 2.2, "ben": "phai"}]
-- hiện khi giọng đọc tới `tu_chu` (bỏ trống = đầu ý), giữ `giay` giây (mặc định 2.4), `ben`: trai / phai (mặc định phai).
+- hiện khi giọng đọc tới `tu_chu` (bỏ trống = đầu ý), giữ `giay` giây (mặc định 2.4), `ben`: trai / phai / giua (mặc định phai).
+Đoạn mở: có `tieu_de_mo` thì Otto tự đứng giữa dưới tiêu đề suốt lúc tiêu đề hiện
+("nhan_vat_mo": {"bieu_cam": "binh_thuong", "co": 0.38} để đổi, false để tắt).
 Toàn video: "co_nhan_vat": 0.30 (chiều cao so với khung) · "nhan_vat": false (tắt).
 """
 import math, re, subprocess, sys
@@ -234,12 +236,12 @@ class Appearance:
         tilt = math.sin(t * 2.3) * 2.0 + talk * 40 * (1 if self.ben == 'phai' else -1)
         im = im.rotate(tilt, resample=Image.BILINEAR, expand=True)
         margin = int(self.W * 0.015)
-        x = margin if self.ben == 'trai' else self.W - im.width - margin
+        x = margin if self.ben == 'trai' else (self.W - im.width) // 2 if self.ben == 'giua' else self.W - im.width - margin
         y = int(self.H - im.height + self.H * 0.012 + (y_off + bob) * self.img.height)
         frame.alpha_composite(im, (x, y))
 
 
-def build(beats, timing, W, H, plan, cut_at, word_times):
+def build(beats, timing, W, H, plan, cut_at, word_times, title_end=None):
     if plan.get('nhan_vat') is False:
         return []
     imgs = {}
@@ -253,6 +255,13 @@ def build(beats, timing, W, H, plan, cut_at, word_times):
     scaled = {n: im.resize((max(1, int(im.width * hh / im.height)), hh), Image.LANCZOS) for n, im in imgs.items()}
     tmap = {t['so']: t for t in timing['y']}
     out = []
+    mo = plan.get('nhan_vat_mo', {})
+    if title_end and mo is not False:  # đoạn mở: Otto đứng giữa dưới tiêu đề, to hơn một chút
+        name = (mo or {}).get('bieu_cam', 'binh_thuong')
+        im = imgs.get(name) or imgs.get('binh_thuong') or next(iter(imgs.values()))
+        h2 = int(H * float((mo or {}).get('co', 0.38)))
+        big = im.resize((max(1, int(im.width * h2 / im.height)), h2), Image.LANCZOS)
+        out.append(Appearance(big, 0.22, title_end, W, H, 'giua'))
     for b in beats:
         t = tmap.get(b['so'])
         if not t:
