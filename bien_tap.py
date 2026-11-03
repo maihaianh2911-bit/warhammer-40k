@@ -26,6 +26,8 @@ Kiểu dựng cả video (`kieu_edit` trong y.json, đè lên `canh`):
 - `theo_mau` (mặc định người dùng chọn, đo từ video mẫu): xen kẽ `zoom_ra` (vào phóng ~1.45, lùi nhanh rồi chậm dần
   tới đứng yên ~2–3 s) và `troi` (trôi ngang đều ~3.5% bề ngang/giây, zoom cố định 1.18). `y[].chuyen` đặt riêng kiểu,
   `y[].zoom_cuoi` giữ khung chặt hơn ở cuối (né chữ/watermark ở mép ảnh).
+  Video dài: `y[].doan: [{"file": 1, "tu_giay": 12, "toc": 1.5}, {"file": 1, "tu_giay": 47}]` = cắt nhiều đoạn (cùng hoặc
+  khác clip), chia đều thời gian ý, `toc` = tốc độ (1.5 = nhanh 1,5 lần). Một đoạn: `y[].video_tu`, `y[].toc_video`.
   Chỉnh: `zoom_dau`, `zoom_troi`, `toc_do_troi`. Trong `canh` tự viết cũng dùng được `kieu: "zoom_ra" | "troi"`, `toc_do`.
 
 Không có `canh` → máy tự biên tập (ý dài chia 2 cảnh toàn → cận, ảnh ngang thì lia ngang, chuyển động đều).
@@ -110,7 +112,7 @@ class StillSource:
 class VideoSource:
     """Video tắt tiếng, phóng sẵn (lấp đầy khung × zoom lớn nhất), lặp lại nếu ngắn hơn cảnh."""
 
-    def __init__(self, path, W, H, fps, zmax, fit, tu_giay, dur):
+    def __init__(self, path, W, H, fps, zmax, fit, tu_giay, dur, toc=1.0):
         self.zmax = max(1.0, zmax)
         w0, h0, _ = video_info(path)
         if not w0 or not h0:
@@ -124,10 +126,13 @@ class VideoSource:
                   f'[bg][fg]overlay=(W-w)/2:(H-h)/2,fps={fps},format=rgb24')
         else:
             vf = f'scale={cw}:{ch}:force_original_aspect_ratio=increase,crop={cw}:{ch},fps={fps},format=rgb24'
+        toc = max(0.25, float(toc or 1.0))
+        if abs(toc - 1) > 0.01:  # tua nhanh/chậm
+            vf = f'setpts=PTS/{toc},' + vf
         self.size = (cw, ch)
         self.fps = fps
         self.proc = subprocess.Popen(['ffmpeg', '-v', 'error', '-stream_loop', '-1', '-ss', f'{tu_giay:.3f}', '-i', str(path),
-                                      '-t', f'{dur + 0.5:.3f}', '-an', '-filter_complex', vf, '-f', 'rawvideo', '-'],
+                                      '-t', f'{(dur + 0.5) * toc:.3f}', '-an', '-filter_complex', vf, '-f', 'rawvideo', '-'],
                                      stdout=subprocess.PIPE, stderr=subprocess.DEVNULL)
         self.n = -1
         self.last = Image.new('RGB', self.size)
@@ -297,6 +302,26 @@ def theo_mau(b, media, words, t0, t1, plan, counter):
     """Theo video mẫu người dùng thích: mỗi ảnh một cảnh lấp đầy khung, xen kẽ hai kiểu
     `zoom_ra` (vào cảnh phóng to ~1.45 rồi lùi nhanh, chậm dần tới đứng yên) và `troi` (trôi ngang đều, không zoom).
     Ý có `vao` khói/nhòe/chớp/giật luôn dùng zoom_ra. Đặt riêng: `y[].chuyen: "zoom_ra" | "troi"`."""
+    if b.get('doan'):  # cắt sẵn: nhiều đoạn (có thể cùng một clip dài), chia đều thời gian ý, cắt ở đầu từ
+        segs = b['doan']
+        bounds = [t0]
+        for j in range(1, len(segs)):
+            target = t0 + (t1 - t0) * j / len(segs)
+            best = min((s for _w, s, _e in words if bounds[-1] + 0.6 < s < t1 - 0.6), key=lambda s: abs(s - target), default=target)
+            bounds.append(best - 0.07)
+        out = []
+        for j, sg in enumerate(segs):
+            fi = max(1, int(sg.get('file', 1)))
+            m = media[min(fi, len(media)) - 1]
+            vao = (b.get('vao') or 'cat') if j == 0 else sg.get('vao', 'cat')
+            if isinstance(m, Path) and _is_video(m):
+                out.append(dict(luc=bounds[j] - t0, file=fi, vua='cover', vao=vao, tu=[0.5, 0.5, 1.0], den=[0.5, 0.5, 1.0],
+                                tu_giay=float(sg.get('tu_giay', 0)), toc=float(sg.get('toc', 1.0))))
+            else:
+                sx, sy = sg.get('chu_the') or b.get('chu_the') or [0.5, 0.42]
+                out.append(dict(luc=bounds[j] - t0, file=fi, vua='cover', vao=vao, kieu='zoom_ra',
+                                tu=[sx, sy, float(plan.get('zoom_dau', 1.45))], den=[0.5 + (sx - 0.5) * 0.4, 0.5 + (sy - 0.5) * 0.4, 1.0]))
+        return out
     n = len(media)
     ct = b.get('chu_the') or [0.5, 0.42]
     pts = ct if ct and isinstance(ct[0], (list, tuple)) else [ct] * n
@@ -396,7 +421,8 @@ def build_shots(d, beats, timing, W, H, fps, plan, images_for, open_image, place
             den = c.get('den') or tu
             zmax = max(tu[2], den[2]) * (1.16 if c.get('vao') == 'giat' else 1.0)
             if isinstance(m, Path) and _is_video(m):
-                src = VideoSource(m, W, H, fps, zmax, fit, float(c.get('tu_giay', b.get('video_tu', 0)) or 0), e - s)
+                src = VideoSource(m, W, H, fps, zmax, fit, float(c.get('tu_giay', b.get('video_tu', 0)) or 0), e - s,
+                                  float(c.get('toc', b.get('toc_video', 1.0)) or 1.0))
             else:
                 src = StillSource(stills[id(m)], W, H, zmax, fit)
             if not isinstance(m, Path):
