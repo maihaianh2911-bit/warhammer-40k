@@ -1,0 +1,20 @@
+name: Ghi caption vào bản phát hành video
+
+# Lưu du-an/<ten>/caption.txt → caption hiện trong mô tả bản phát hành video-<ten> (Releases), có nút copy.
+on:
+  push:
+    branches: [main]
+    paths: ['du-an/*/caption.txt']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  ghi:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with: { persist-credentials: false }
+      - env: { GH_TOKEN: '${{ github.token }}' }
+        run: for f in du-an/*/caption.txt; do scripts/ghi_caption.sh "$(basename "$(dirname "$f")")"; done

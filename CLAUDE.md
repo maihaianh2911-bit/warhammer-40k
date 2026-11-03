@@ -131,6 +131,12 @@ cười ở câu đùa, suy nghĩ ở câu hỏi, chỉ tay khi giới thiệu),
 đáy khung. Cú pháp ở đầu `nhan_vat.py`. Chưa có ảnh nhân vật thì máy bỏ qua.
 Đoạn mở luôn có Otto (người dùng muốn): đứng giữa dưới tiêu đề suốt lúc tiêu đề hiện (`nhan_vat_mo`). Các lần sau do Claude chọn.
 
+## Caption
+
+Mỗi video có `du-an/<ten>/caption.txt` (tiếng của khán giả: câu móc + 1–2 câu tóm tắt + câu hỏi gọi bình luận + 8–12
+hashtag). Claude viết khi edit. Workflow `caption.yml` (và `tu-dung.yml` sau khi dựng) dán nó vào mô tả bản phát hành
+`video-<ten>` bằng `scripts/ghi_caption.sh` — phiên Claude không tự sửa release được (bị chặn), phải qua workflow.
+
 ## Âm thanh
 
 `am_thanh.py` (gọi từ `ghep.py dung`): giọng + nhạc nền (tự nhỏ khi có giọng) + hiệu ứng tự đặt theo cách chuyển cảnh

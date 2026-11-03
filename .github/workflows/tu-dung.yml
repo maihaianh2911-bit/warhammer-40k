@@ -69,6 +69,7 @@ jobs:
               for a in $(gh release view "video-$t" --json assets -q '.assets[].name'); do gh release delete-asset "video-$t" "$a" -y; done
               gh release upload "video-$t" "/tmp/$ten"
               url="https://github.com/$GITHUB_REPOSITORY/releases/download/video-$t/$ten"
+              scripts/ghi_caption.sh "$t" || true
               python3 trang.py trang-thai "$t" xong --video "$url" --loi-nhan ""
               day "$t: có video"
             else
